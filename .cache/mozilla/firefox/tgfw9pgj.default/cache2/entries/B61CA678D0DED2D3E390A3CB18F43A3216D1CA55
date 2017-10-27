@@ -1,0 +1,385 @@
+
+<aside class="secondary addon-reviews c">
+      <div>
+        <span class="stars stars-4" title="Puntuado con 4 de 5 estrellas">Puntuado con 4 de 5 estrellas</span>
+
+      Promedio
+    </div>
+      <div>
+    <ul class="grouped_ratings" data-total="459">
+                <li class="c">  <span class="stars stars-5" title="Puntuado con 5 de 5 estrellas">Puntuado con 5 de 5 estrellas</span>
+
+        <div class="rating_bar" data-num-reviews="270">
+          <span class="bar" style="width:58.0%">
+            <span class="num_ratings">270</span>
+          </span>
+        </div>
+      </li>
+                <li class="c">  <span class="stars stars-4" title="Puntuado con 4 de 5 estrellas">Puntuado con 4 de 5 estrellas</span>
+
+        <div class="rating_bar" data-num-reviews="83">
+          <span class="bar" style="width:18.0%">
+            <span class="num_ratings">83</span>
+          </span>
+        </div>
+      </li>
+                <li class="c">  <span class="stars stars-3" title="Puntuado con 3 de 5 estrellas">Puntuado con 3 de 5 estrellas</span>
+
+        <div class="rating_bar" data-num-reviews="30">
+          <span class="bar" style="width:6.0%">
+            <span class="num_ratings">30</span>
+          </span>
+        </div>
+      </li>
+                <li class="c">  <span class="stars stars-2" title="Puntuado con 2 de 5 estrellas">Puntuado con 2 de 5 estrellas</span>
+
+        <div class="rating_bar" data-num-reviews="33">
+          <span class="bar" style="width:7.0%">
+            <span class="num_ratings">33</span>
+          </span>
+        </div>
+      </li>
+                <li class="c">  <span class="stars stars-1" title="Puntuado con 1 de 5 estrellas">Puntuado con 1 de 5 estrellas</span>
+
+        <div class="rating_bar" data-num-reviews="42">
+          <span class="bar" style="width:9.0%">
+            <span class="num_ratings">42</span>
+          </span>
+        </div>
+      </li>
+        </ul>
+  </div>
+      <div>
+      <a class="button" id="add-review" href="/es/firefox/addon/imtranslator/reviews/add">Escribe una valoración</a>
+    </div>
+    <a id="report-abuse" href="/es/firefox/addon/2257/abuse/"
+     class="abuse-image">Informar de uso indebido</a>
+</aside>
+
+<section id="reviews" class="primary island c">
+  <h2>Valoraciones</h2>
+                  <div class="review">
+        <h3>
+                      <b>Firefox 57+ Compatibility</b>
+                      <span class="stars stars-5" title="Puntuado con 5 de 5 estrellas">Puntuado con 5 de 5 estrellas</span>
+
+        </h3>
+        <p class="byline">
+          por <a href="/es/firefox/user/ChelOis/" title="ChelOis">ChelOis</a> el October 24, 2017          &middot;
+          <a class="permalink"
+             href="/es/firefox/addon/imtranslator/reviews/939089/">enlace permanente</a>
+        </p>
+        <p class="description">Excellent add-on!!! Please update to the new Firefox 57+ technology.</p>
+              </div>
+          <div class="review">
+        <h3>
+                      <b>Tadutor</b>
+                      <span class="stars stars-2" title="Puntuado con 2 de 5 estrellas">Puntuado con 2 de 5 estrellas</span>
+
+        </h3>
+        <p class="byline">
+          por <a href="/es/firefox/user/umcaraaew/" title="Jefferson Martins">Jefferson Martins</a> el October 21, 2017          &middot;
+          <a class="permalink"
+             href="/es/firefox/addon/imtranslator/reviews/937871/">enlace permanente</a>
+        </p>
+        <p class="description">só leva o nome de google mas não tem nada de google</p>
+              </div>
+          <div class="review">
+        <h3>
+                      <b>Fantastico</b>
+                      <span class="stars stars-5" title="Puntuado con 5 de 5 estrellas">Puntuado con 5 de 5 estrellas</span>
+
+        </h3>
+        <p class="byline">
+          por <a href="/es/firefox/user/Shadowbloody/" title="Shadowbloody">Shadowbloody</a> el September 30, 2017          &middot;
+          <a class="permalink"
+             href="/es/firefox/addon/imtranslator/reviews/927475/">enlace permanente</a>
+        </p>
+        <p class="description">É muito bom, só falta fazerem ser compatível com Firefox Quantum.</p>
+              </div>
+              <p>
+        <a class="more-info" href="/es/firefox/addon/imtranslator/reviews/">
+          Ver las 459 valoraciones de los usuarios        </a>
+      </p>
+      
+</section>
+
+<aside id="related" class="secondary metadata c">
+            <h3>Categorías relacionadas</h3>
+      <ul>
+                <li>
+          <a href="/es/firefox/extensions/language-support/">
+            Ayuda de idioma
+          </a>
+        </li>
+                <li>
+          <a href="/es/firefox/extensions/social-communication/">
+            Social y comunicación
+          </a>
+        </li>
+              </ul>
+        <div class="clearboth">
+  <h3 class="compact-bottom">Etiquetas</h3>
+
+  <div id="tagbox">
+    
+  <ul class="addon-tags nojs" id="addonid-2257">
+          <li id="taglink-28045" class="tag">
+      <a href="/es/firefox/tag/dictionary" class="tagitem">
+      dictionary
+    </a>
+  </li>
+          <li id="taglink-3584" class="tag">
+      <a href="/es/firefox/tag/google%20translate" class="tagitem">
+      google translate
+    </a>
+  </li>
+          <li id="taglink-7043" class="tag">
+      <a href="/es/firefox/tag/google%20translator" class="tagitem">
+      google translator
+    </a>
+  </li>
+          <li id="taglink-10694" class="tag">
+      <a href="/es/firefox/tag/language%20translator" class="tagitem">
+      language translator
+    </a>
+  </li>
+          <li id="taglink-31439" class="tag">
+      <a href="/es/firefox/tag/online%20translation" class="tagitem">
+      online translation
+    </a>
+  </li>
+          <li id="taglink-5306" class="tag">
+      <a href="/es/firefox/tag/text%20to%20speech" class="tagitem">
+      text to speech
+    </a>
+  </li>
+          <li id="taglink-2519" class="tag">
+      <a href="/es/firefox/tag/traduction" class="tagitem">
+      traduction
+    </a>
+  </li>
+          <li id="taglink-15125" class="tag">
+      <a href="/es/firefox/tag/traductor" class="tagitem">
+      traductor
+    </a>
+  </li>
+          <li id="taglink-10998" class="tag">
+      <a href="/es/firefox/tag/tradutor" class="tagitem">
+      tradutor
+    </a>
+  </li>
+          <li id="taglink-15134" class="tag">
+      <a href="/es/firefox/tag/traduttore" class="tagitem">
+      traduttore
+    </a>
+  </li>
+          <li id="taglink-23183" class="tag">
+      <a href="/es/firefox/tag/translate" class="tagitem">
+      translate
+    </a>
+  </li>
+          <li id="taglink-22872" class="tag">
+      <a href="/es/firefox/tag/translation" class="tagitem">
+      translation
+    </a>
+  </li>
+          <li id="taglink-1679" class="tag">
+      <a href="/es/firefox/tag/translator" class="tagitem">
+      translator
+    </a>
+  </li>
+          <li id="taglink-8855" class="tag">
+      <a href="/es/firefox/tag/tts" class="tagitem">
+      tts
+    </a>
+  </li>
+          <li id="taglink-6402" class="tag">
+      <a href="/es/firefox/tag/t%C5%82umacz" class="tagitem">
+      tłumacz
+    </a>
+  </li>
+          <li id="taglink-28049" class="tag">
+      <a href="/es/firefox/tag/%C3%BCbersetzer" class="tagitem">
+      übersetzer
+    </a>
+  </li>
+          <li id="taglink-25381" class="tag">
+      <a href="/es/firefox/tag/voice%20translator" class="tagitem">
+      voice translator
+    </a>
+  </li>
+          <li id="taglink-15133" class="tag">
+      <a href="/es/firefox/tag/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%87%D0%B8%D0%BA" class="tagitem">
+      переводчик
+    </a>
+  </li>
+      </ul>
+
+  </div>
+</div>
+
+</aside>
+
+  <section class="primary island c">
+          <section id="collections-grid">
+        <h2>Parte de estas colecciones</h2>
+        <ul class="listing-grid c cols-3">
+    <section>
+      <li>
+      <div class="hovercard collection addon">
+        <a href="/es/firefox/collections/absjacek/adhd/">
+          <div class="icon">
+                          <img src="https://addons.cdn.mozilla.net/static/img/icons/collection.png" alt="">
+                      </div>
+          <div class="summary">
+            <h3>ADD/ADHD in Firefox (Jacek&#39;s Favorites)</h3>
+            <p class="desc">THE Cure for ADHD - Food for Your Restless Mind Interpreted Vicariously in Firefox!
+Collection of addons for Internet addicts and the uber-/omni-curious minds.</p>
+          </div>
+        </a>
+        <div class="more">
+                    <span>92</span> complementos          &middot;
+                    <span>1.289</span> seguidores        </div>
+      </div>
+    </li>
+      <li>
+      <div class="hovercard collection addon">
+        <a href="/es/firefox/collections/allexxandra/81aadfe6-7227-26a8-109e-1bc78b/">
+          <div class="icon">
+                          <img src="https://addons.cdn.mozilla.net/static/img/icons/collection.png" alt="">
+                      </div>
+          <div class="summary">
+            <h3>Browsing with pleasure</h3>
+            <p class="desc">I recommend these addons. They are really nice and some of them are great.</p>
+          </div>
+        </a>
+        <div class="more">
+                    <span>124</span> complementos          &middot;
+                    <span>647</span> seguidores        </div>
+      </div>
+    </li>
+      <li>
+      <div class="hovercard collection addon">
+        <a href="/es/firefox/collections/gabuds/ff_powerup/">
+          <div class="icon">
+                          <img src="https://addons.cdn.mozilla.net/user-media/collection_icons/31/31852.png?m=1505894600" alt="">
+                      </div>
+          <div class="summary">
+            <h3>Firefox power up!</h3>
+            <p class="desc">With all those add-on, you can make your Firefox be more powerful than it is. All those add-on will give you the fastest access to anything, plus the most useful utilities you can have.</p>
+          </div>
+        </a>
+        <div class="more">
+                    <span>80</span> complementos          &middot;
+                    <span>403</span> seguidores        </div>
+      </div>
+    </li>
+    </section>
+</ul>
+
+      </section>
+                <section id="author-addons">
+        <h2>
+                      Otros complementos de <a href="/es/firefox/user/smart-link-corporation/" title="Smart Link Corporation">Smart Link Corporation</a>                  </h2>
+        <ul class="listing-grid c cols-3">
+    <section>
+      <li>
+      <div class="addon hovercard">
+    <div class="icon">
+      <a href="/es/firefox/addon/translation-comparison/?src=dp-dl-othersby">
+            <img src="https://addons.cdn.mozilla.net/user-media/addon_icons/819/819460-32.png?modified=1505830821" alt="Icono para Translation Comparison">
+            </a>
+    </div>
+    <div class="summary">
+      <a href="/es/firefox/addon/translation-comparison/?src=dp-dl-othersby">
+        <h3>Translation Comparison</h3>
+                              <div class="category more-info">Ayuda de idioma</div>
+                        </a>
+        <div class="vital">
+            
+<span class="rating">
+              <span class="stars stars-4" title="Puntuado con 4 de 5 estrellas">Puntuado con 4 de 5 estrellas</span>
+
+      <a href="/es/firefox/addon/translation-comparison/reviews/">(11)</a>
+      </span>
+      </div>
+
+          </div>
+  <div class="more">
+    
+<div class="install-shell">
+<div class="install "
+       data-addon="819460"
+  data-icon="https://addons.cdn.mozilla.net/user-media/addon_icons/819/819460-32.png?modified=1505830821"
+  data-developers="/es/firefox/addon/translation-comparison/developers"
+  data-versions="/es/firefox/addon/819460/versions/"
+  data-name="Translation Comparison"
+  
+  data-min="42.0"
+  data-max="*"
+  data-is-compatible-by-default="true"
+  data-is-compatible-app="true"
+  data-compat-overrides="[]"
+>
+  <p class="install-button">
+                        <a class="button download "
+  data-hash="sha256:5ffba6ad6fbf15953d96c86ec0ec872ef96e16ca8b8a4a076831839ff936d7aa"
+      href="/firefox/downloads/latest/translation-comparison/addon-819460-latest.xpi?src=dp-hc-othersby"
+  >
+  <b></b>
+  <span>
+    Descargar ahora
+      </span>
+</a>            </p>
+</div> 
+
+</div> 
+    <span class="addon-summary">
+      Translation Comparison translates text and compares translations between Google, Microsoft, Yandex and other translators.
+    </span>
+    <div class="byline">
+      por <a href="/es/firefox/user/smart-link-corporation/" title="Smart Link Corporation">Smart Link Corporation</a>    </div>
+          <div class="vitals">
+          <div class="vital">
+                  <span class="adu">
+                    722 usuarios        </span>
+            </div>
+
+      </div>
+      </div>
+</div>
+    </li>
+    </section>
+</ul>
+      </section>
+      </section>
+
+ �m,(      Y�Y�>Yɱ       >    :https://addons.mozilla.org/es/firefox/addon/imtranslator/more necko:classified 1 strongly-framed 1 security-info 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 request-method GET request-X-Requested-With XMLHttpRequest request-User-Agent Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:56.0) Gecko/20100101 Firefox/56.0 response-head HTTP/1.1 200 OK
+Content-Security-Policy: script-src https://ssl.google-analytics.com/ga.js https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://addons.cdn.mozilla.net; style-src 'self' 'unsafe-inline' https://addons.cdn.mozilla.net; default-src 'self'; frame-src 'self' https://www.google.com/recaptcha/; child-src 'self' https://www.google.com/recaptcha/; img-src 'self' data: blob: https://ssl.google-analytics.com https://addons.cdn.mozilla.net https://static.addons.mozilla.net https://sentry.prod.mozaws.net; media-src https://videos.cdn.mozilla.net; object-src 'none'; connect-src 'self' https://sentry.prod.mozaws.net; font-src 'self' https://addons.cdn.mozilla.net; form-action 'self' https://developer.mozilla.org; base-uri 'self' https://addons.mozilla.org; report-uri /__cspreport__
+Content-Type: text/html; charset=utf-8
+Date: Fri, 27 Oct 2017 21:48:09 GMT
+ETag: "1f6fe3be65f6c19a4fdac87d8e823ed9"
+Public-Key-Pins: max-age=5184000; includeSubDomains; pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E="
+Server: nginx
+strict-transport-security: max-age=31536000
+Vary: X-Requested-With, User-Agent
+x-content-type-options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1; mode=block
+Content-Length: 12811
+ original-response-headers Content-Security-Policy: script-src https://ssl.google-analytics.com/ga.js https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://addons.cdn.mozilla.net; style-src 'self' 'unsafe-inline' https://addons.cdn.mozilla.net; default-src 'self'; frame-src 'self' https://www.google.com/recaptcha/; child-src 'self' https://www.google.com/recaptcha/; img-src 'self' data: blob: https://ssl.google-analytics.com https://addons.cdn.mozilla.net https://static.addons.mozilla.net https://sentry.prod.mozaws.net; media-src https://videos.cdn.mozilla.net; object-src 'none'; connect-src 'self' https://sentry.prod.mozaws.net; font-src 'self' https://addons.cdn.mozilla.net; form-action 'self' https://developer.mozilla.org; base-uri 'self' https://addons.mozilla.org; report-uri /__cspreport__
+Content-Type: text/html; charset=utf-8
+Date: Fri, 27 Oct 2017 21:48:09 GMT
+ETag: "1f6fe3be65f6c19a4fdac87d8e823ed9"
+Public-Key-Pins: max-age=5184000; includeSubDomains; pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E="
+Server: nginx
+strict-transport-security: max-age=31536000
+Vary: X-Requested-With
+Vary: User-Agent
+x-content-type-options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1; mode=block
+Content-Length: 12811
+Connection: keep-alive
+ uncompressed-len 0 net-response-time-onstart 377 net-response-time-onstop 379   2

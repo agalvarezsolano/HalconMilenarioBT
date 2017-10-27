@@ -1,0 +1,329 @@
+A:link {font-family: Tahoma, Helvetica; font-size: 11px;  text-decoration: none; color: #1F4479; line-height: 13px;}
+A:visited {font-family: Tahoma, Helvetica; font-size: 11px;  text-decoration: none; color:#1F4479; line-height: 13px;}
+A:active {font-family: Tahoma, Helvetica; font-size: 11px;  text-decoration: underline; color: #880D00; line-height: 13px;}
+A:hover {font-family: Tahoma, Helvetica; font-size: 11px;  text-decoration: underline; color: #1F4479; line-height: 13px;}
+
+A:link.lnk {font-family: Tahoma, Helvetica; font-size: 11px;  text-decoration: none; color: #FFFFFF; line-height: 13px;}
+A:visited.lnk {font-family: Tahoma, Helvetica; font-size: 11px;  text-decoration: none; color:#FFFFFF; line-height: 13px;}
+A:active.lnk {font-family: Tahoma, Helvetica; font-size: 11px;  text-decoration: none; color: orange; line-height: 13px;}
+A:hover.lnk {font-family: Tahoma, Helvetica; font-size: 11px;  text-decoration: none; color: #880D00; line-height: 13px;}
+
+.btn2 {
+   width: 70px;
+   height: 21px;
+   background:url(http://imtranslator.net/images/btn-bg.gif);
+	border-top: 0x solid #eef3ff;
+	border-left: 0px solid #eef3ff; 
+	border-right: 0px solid #546498; 
+	border-bottom: 0px solid #546498; 
+   font-family: Tahoma, Arial;	
+   font-size: 11px;
+   CURSOR: hand;
+   color: #ffffff;
+}
+
+.faq {display:none; margin-left:15px; border:1px dotted #6992cc;padding:5px}
+.guide 		{ font-family : Arial, Helvetica; font-size: 20px; color: #9C0304; text-decoration: yes; line-height: 22px; font-weight: 800;}
+.menu-blue 	{ font-family : Tahoma, Helvetica; font-size: 11px; color: #21497D; text-decoration: yes; line-height: 13px;}
+.menu		{ font-family : Tahoma, Helvetica; font-size: 10px; color : #ffffff; line-height: 14px;}
+.title-black	{ font-family : Tahoma, Helvetica; font-size: 14px; font-weight: 600; color : #000000; line-height: 13pt;}
+.title-blue	{ font-family : Tahoma, Helvetica; font-size: 14px; font-weight: 600; color : #21497D; line-height: 13pt;}
+.title-red	{ font-family : Tahoma, Helvetica; font-size: 14px; font-weight: 600; color : #880D00; line-height: 13pt;}
+.cells		{ border:1px dotted #6992cc;}
+.title { font-family : Tahoma, Helvetica; font-weight: 400 !important; text-decoration: none; font-size: 20px !important; color:#1284B8; }
+
+
+
+
+.title2, .title2 b, .redline { font-family : Tahoma, Helvetica; font-size: 12pt; font-weight: 400; line-height: 15pt; color: #880D00;}
+.redcolor{font-size:11px; line-height:14px;}
+.title3   	{ font-family : Tahoma, Helvetica; font-size: 8pt; font-weight: bold; line-height: 11pt; color: #ffffff;}
+.title4		{ font-family : Tahoma, Helvetica; font-weight: normal; text-decoration: none; font-size: 20px; color : #ffffff; }
+.title5		{ font-family : Tahoma, Helvetica; font-weight: text-decoration: none; font-size: 14px; color : #1F4479; line-height: 16px;}
+.title6   	{ font-family : Tahoma, Helvetica; font-size: 8pt; font-weight: 600; line-height: 11pt; color: #1F4479;}
+.content2	{ font-family : Tahoma, Helvetica; text-decoration: none; font-size: 11px; font-weight: 600; color : #000000; }
+.content	{ font-family : Tahoma, Helvetica; text-decoration: none; font-size: 11px; color : #000000; line-height: 14px; }
+.content-small	{ font-family : Tahoma, Helvetica; text-decoration: none; font-size: 9px; color : #880D00; line-height: 13px;}
+.clientlist	{ font-family : Tahoma, Helvetica; font-size: 12px; font-weight: 400; color: #21497D; line-height: 15px;}
+.white-small	{ font-family : Tahoma, Helvetica; text-decoration: none; font-size: 10px; color : #ffffff; }
+.dots		{ font-family : Tahoma, Helvetica; font-size: 14px; color : #000000; line-height: 16px;}
+.translator-dark{ font-family : Tahoma, Helvetica; font-size: 14px; font-weight: 600; color : #C39981; }
+
+.vk-dark	{ font-family : Tahoma, Helvetica; font-size: 14px; font-weight: 600; color : #4EB159; line-height: 16px;}
+.vk-td-light	{ font-family : Tahoma, Helvetica; font-size: 11px; font-weight: 400; color : #000000; background : #E0F1E4; }
+.vk-td-dark	{ font-family : Tahoma, Helvetica; font-size: 11px; font-weight: 400; color : #000000; background : #CBE7D1; }
+
+.tr-dark	{ font-family : Tahoma, Helvetica; font-size: 14px; font-weight: 600; color : #C29478; line-height: 16px;}
+.tr-td-light	{ font-family : Tahoma, Helvetica; font-size: 11px; font-weight: 400; color : #000000; background : #F7F2F0; }
+.tr-td-dark	{ font-family : Tahoma, Helvetica; font-size: 11px; font-weight: 400; color : #000000; background : #EBE0DB; }
+                                                                                               
+.sp-dark	{ font-family : Tahoma, Helvetica; font-size: 14px; font-weight: 600; color : #008ED0; line-height: 16px;}
+.sp-td-light	{ font-family : Tahoma, Helvetica; font-size: 11px; font-weight: 400; color : #000000; background : #D7E7F4; }
+.sp-td-dark	{ font-family : Tahoma, Helvetica; font-size: 11px; font-weight: 400; color : #000000; background : #BAD6EC; }
+
+.de-dark	{ font-family : Tahoma, Helvetica; font-size: 14px; font-weight: 600; color : #00A3A0; line-height: 16px;}
+.de-td-light	{ font-family : Tahoma, Helvetica; font-size: 11px; font-weight: 400; color : #000000; background : #D7EEEA; }
+.de-td-dark	{ font-family : Tahoma, Helvetica; font-size: 11px; font-weight: 400; color : #000000; background : #A0D2D2; }
+
+.di-dark	{ font-family : Tahoma, Helvetica; font-size: 14px; font-weight: 600; color : #EC9290; line-height: 16px;}
+.di-td-light	{ font-family : Tahoma, Helvetica; font-size: 11px; font-weight: 400; color : #000000; background : #FCF0EF; }
+.di-td-dark	{ font-family : Tahoma, Helvetica; font-size: 11px; font-weight: 400; color : #000000; background : #F7D5D3; }
+
+.gu-dark	{ font-family : Tahoma, Helvetica; font-size: 14px; font-weight: 600; color : #AE68A9; line-height: 16px;}
+.gu-td-light	{ font-family : Tahoma, Helvetica; font-size: 11px; font-weight: 400; color : #000000; background : #E7D7E6; }
+.gu-td-dark	{ font-family : Tahoma, Helvetica; font-size: 11px; font-weight: 400; color : #000000; background : #CEACCC; }
+
+.border		{ font-family: Arial, Helvetica; font-size:8pt;  color:#000000;	border-right:1px solid #c0c0c0 ; border-top:1px solid #c0c0c0;	border-bottom:1px solid #c0c0c0 ; border-left:1px solid #c0c0c0 ; background:#F3F3F3; }
+
+.alarm		{ font-family : Tahoma, Helvetica; font-size: 12px; font-weight: 600; color : #880d00; }
+.form 	        { font-family : Tahoma, Helvetica; font-size: 10px; color:#000000; border-right:1px solid #6992CC ; border-top:1px solid #6992CC; border-bottom:1px solid #6992CC ; border-left:1px solid #6992CC ; background:#FFFFFF; }
+.speller-dark	{ font-family : Tahoma, Helvetica; font-size: 14px; font-weight: 600; color : #008ED1; }
+.dictionary-dark{ font-family : Tahoma, Helvetica; font-size: 14px; font-weight: 600; color : #E8726C; }
+.decoder-dark	{ font-family : Tahoma, Helvetica; font-size: 14px; font-weight: 600; color : #00A4A0; }
+.dot		{ font-family : Tahoma, Helvetica; font-size: 10px; font-weight: 300; color: #6992CC; }
+
+.dragme{position:relative;}
+
+.btn
+{
+    BORDER-RIGHT:  1px outset;
+    BORDER-TOP: 1px  outset;
+    BORDER-LEFT: 1px  outset;
+    CURSOR: hand;
+    BORDER-BOTTOM: 1px  outset;
+    BACKGROUND-COLOR: #21497D;
+    font-family: Tahoma,Helvetika,Arial; font-size:9pt; color:#ffffff 
+}
+
+
+.newstext {
+		font-family : Arial, Helvetica, Geneva;
+		font-size: 10px;
+		margin-top: 6px;
+		margin-left: 8px;
+		margin-bottom: 0px;					 
+}
+.newsdate {
+		font-family : Arial, Helvetica, Geneva;
+		font-size: 11px;
+		margin-top: 0px;
+		margin-left: 8px;
+		margin-bottom: 0px;					 
+		color : "#153A12";
+		font-weight : bold;			 
+}
+
+.copyright { 
+	font-family : sans-serif, Arial, Helvetica, Geneva;
+	font-size: 8pt;
+	margin-top: 24px;	
+	color : #64799B;
+}
+
+.Bar
+{
+    BORDER-RIGHT:  1px outset;
+    BORDER-TOP: 1px  outset;
+    FLOAT: left;
+    BORDER-LEFT: 1px  outset;
+    CURSOR: hand;
+    TEXT-INDENT: 1px;
+    BORDER-BOTTOM: 1px  outset;
+    POSITION: center;
+    BACKGROUND-COLOR: transparent;
+    TEXT-ALIGN: left;
+    font-family: Tahoma; font-size:9pt; color:#64799B 
+}
+
+h5 {
+	font-family : Arial, Helvetica, Geneva;
+	font-size: 14pt;
+        font-weight: bold;
+	margin-top: 10pt;
+	margin-bottom: 4pt;				
+	color : #880D00;
+
+}
+
+
+h1 { font-family : Tahoma, Helvetica; margin-bottom: 5px; font-size: 12px; font-weight: 600; line-height: 13px; color: #880D00;text-decoration:none}
+
+
+h2 {
+	font-family : Tahoma;
+	font-size: 11pt;
+	margin-top: 2pt;
+	margin-bottom: 2pt;				
+	color : #003B78;
+
+}
+
+h3 { 
+	font-family: Tahoma;
+	font-size: 10pt; 
+	font-weight : bold;
+	margin-bottom: 0pt;
+	color : #880D00;
+}	
+
+h4 { 
+	font-family: Tahoma;
+	font-size: 9px; 
+	font-weight : bold;
+	margin-bottom: 2pt;
+	margin-top: 8pt;		
+	color : #0C4C87;
+}	
+
+.plansh, .plansh:hover{
+    border:1px solid #E9ECEC;
+    border-radius:  10px 10px 10px 10px;
+    color:#000;
+    text-align:center;
+    padding: 3px; 
+    width: 98%;
+    height: 105px;
+    font-family: Tahoma, Helvetica; font-size: 12px;
+    cursor:pointer;
+} 
+.big,.big2,.big3{font-family: Tahoma, Helvetica; font-size: 18px;line-height:22px;color:#1284B8;}
+.big2,.big3{font-size: 15px;line-height:16px;}
+.big3{color:#1F447;}
+.plansh:hover, .cont_btn:hover {opacity: 0.8;}
+a:hover.pl{text-decoration:none;}
+#ff,#ff2{background:url(../images/LOGOS/firefox.png); width:36; height:36px;}
+#ch,#ch2{background:url(../images/LOGOS/chrome.png); width:36; height:36px;}
+#op,#op2{background:url(../images/LOGOS/opera.png); width:36; height:36px;}
+#ya,#ya2{background:url(../images/LOGOS/yandex.png); width:36; height:36px;}
+.lngs{overflow:hidden;width:99%;}
+.arr{float:left;background:url(../images/bull-blue.gif); width:7px; height:7px;margin-top:4px;}
+.lngs a, .lngs span {float:left; width:90%;margin-left:4px;line-height:16px;}
+#ff,#ch,#op,#ya{position:absolute;margin-top:-45px;margin-left:-13px;}
+#ff_btn{
+    border-radius:  5px 5px 5px 5px;
+    background: #5AA721;
+    color:#fff;
+    text-align:center;
+    padding: 3px; 
+    width: 85%;
+    height: 22px;
+    font-family: Verdana,Tahoma, Helvetica; 
+    font-size: 15px;
+    cursor:pointer;
+    margin-top:5px;
+} 
+#op_btn, #ya_btn{
+    border-radius:  2px 2px 2px 2px;
+    background: #4A9E18;
+    color:#fff;
+    text-align:center;
+    padding: 3px; 
+    width: 85%;
+    height: 22px;
+    font-family: Verdana,Tahoma, Helvetica; 
+    font-size: 15px;
+    cursor:pointer;
+    margin-top:5px;
+} 
+#ya_btn{background: #25B400;}
+#ch_btn{
+    border-radius:  2px 2px 2px 2px;
+    background: #4F7ED7;
+    color:#fff;
+    text-align:center;
+    padding: 4px; 
+    width: 75%;
+    height: 20px;
+    font-family: Arial,Tahoma, Helvetica; 
+    font-size: 11px;
+    cursor:pointer;
+    margin-top:5px;
+} 
+
+.plus{margin-left:2px;margin-top:2px;float:left;background:url(../images/LOGOS/plus.png); width:11; height:11px;}
+#ff_txt{padding:3px;overflow:hidden;width:100%;font-weight:400;}
+.ff_btn_text{float:left;width:85%;}
+#op_txt,#ya_txt{padding:5px;overflow:hidden;width:100%;font-weight:400;}
+.op_btn_text,.ya_btn_text{float:left;width:80%;height:16px;margin-top:-2px;margin-left:9px;border-left:1px solid #68B154;}
+#op_btn .plus, #ya_btn .plus {width:8%;margin-top:-0px;}
+#ch_txt{padding:3px;overflow:hidden;width:100%;font-weight:400;}
+.ch_btn_text{float:left;width:85%;height:16px;margin-left:5px;margin-top:0px;}
+.brench{
+ margin-left:132px;margin-top:-7px;position:absolute;
+ border-radius:  2px 2px 2px 2px;
+ background:#4F7ED7;
+ width:20px;
+ height:20px;
+ padding:4px;
+}
+#thebr{
+ background: url(../images/LOGOS/brench.png); width:15; height:13px;margin:3px;
+}
+.newversion{margin:3px;}
+.cont{overflow:hidden; width:98%;}
+.cont_text{float:left;width:81%;text-align:justify;padding:5px;font-size:12px;line-height:17px;}
+.cont_btn{
+ padding:3px;
+ text-align:center;
+ margin-top:8px;
+ color:#fff;
+ float:right; 
+ width:15%;
+ border-radius:  5px 5px 5px 5px;
+ background: #4F7ED7;
+}
+#ff2,#ch2,#op2,#ya2{margin-left:15px;margin-top:5px;margin-bottom:5px;}
+
+#ed,#ed2{background:url(../images/LOGOS/edge.png); width:33; height:36px;}
+#ed_btn .plus {margin-top:8px;}
+.ed_brench{
+ border-radius:  2px 2px 2px 2px;
+ background:#0077D7;
+ width:20px;
+ height:20px;
+ padding:4px;
+ margin-left:135px;
+ margin-top:-4px;
+}
+.ed_btn_text{float:left;width:85%;height:16px;margin-left:5px;margin-top:6px;}
+#ed_btn{
+    border-radius:  2px 2px 2px 2px;
+    background: #0077D7;
+    color:#ffffff;
+    text-align:center;
+    padding: 4px; 
+    width: 75%;
+    height: 20px;
+    font-family: Arial,Tahoma, Helvetica; 
+    font-size: 11px;
+    cursor:pointer;
+    margin-top:5px;
+} 
+#ed{position:absolute;margin-top:-45px;margin-left:-13px;}
+#ed_btn{font-size: 13px;}
+.hrline{
+    width:100%;
+    height:3px;
+    border-top:1px solid #E9ECEC;
+}
+.redline{line-height:36px;}
+ÃyMTß      YÛ©¶YÛ©¶>Yè9Z6•   0    :http://imtranslator.net/includes/styles.css?v=1 necko:classified 1 strongly-framed 1 request-method GET response-head HTTP/1.1 200 OK
+Cache-Control: max-age=2592000
+Content-Length: 12705
+Content-Type: text/css
+Last-Modified: Thu, 06 Oct 2016 20:19:00 GMT
+Accept-Ranges: bytes
+ETag: "0d296dfe20d21:41c1c"
+Server: Microsoft-IIS/6.0
+X-Powered-By: ASP.NET
+Date: Fri, 27 Oct 2017 21:48:21 GMT
+ original-response-headers Cache-Control: max-age=2592000
+Content-Length: 12705
+Content-Type: text/css
+Last-Modified: Thu, 06 Oct 2016 20:19:00 GMT
+Accept-Ranges: bytes
+ETag: "0d296dfe20d21:41c1c"
+Server: Microsoft-IIS/6.0
+X-Powered-By: ASP.NET
+Date: Fri, 27 Oct 2017 21:48:21 GMT
+ uncompressed-len 0 net-response-time-onstart 229 net-response-time-onstop 229   1°

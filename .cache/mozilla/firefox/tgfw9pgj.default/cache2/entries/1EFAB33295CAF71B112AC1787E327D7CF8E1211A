@@ -1,0 +1,1178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru">
+<head>
+	<title> Failed to load image: Unable to open file - Visual C++ - CyberForum.ru</title>
+	<link rel="canonical" href="http://www.cyberforum.ru/visual-cpp/thread1451833.html" />
+	<link rel="amphtml" href="http://www.cyberforum.ru/ampthread1451833.html" />
+	<base href="http://www.cyberforum.ru/">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+
+<meta name="keywords" content="Visual C++  Failed to load image: Unable to open file, Visual C++, форум программистов, компьютерный форум, киберфорум, сайберфорум, компьютеры, программирование, софт, электроника" />
+<meta name="description" content="Вообщем, пишу игру типа Марио на Visual c++ 2013. Подключил SFML и т.д.(все нужные библиотеки) написал код. А он при запуске exe файла выводит   Failed to load image &quot;название файла&quot;.Reason: Unable to open file   И таких несколько строк.Вот ссылка Visual C++ " />
+
+<meta name="viewport" content="width=device-width" />
+<meta name="robots" content="noyaca" />
+<meta name="robots" content="noodp" />
+
+<link rel="stylesheet" type="text/css" href="//cyberstatic.net/clientscript/vbulletin_css/cyberforum.css" />
+<link rel="stylesheet" type="text/css" href="//cyberstatic.net/clientscript/vbulletin_important.css?v=389" />
+
+
+
+<script type="text/javascript">
+<!--
+var SESSIONURL = "s=d095f3d7ebdb4cfba3af54ae0e0b4789&";
+var SECURITYTOKEN = "guest";
+var IMGDIR_MISC = "//cyberstatic.net/images/misc";
+var vb_disable_ajax = parseInt("0", 10);
+// -->
+</script>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/yui/2.9.0/build/yahoo-dom-event/yahoo-dom-event.js?v=389"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/yui/2.9.0/build/connection/connection-min.js?v=389"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="//cyberstatic.net/clientscript/custom/jquery.browser.min.js"></script>
+<script type="text/javascript" src="//cyberstatic.net/clientscript/vbulletin_global.js?v=389"></script>
+<script type="text/javascript" src="//cyberstatic.net/clientscript/vbulletin_menu.js?v=389"></script>
+<script type="text/javascript" src="//cyberstatic.net/clientscript/vbulletin_vbpost.js"></script>
+
+<script type="text/javascript" src="//cyberstatic.net/clientscript/vbulletin_post_loader.js?v=389"></script>
+
+
+<script type="text/javascript" src="//cyberstatic.net/clientscript/vbulletin_md5.js?v=389"></script>
+
+
+
+	<link rel="alternate" type="application/rss+xml" title="CyberForum.ru - форум программистов и сисадминов RSS Feed" href="http://www.cyberforum.ru/external.php?type=RSS2" />
+	
+		<link rel="alternate" type="application/rss+xml" title="Visual C++ - CyberForum.ru - RSS Feed" href="http://www.cyberforum.ru/external.php?type=RSS2&amp;forumids=21" />
+	
+
+<link type="application/opensearchdescription+xml" rel="search" href="http://www.cyberforum.ru/opensearch.xml" title="CyberForum.ru" />
+<link rel="stylesheet" href="//cyberstatic.net/clientscript/vbulletin_css/geshi.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="//cyberstatic.net/clientscript/vbulletin_css/spoiler.css" />
+
+<script type="text/javascript">
+var krtsts = {
+   "bburl": "http://www.cyberforum.ru"
+};
+</script>
+<script type="text/javascript" src="//cyberstatic.net/clientscript/kr_scripts/tests/addedit.js"></script><script type="text/javascript" src="//cyberstatic.net/clientscript/kr_scripts/bestanswer/bestanswer.js"></script>
+      <script type="text/javascript">
+      var krba_options = {
+          img_is_answer: '//cyberstatic.net/images/buttons/is_answer.png',
+          img_is_not_answer: '//cyberstatic.net/images/buttons/is_not_answer.png'
+      },
+      KRBA = new AJAX_KRBA(krba_options);
+      </script><link rel="stylesheet" type="text/css" href="//cyberstatic.net/clientscript/kr_scripts/thumbsup/thumbs.css" />
+<script type="text/javascript">
+var krthumbs = {
+  confirm_delete_pos: 'Вы действительно хотите удалить все положительные оценки?',
+  confirm_delete_neg: 'Вы действительно хотите удалить все отрицательные оценки?'
+}
+</script>
+<script type="text/javascript" src="//cyberstatic.net/clientscript/kr_scripts/thumbsup/thumbsup.js"></script>
+	<style type="text/css" id="vbulletin_showthread_css">
+	<!--
+	
+	#links div { white-space: nowrap; }
+	#links img { vertical-align: middle; }
+	-->
+	</style>
+	<style type="text/css">
+		span.sortarrow {position:absolute;}
+		span.sortarrow img {border:0;}
+		a.sortheader {text-decoration:none; display:block; width:100%;}
+	</style>
+	<script type="text/javascript">
+		var IMGDIR_BUTTON = "//cyberstatic.net/images/buttons";
+	</script>
+	<script type="text/javascript" src="//cyberstatic.net/clientscript/sorttable.js"></script>
+</head>
+<body onload="">
+
+
+<div style="min-width: 1000px;  margin: 7px 20px 7px 20px;">
+
+
+<!-- content table -->
+<!-- open content container -->
+
+<div>
+	<div class="page" style="text-align: left;">
+		<div style="margin: 0px 3px 0px 3px" align="left">
+
+
+<div class="vbmenu_popup" id="vbbloglinks_menu" style="display:none;margin-top:3px" align="left">
+	<table cellpadding="4" cellspacing="1" border="0">
+
+	<tr>
+		<td class="vbmenu_option"><a href="http://www.cyberforum.ru/blogs/recent-entries/">Блоги программистов и сисадминов</a></td>
+	</tr>
+
+	</table>
+</div>
+<!-- breadcrumb, login, pm info -->
+<table class="tborder" cellpadding="5" cellspacing="1" border="0" width="100%" align="center">
+<tr>
+
+	<td class="alt1" width="100%" style="padding-left: 10px">
+		<a href="http://www.cyberforum.ru/"  style="display: block; float: left; margin: 5px 25px 10px 0px"><img border="0" src="//cyberstatic.net/images/cyberforum_logo.png" height="50px" alt="Форум программистов, компьютерный форум CyberForum.ru" title="Форум программистов, компьютерный форум CyberForum.ru" /></a>
+		<div class="smallfont" style="float: right; margin: 0px 0px 0px 20px;">
+			<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,gplus,twitter" data-image="http://cyberstatic.net/images/cyberforum_logo.png"></div>
+			<div style="margin: 5px 0px 0px 0px">Наши страницы</div>
+			<div><b><a href="http://www.cyberforum.ru/go.php?url=1" target="_blank" rel="nofollow noopener noreferrer">Vkontakte</a>, </b></div>
+			<div><b><a href="http://www.cyberforum.ru/go.php?url=2" target="_blank" rel="nofollow noopener noreferrer">Facebook</a>, <a href="http://www.cyberforum.ru/go.php?url=3" target="_blank" rel="nofollow noopener noreferrer">Twitter</a></b></div>
+		</div>
+		
+			
+				<h2>Visual C++</h2>
+			
+			<div class="smallfont"><a href="http://www.cyberforum.ru/" accesskey="1">CyberForum.ru - форум программистов и сисадминов</a>
+	<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
+		<span class="navbar"> &gt; <a href="http://www.cyberforum.ru/programming/" itemprop="url"><span itemprop="title">Форум программистов</span></a></span>
+	</span>
+
+	<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
+		<span class="navbar"> &gt; <a href="http://www.cyberforum.ru/cpp/" itemprop="url"><span itemprop="title">C++</span></a></span>
+	</span>
+
+	<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
+		<span class="navbar"> &gt; <a href="http://www.cyberforum.ru/visual-cpp/" itemprop="url"><span itemprop="title">Visual C++</span></a></span>
+	</span>
+</div>
+		
+	</td>
+
+
+	<td class="alt2" style="padding: 0px">
+		<table cellpadding="5" cellspacing="3" border="0" width="230px">
+		<tr>
+			<td class="smallfont" style="white-space: nowrap"><b><a href="http://www.cyberforum.ru/log-in.php" style="font-size: 16pt">Войти</a></b></td>
+		</tr>
+		<tr>
+			<td>
+				<b><a href="http://www.cyberforum.ru/register.php">Регистрация</a></b><br/>
+				<a href="http://www.cyberforum.ru/login.php?do=lostpw">Восстановить пароль</a>
+			</td>
+		</tr>
+		</table>
+
+
+	</td>
+
+</tr>
+</table>
+<!-- / breadcrumb, login, pm info -->
+
+<!-- nav buttons bar -->
+<div class="tborder" style="padding:1px; border-top-width:0px; margin-bottom: 3px;">
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center">
+	<tr align="center">
+		
+		 
+    <td id="krtests" class="vbmenu_control"><a href="http://www.cyberforum.ru/krtests.php?do=testslist">Тесты</a></td>
+<td class="vbmenu_control"><a id="vbbloglinks" href="http://www.cyberforum.ru/blogs/">Блоги</a><script type="text/javascript">vbmenu_register("vbbloglinks");</script></td>
+
+		
+			<td class="vbmenu_control"><a id="community" href="http://www.cyberforum.ru/visual-cpp/thread1451833.html?nojs=1#community" accesskey="6">Сообщество</a> <script type="text/javascript"> vbmenu_register("community"); </script></td>
+		
+		
+			
+				
+				<td class="vbmenu_control"><a id="navbar_search" href="http://www.cyberforum.ru/search.php" accesskey="4">Поиск</a> <script type="text/javascript"> vbmenu_register("navbar_search"); </script></td>
+			
+			
+		
+		
+		<td class="vbmenu_control" width="100%">&nbsp;</td>
+		</tr>
+	</table>
+</div>
+<!-- / nav buttons bar -->
+
+
+
+
+<table id="yatopbanner" cellspacing="0" cellpadding="2" border="0" align="center" width="100%" class="tborder" style="margin: 0px 0px 3px 0px;"><tr>
+<td width="100%" class="alt1" align="center" valign="middle">
+
+<div style="display: table; margin: auto;">
+
+<!-- R-29317-1 Яндекс.RTB-блок  -->
+<div id="yandex_ad_R-29317-1"></div>
+<script type="text/javascript">
+    (function(w, d, n, s, t) {
+        w[n] = w[n] || [];
+        w[n].push(function() {
+            Ya.Context.AdvManager.render({
+                blockId: "R-29317-1",
+                renderTo: "yandex_ad_R-29317-1",
+                async: true
+            });
+        });
+        t = d.getElementsByTagName("script")[0];
+        s = d.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//an.yandex.ru/system/context.js";
+        s.async = true;
+        t.parentNode.insertBefore(s, t);
+    })(this, this.document, "yandexContextAsyncCallbacks");
+</script>
+
+</div>
+
+
+
+</td>
+</tr></table>
+
+
+
+
+
+
+
+
+
+<!-- NAVBAR POPUP MENUS -->
+
+	
+	<!-- community link menu -->
+	<div class="vbmenu_popup" id="community_menu" style="display:none;margin-top:3px" align="left">
+		<table cellpadding="4" cellspacing="1" border="0">
+		<tr><td class="thead">Ссылки сообщества</td></tr>
+		
+
+	
+
+		
+			<tr><td class="vbmenu_option"><a href="http://www.cyberforum.ru/groups/">Социальные группы</a></td></tr>
+		
+		
+		
+		
+		
+		
+
+
+		</table>
+	</div>
+	<!-- / community link menu -->
+	
+	
+	
+	
+	
+	<!-- header quick search form -->
+	<div class="vbmenu_popup" id="navbar_search_menu" style="display:none;margin-top:3px" align="left">
+		<table cellpadding="4" cellspacing="1" border="0" width="320px">
+
+    <tr>
+            <td class="thead">Поиск Google по форуму</td>
+    </tr>
+<tr>
+<td class="vbmenu_option" title="nohilite" width="300px">
+
+<script>
+  (function() {
+    var cx = '002908739175610154434:5s2a2m9gv-a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:searchbox-only resultsUrl="http://www.cyberforum.ru/google.php"></gcse:searchbox-only>
+
+</td>
+</tr>
+
+    <tr>
+            <td class="thead">Поиск Yandex по форуму</td>
+    </tr>
+<tr>
+<td class="vbmenu_option" title="nohilite">
+
+<div class="ya-site-form ya-site-form_inited_no" onclick="return {'action':'http://www.cyberforum.ru/yandex.php','arrow':false,'bg':'transparent','fontsize':13,'fg':'#000000','language':'ru','logo':'rb','publicname':'Yandex Site Search #364949','suggest':true,'target':'_blank','tld':'ru','type':2,'usebigdictionary':true,'searchid':364949,'webopt':false,'websearch':false,'input_fg':'#000000','input_bg':'#ffffff','input_fontStyle':'normal','input_fontWeight':'normal','input_placeholder':null,'input_placeholderColor':'#000000','input_borderColor':'#7f9db9'}"><form action="http://yandex.ru/sitesearch" method="get" target="_blank"><input type="hidden" name="searchid" value="364949"/><input type="hidden" name="l10n" value="ru"/><input type="hidden" name="reqenc" value=""/><input type="search" name="text" value=""/><input type="submit" value="Найти"/></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
+
+</td>
+</tr>
+
+		<tr>
+			<td class="thead">Поиск по форуму</td>
+		</tr>
+
+		<tr>
+			<td class="vbmenu_option"><a href="http://www.cyberforum.ru/search.php" accesskey="4">Расширенный поиск</a></td>
+		</tr>
+
+
+		</table>
+	</div>
+	<!-- / header quick search form -->
+	
+	
+	
+<!-- / NAVBAR POPUP MENUS -->
+
+<!-- kr_tests menu -->
+<div class="vbmenu_popup" id="krtests_menu" style="display: none;">
+    <table cellpadding="4" cellspacing="1" border="0">
+        <tr><td class="thead">Тесты</td></tr>
+        
+        
+             <tr><td class="vbmenu_option"><a href="http://www.cyberforum.ru/krtests.php?do=testslist">Список тестов</a></td></tr>
+        
+ </table>
+</div>
+<!-- // kr_tests menu -->
+
+
+<!-- PAGENAV POPUP -->
+	<div class="vbmenu_popup" id="pagenav_menu" style="display:none">
+		<table cellpadding="4" cellspacing="1" border="0">
+		<tr>
+			<td class="thead" nowrap="nowrap">К странице...</td>
+		</tr>
+		<tr>
+			<td class="vbmenu_option" title="nohilite">
+			<form action="http://www.cyberforum.ru/index.php" method="get" onsubmit="return this.gotopage()" id="pagenav_form">
+				<input type="text" class="bginput smallfont" id="pagenav_itxt" size="4" />
+				<input type="button" class="button" id="pagenav_ibtn" value="Вперёд" />
+			</form>
+			</td>
+		</tr>
+		</table>
+	</div>
+<!-- / PAGENAV POPUP -->
+
+
+
+
+
+
+
+
+<a name="poststop" id="poststop"></a>
+
+<!-- controls above postbits -->
+
+<div style="margin: 0px 0px 3px 0px;"></div>
+
+<!-- / controls above postbits -->
+
+<!-- toolbar -->
+<table class="tborder" cellpadding="5" cellspacing="1" border="0" width="100%" align="center" style="border-bottom-width:0px">
+<tr>
+	<td class="tcat" width="100%">
+		<div class="smallfont">
+		
+		&nbsp;
+		</div>
+	</td>
+
+
+
+	
+		<td class="vbmenu_control" id="threadrating" nowrap="nowrap">
+			
+				<span id="threadrating_current"></span>
+			
+
+
+
+		</td>
+	
+
+
+	
+
+	
+
+	
+
+	
+
+</tr>
+</table>
+<!-- / toolbar -->
+
+
+
+<!-- end content table -->
+
+		</div>
+	</div>
+</div>
+
+<!-- / close content container -->
+<!-- / end content table -->
+
+
+
+
+
+<div id="posts"><!-- post #7640264 -->
+
+	<!-- open content container -->
+
+<div>
+	<div class="page" style="text-align: left;">
+		<div style="margin: 0px 3px 0px 3px" align="left">
+
+	<div id="edit7640264" style="padding:0px 0px 3px 0px">
+	<!-- this is not the last post shown on the page -->
+
+
+
+<table id="post7640264" class="tborder" cellpadding="5" cellspacing="0" border="0" width="100%" align="center">
+<tr valign="top">
+	<td class="alt2" width="170px" style="border-right: 1px solid #AAAAAA;" rowspan="3">
+            <div>
+               
+                    
+                        <span class="bigusername"><span id="tagg_519859" style="display:none;">@</span>Avtarkia</span>
+                    
+                    
+               
+            </div>
+
+			
+			
+			
+			
+		
+			<div class="smallfont" style="margin-top: 2px;">
+				
+					
+					<div><span id="repdisplay_7640264_519859" title="Репутация пользователя" style="font-weight: bold">1</span> / <span title="Общая оценка (+1, -0)">1</span> / <span title="Лучшие ответы" style="font-weight: bold">0</span></div>
+				<div>Регистрация: 09.12.2014</div>
+				
+				
+				<div>Сообщений: 105</div>
+				
+				
+				
+<!-- show awards -->
+
+<!-- /show awards -->
+
+				
+			</div>
+		
+	</td>
+</tr>
+<tr>
+	
+		<td class="alt2 smallfont" style="font-weight:normal; border-bottom: 1px solid #AAAAAA; border-right: 0px; padding: 3px 5px 3px 5px;" height="15px" >
+			
+		</td>
+		<td class="alt2 smallfont" style="font-weight: normal; border-bottom: 1px solid #AAAAAA; border-right: 0px; padding: 3px 5px 3px 5px; text-align: right;"  width="30px" height="15px">
+
+
+
+
+			
+			#<a href="http://www.cyberforum.ru/post7640264.html" target="_blank" id="postcount7640264" name="1"><b>1</b></a>
+			
+			
+		</td>
+	
+</tr>
+<tr valign="top">
+		<td class="alt1" colspan="2" id="td_post_7640264" style="padding-top: 3px;" >
+
+		
+			<h1><a style="color: #3774A4; text-decoration: none" href="http://www.cyberforum.ru/visual-cpp/thread1451833.html"> Failed to load image: Unable to open file - Visual C++</a></h1>
+			<div class="smallfont shade" style="margin: 10px 0px 0px 30px">19.05.2015, 21:40. <b>Просмотров</b> 734. <b>Ответов</b> 1</div>
+			<div class="smallfont shade" style="margin: 5px 0px 0px 30px"><b>Метки</b> <i>нет</i> <img src="//cyberstatic.net/images/misc/11x11progress.gif" id="tag_form_progress" class="inlineimg" style="display:none" alt="" /> (<a href="http://www.cyberforum.ru/tags/">Все метки</a>)</div>
+			<hr size="1" style="color: #AAAAAA; margin: 5px 0px 20px 0px" />
+		
+
+		
+
+		
+
+		<div id="post_message_7640264" style="margin: 2px 2px 2px 5px;">
+			
+			Вообщем, пишу игру типа Марио на Visual c++ 2013. Подключил SFML и т.д.(все нужные библиотеки) написал код. А он при запуске exe файла выводит <br />
+Failed to load image &quot;название файла&quot;.Reason: Unable to open file <br />
+И таких несколько строк.Вот ссылка
+
+		</div>
+
+
+
+
+
+
+	<div style="margin-top: 5px">
+		<span id="thumbs_box_7640264">
+    <span class="post">
+        <span>
+            
+            <span class="thumbs-post-rate" title="Рейтинг сообщения 0">0</span>
+            
+        </span>
+    </span>
+</span>
+	</div>
+
+		
+			<div style="padding:5px">
+			
+			
+			
+			
+				<fieldset class="fieldset">
+					<legend>Вложения</legend>
+					<table cellpadding="0" cellspacing="3" border="0">
+					<tr>
+	<td><img class="inlineimg" src="//cyberstatic.net/images/attach/rar.gif" alt="Тип файла: rar" width="16" height="16" border="0" style="vertical-align:baseline" /></td>
+	<td><a href="http://www.cyberforum.ru/attachments/531159d1432145403" target="_blank"><b>PlatformGame.rar</b></a> (7.47 Мб, 12 просмотров)</td>
+</tr>
+					</table>
+				</fieldset>
+			
+			
+			</div>
+		
+		
+		
+		
+		
+		
+	</td>
+</tr>
+
+</table>
+
+
+
+
+
+<div style="margin: 3px 0px 0px 0px; display: block">
+	<table class="tborder" cellpadding="5" cellspacing="0" border="0" width="100%">
+		<tr valign="top">
+			<td class="alt2" width="170px" style="border-right: 1px solid #AAAAAA;">
+			</td>
+			<td class="alt1" align="left">
+				<div id="yandex_rtb_R-A-29317-5" style="display: inline-block"></div>
+				<iframe id="adv_kod_frame" src="https://video-play.ru/kod.php?param=6b48714935696b54784c55616c376d68323072564e635852517259594b6d594b6663307933336d426e5730634e41656653345655" width="600" height="320" frameborder="0" scrolling="no" allowfullscreen="true"></iframe><script type="text/javascript" src="https://video-play.ru/zaglushki/zagl59cccefbd3f52.js"></script>
+
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+<div style="background-color: #FFFACD; border: 1px solid #0B198C; margin: 3px 0px 0px 0px; padding: 7px; text-align:center; font-size: 10pt">
+<b>Надоела реклама? <a href="http://www.cyberforum.ru/register.php">Зарегистрируйтесь</a> и она исчезнет полностью.</b>
+</div>
+
+
+
+<div style="margin: 3px 0px 0px 0px">
+	<table class="tborder" cellpadding="5" cellspacing="0" border="0" width="100%">
+		<tr valign="top">
+			<td class="alt2" width="170px" style="border-right: 1px solid #AAAAAA;" rowspan="2">
+				<div class="smallfont" style="margin-top: 2px;">
+					<span class="bigusername">Similar</span>
+					<div class="smallfont">Эксперт</div>
+					<div><span title="Репутация пользователя"><b>41792</b></span> / <span title="Благодарности за сообщения">34177</span> / <span title="Лучшие ответы"><b>6122</b></span></div>
+				<div>Регистрация: 12.04.2006</div>
+				<div>Сообщений: 57,940</div>
+				</div>
+			</td>
+		    <td class="alt2 smallfont" style="font-weight:normal; border-bottom: 1px solid #AAAAAA; padding: 3px 5px 3px 5px;" height="15px">
+			19.05.2015, 21:40
+		    </td>
+		</tr>
+		<tr>
+			<td class="alt1" align="left">
+			<div style="margin: 2px 2px 2px 5px;">
+Здравствуйте! Я подобрал для вас темы с ответами на вопрос <strong> Failed to load image: Unable to open file (Visual C++)</strong>: 
+<br />
+<p><strong><a target="_blank" href="http://www.cyberforum.ru/visual-cpp/thread903568.html">1&gt;mt.exe : general error c10100b1: Failed to load file - Visual C++</a></strong><br />Я не знаю в том ли разделе я пишу, но прошу разъяснить одну деталь, связанную с C++.  
+Скачал я  MS Visual C++ 2008 Express Edition , ввел,...</p><p><strong><a target="_blank" href="http://www.cyberforum.ru/visual-cpp/thread163147.html">fatal error C1083: Cannot open include file: 'windows.h': No such file or directory - Visual C++</a></strong><br />Почему Visul C++ 2005 Express Editional ругается на # include &amp;lt;windows.h&amp;gt;, пишет:&amp;gt;g:\documents and settings\max\мои документы\visual studio...</p><p><strong><a target="_blank" href="http://www.cyberforum.ru/visual-cpp/thread26720.html">Ошибка fatal error C1083: Cannot open include file: ***: No such file or directory - Visual C++</a></strong><br />Помогите пожалуйста исправить ошибку. При компиляции возникает вот такая беда.  
+подробности в скриншотах. даже если переносишь все файлы в...</p><p><strong><a target="_blank" href="http://www.cyberforum.ru/visual-cpp/thread930698.html">fatal error C1083: Cannot open include file: 'cl.h': No such file or directory - Visual C++</a></strong><br />#include &amp;lt;CL/cl.h&amp;gt;  
+#include &amp;lt;stdio.h&amp;gt;  
+#include &amp;lt;iostream&amp;gt;  
+#include &amp;lt;windows.h&amp;gt;  
+  
+Подскажите, пожалуйста, как подключить библиотеку...</p><p><strong><a target="_blank" href="http://www.cyberforum.ru/visual-cpp/thread863775.html">Ошибка fatal error C1083: Cannot open include file: 'd3d8.h': No such file or directory - Visual C++</a></strong><br />Всем добрый вечер! У меня возникает ошибки при компиляции файла. Подробности в скриншотах.  
+ ...</p><p><strong><a target="_blank" href="http://www.cyberforum.ru/cpp/thread191083.html">Cannot open include file: 'stream.h': No such file or directory - C++</a></strong><br />Для использования функций ввода/вывода cin/cout как я понимаю необходимо подключени библиотеки stream.h ?   
+Но Visual Studio 2008 ругается...</p>
+
+			</div>
+<span class="thumbs-post-rate" title="Рейтинг сообщения 1">1</span>
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+<div id="cyber_adsc1" style="margin: 3px 0px 0px 0px; display: block">
+	<table class="tborder" cellpadding="5" cellspacing="0" border="0" width="100%">
+		<tr valign="top">
+			<td class="alt2" width="170px" style="border-right: 1px solid #AAAAAA;">
+			</td>
+			<td class="alt1" align="left">
+<!-- Yandex.RTB R-A-29317-6 -->
+<div id="yandex_rtb_R-A-29317-6" style="display: inline-block"></div>
+<script type="text/javascript">
+    (function(w, d, n, s, t) {
+        w[n] = w[n] || [];
+        w[n].push(function() {
+            Ya.Context.AdvManager.render({
+                blockId: "R-A-29317-6",
+                renderTo: "yandex_rtb_R-A-29317-6",
+                async: true
+            });
+        });
+        t = d.getElementsByTagName("script")[0];
+        s = d.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//an.yandex.ru/system/context.js";
+        s.async = true;
+        t.parentNode.insertBefore(s, t);
+    })(this, this.document, "yandexContextAsyncCallbacks");
+</script>
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+
+
+
+
+	</div>
+	
+		</div>
+	</div>
+</div>
+
+<!-- / close content container -->
+
+<!-- / post #7640264 --><!-- post #7641237 -->
+
+	<!-- open content container -->
+
+<div>
+	<div class="page" style="text-align: left;">
+		<div style="margin: 0px 3px 0px 3px" align="left">
+
+	<div id="edit7641237" style="padding:0px 0px 3px 0px">
+	
+
+
+
+<table id="post7641237" class="tborder" cellpadding="5" cellspacing="0" border="0" width="100%" align="center">
+<tr valign="top">
+	<td class="alt2" width="170px" style="border-right: 1px solid #AAAAAA;" rowspan="3">
+            <div>
+               
+                    
+                        <span class="bigusername">lss</span>
+                    
+                    
+               
+            </div>
+
+			
+			
+			
+			
+		
+			<div class="smallfont" style="margin-top: 2px;">
+				
+					
+					<div><span id="repdisplay_7641237_313701" title="Репутация пользователя" style="font-weight: bold">921</span> / <span title="Общая оценка (+850, -0)">850</span> / <span title="Лучшие ответы" style="font-weight: bold">281</span></div>
+				<div>Регистрация: 10.10.2012</div>
+				
+				
+				<div>Сообщений: 2,701</div>
+				
+				
+				
+<!-- show awards -->
+
+<!-- /show awards -->
+
+				
+			</div>
+		
+	</td>
+</tr>
+<tr>
+	
+		<td class="alt2 smallfont" style="font-weight:normal; border-bottom: 1px solid #AAAAAA; border-right: 0px; padding: 3px 5px 3px 5px;" height="15px" >
+			
+				20.05.2015, 04:25
+				
+				
+				
+			
+		</td>
+		<td class="alt2 smallfont" style="font-weight: normal; border-bottom: 1px solid #AAAAAA; border-right: 0px; padding: 3px 5px 3px 5px; text-align: right;"  width="30px" height="15px">
+
+
+
+
+			
+			#<a href="http://www.cyberforum.ru/post7641237.html" target="_blank" id="postcount7641237" name="2"><b>2</b></a>
+			
+			
+		</td>
+	
+</tr>
+<tr valign="top">
+		<td class="alt1" colspan="2" id="td_post_7641237" style="padding-top: 3px;" >
+
+		
+
+		
+
+		
+
+		<div id="post_message_7641237" style="margin: 2px 2px 2px 5px;">
+			
+			
+
+<div>
+	
+	<div style="bbcode_maincontainer">
+		<div class="bbcode_container">
+		  <div class="bbcode_quote">
+		    <div class="btbtbt">
+					<div class="quote_container">
+		      	<div class="bbcode_quote_container"></div>
+		       	<div class="bbcode_postedby">
+		         	
+					<img title="Цитата" src="//cyberstatic.net/images/buttons/quote_icon.png" alt="Цитата" />
+					Сообщение от <strong>Avtarkia</strong>
+					<a href="http://www.cyberforum.ru/visual-cpp/thread1451833.html#post7640264"><img class="inlineimg" src="//cyberstatic.net/images/buttons/viewpost-right.png" border="0" alt="Посмотреть сообщение" /></a>
+		         	
+		        </div>
+		        <div class="message">при запуске exe файла выводит</div>
+		      </div>
+				</div> 
+			</div>
+		</div>
+	</div>
+</div>
+
+Если запуск не из среды, то папка files должна быть рядом с .exe.
+
+		</div>
+
+
+
+
+
+
+	<div style="margin-top: 5px">
+		<span id="thumbs_box_7641237">
+    <span class="post">
+        <span>
+            
+            <span class="thumbs-post-rate" title="Рейтинг сообщения 0">0</span>
+            
+        </span>
+    </span>
+</span>
+	</div>
+
+		
+		
+		
+		
+		
+		
+	</td>
+</tr>
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="margin: 3px 0px 0px 0px">
+	<table class="tborder" cellpadding="5" cellspacing="0" border="0" width="100%">
+		<tr valign="top">
+			<td class="alt2" width="170px" style="border-right: 1px solid #AAAAAA;" rowspan="2">
+				<div class="smallfont" style="margin-top: 2px;">
+					<span class="bigusername">MoreAnswers</span>
+					<div class="smallfont">Эксперт</div>
+					<div><span title="Репутация пользователя"><b>37091</b></span> / <span title="Благодарности за сообщения">29110</span> / <span title="Лучшие ответы"><b>5898</b></span></div>
+				<div>Регистрация: 17.06.2006</div>
+				<div>Сообщений: 43,301</div>
+				</div>
+			</td>
+		    <td colspan="2" class="alt2 smallfont" style="font-weight:normal; border-bottom: 1px solid #AAAAAA; padding: 3px 5px 3px 5px;" height="15px">
+			20.05.2015, 04:25
+		    </td>
+		</tr>
+		<tr>
+		    <td class="alt1" align="left">
+			<div style="margin: 2px 2px 2px 5px;">
+Привет! Вот еще темы с ответами:<br />
+<p><a target="_blank" href="http://www.cyberforum.ru/visual-cpp/thread616247.html">dialog file open - Visual C++</a><br />добрый день, возникли ошибки помогите их исправить:  
+  
+  
+  
+#include &amp;lt;afxwin.h&amp;gt;  
+#include &amp;quot;resource.h&amp;quot;  
+  
+class CMyWnd : public...</p><p><a target="_blank" href="http://www.cyberforum.ru/visual-cpp/thread26379.html">Cannot open include file - Visual C++</a><br />Я, конечно, чувствую себя полным лузером, задавая такой вопрос, но плиз, помогите.   
+Cannot open include file: 'iostream.h': No such file...</p><p><a target="_blank" href="http://www.cyberforum.ru/visual-cpp/thread482654.html">Не открывается файл через File-&gt;Open - Visual C++</a><br />С Visual столкнулся только сейчас, С++ знаю.  
+Автоматически (WorkSpace-&amp;gt;New) создаю стандартный документ, но после компиляции и запуска,...</p><p><a target="_blank" href="http://www.cyberforum.ru/cpp-builder/thread831923.html">Unable to load file *.DMF - C++ Builder</a><br />При компиляции выдает ошибку C++ builder XE без run-time библиотек,видимо не хватает файла,ребят спасайте ....</p>
+<br />
+<a target="_blank" href="http://www.cyberforum.ru/search.php?do=process&amp;q=Failed to load image: Unable to open file&amp;forumchoice[]=21&amp;childforums=1&amp;replyless=0&amp;replylimit=1&amp;nocache=0">Искать еще темы с ответами</a>
+<br /><br />
+Или воспользуйтесь поиском по форуму:
+<table width="700px"><tr><td>
+<div class="ya-site-form ya-site-form_inited_no" onclick="return {'action':'http://www.cyberforum.ru/yandex.php','arrow':false,'bg':'transparent','fontsize':13,'fg':'#000000','language':'ru','logo':'rb','publicname':'Yandex Site Search #364949','suggest':true,'target':'_blank','tld':'ru','type':2,'usebigdictionary':true,'searchid':364949,'webopt':false,'websearch':false,'input_fg':'#000000','input_bg':'#ffffff','input_fontStyle':'normal','input_fontWeight':'normal','input_placeholder':null,'input_placeholderColor':'#000000','input_borderColor':'#7f9db9'}"><form action="http://yandex.ru/sitesearch" method="get" target="_blank"><input type="hidden" name="searchid" value="364949"/><input type="hidden" name="l10n" value="ru"/><input type="hidden" name="reqenc" value=""/><input type="search" name="text" value=""/><input type="submit" value="Найти"/></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
+</td></tr></table>
+			</div>
+<span class="thumbs-post-rate" title="Рейтинг сообщения 2">2</span>
+			</td>
+		        <td class="alt1" width="300px" style="border-left: 0px" align="left" valign="top">
+<script defer src="https://aliexpress-internet.ru/js/cf34fy65ji.js"></script>
+<div id="banner34er45tg56block"></div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+	</div>
+	
+		</div>
+	</div>
+</div>
+
+<!-- / close content container -->
+
+<!-- / post #7641237 --><div id="lastpost"></div></div>
+
+<!-- start content table -->
+<!-- open content container -->
+
+<div>
+	<div class="page" style="text-align: left;">
+		<div style="margin: 0px 3px 0px 3px" align="left">
+
+<!-- / start content table -->
+
+<!-- controls below postbits -->
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr valign="top">
+	
+		<td>
+			<table class="smallfont" width="240px" cellspacing="0" cellpadding="0" border="0"><tr>
+				<td>
+					<a target="_blank" href="http://www.cyberforum.ru/newreply.php?do=newreply&amp;noquote=1&amp;p=7641237"><img class="buttonimg" src="//cyberstatic.net/images/buttons/reply.png" alt="Ответ" border="0" /></a>
+				</td>
+				<td>
+					<a target="_blank" href="http://www.cyberforum.ru/newthread.php?do=newthread&amp;f=21"><img class="buttonimg" src="//cyberstatic.net/images/buttons/newthread.png" alt="Создать тему" border="0" /></a>
+				</td>
+			</tr></table>
+		</td>
+	
+	
+	
+</tr>
+</table>
+<!-- / controls below postbits -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- lightbox scripts -->
+	<script type="text/javascript" src="//cyberstatic.net/clientscript/vbulletin_lightbox.js?v=389"></script>
+	<script type="text/javascript">
+	<!--
+	vBulletin.register_control("vB_Lightbox_Container", "posts", 1);
+	//-->
+	</script>
+<!-- / lightbox scripts -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- popup menu contents -->
+
+<!-- thread tools menu -->
+
+<!-- / thread tools menu -->
+
+<!-- **************************************************** -->
+
+
+
+<!-- **************************************************** -->
+
+
+
+<!-- / popup menu contents -->
+
+
+<!-- forum rules and admin links -->
+<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center">
+<tr valign="bottom">
+	<td width="100%" valign="top">
+		
+	</td>
+	<td class="smallfont" align="right">
+		
+	</td>
+</tr>
+</table>
+<!-- /forum rules and admin links -->
+
+
+<table cellspacing="0" cellpadding="2" border="0" align="center" width="100%" class="tborder" style="margin: 3px 0px 3px 0px;"><tr>
+<td width="100%" class="alt1" align="center" valign="middle">
+<div style="display: table; margin: auto;">
+<!-- Yandex.RTB R-A-29317-4 -->
+<div id="yandex_rtb_R-A-29317-4"></div>
+<script type="text/javascript">
+    (function(w, d, n, s, t) {
+        w[n] = w[n] || [];
+        w[n].push(function() {
+            Ya.Context.AdvManager.render({
+                blockId: "R-A-29317-4",
+                renderTo: "yandex_rtb_R-A-29317-4",
+                async: true
+            });
+        });
+        t = d.getElementsByTagName("script")[0];
+        s = d.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//an.yandex.ru/system/context.js";
+        s.async = true;
+        t.parentNode.insertBefore(s, t);
+    })(this, this.document, "yandexContextAsyncCallbacks");
+</script>
+</div>
+</td>
+</tr></table>
+
+
+
+		</div>
+	</div>
+</div>
+
+<!-- / close content container -->
+<!-- /content area table -->
+
+<form action="http://www.cyberforum.ru/index.php" method="get" style="clear:left">
+<table cellpadding="5" cellspacing="0" border="0" class="tborder" align="center" style="margin-top: 3px; width: 100%;">
+<tr>
+	
+	
+		<td class="tfoot" width="50%">
+			<span class="smallfont">КиберФорум - форум программистов, компьютерный форум, программирование</span>
+		</td>
+	<td class="tfoot" align="right" width="100%" colspan="2">
+		<div class="smallfont">
+			<strong>
+				
+				<a href="http://www.cyberforum.ru/advert.php" target="_blank">Реклама</a> -
+				
+				
+				
+				
+				
+				
+				
+				<a href="http://www.cyberforum.ru/sendmessage.php" accesskey="9" target="_blank">Обратная связь</a>
+			</strong>
+		</div>
+	</td>
+</tr>
+</table>
+
+<table cellpadding="5" cellspacing="0" border="0" class="tborder" align="center" style="width: 100%;">
+<tr class="alt1" align="right">
+	<td align="left" class="smallfont" width="500px">
+		<!-- Do not remove this copyright notice -->
+		Powered by vBulletin&reg; Version 3.8.9<br />Copyright &copy;2000 - 2017, vBulletin Solutions, Inc.
+		<!-- Do not remove this copyright notice -->
+	</td>
+	<td align="right" width="300px">	
+
+<!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t12.2;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";h"+escape(document.title.substring(0,80))+";"+Math.random()+
+"' alt='' title='LiveInternet: показано число просмотров за 24"+
+" часа, посетителей за 24 часа и за сегодня' "+
+"border='0' width='88' height='31'><\/a>")
+//--></script><!--/LiveInternet-->
+
+<!-- Rating@Mail.ru counter -->
+<script type="text/javascript">
+var _tmr = _tmr || [];
+_tmr.push({id: "1495058", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "topmailru-code");
+</script><noscript><div style="position:absolute;left:-10000px;">
+<img src="//top-fwz1.mail.ru/counter?id=1495058;js=na" style="border:0;" height="1" width="1" alt="Рейтинг@Mail.ru" />
+</div></noscript>
+<!-- //Rating@Mail.ru counter -->
+
+<!-- Rating@Mail.ru logo -->
+<a href="http://top.mail.ru/jump?from=1495058">
+<img src="//top-fwz1.mail.ru/counter?id=1495058;t=49;l=1" 
+style="border:0;" height="31" width="88" alt="Рейтинг@Mail.ru" /></a>
+<!-- //Rating@Mail.ru logo -->
+
+	</td>
+</tr>
+</table>
+</form>
+
+<script type="text/javascript" src="//cyberstatic.net/clientscript/custom/CtrlPagenav.js"></script>
+<script type="text/javascript" src="//cyberstatic.net/clientscript/custom/spoiler.js"></script>
+<script type="text/javascript" src="//cyberstatic.net/clientscript/custom/topbutton.js"></script>
+
+<script type="text/javascript" src="//cyberstatic.net/clientscript/custom/selectcode.js"></script>
+
+
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-595018-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+<script type="text/javascript">
+<!--
+	// Main vBulletin Javascript Initialization
+	vBulletin_init();
+//-->
+</script>
+
+
+<div id="top-link">
+	<span id="topicon" title="Наверх"></span><span id="toptext">Наверх</span>
+</div>
+
+
+<script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+<script type="text/javascript" src="//yastatic.net/share2/share.js"></script>
+
+</div>
+
+<script type="text/javascript">
+var krtsts = new krtsts_ctrl();
+</script>
+
+<!-- temp -->
+<div style="display:none">
+	<!-- thread rate -->
+	
+		
+	
+	<!-- / thread rate -->
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+
+window.orig_onload = window.onload;
+window.onload = function() {
+var cpost=document.location.hash.substring(1);var cpost2='';if(cpost){ var ispost=cpost.substring(0,4)=='post';if(ispost)cpost2='post_'+cpost.substring(4);if((cobj = fetch_object(cpost))||(cobj = fetch_object(cpost2))){cobj.scrollIntoView(true);}else if(ispost){cpostno = cpost.substring(4,cpost.length);if(parseInt(cpostno)>0){location.replace('http://www.cyberforum.ru/showthread.php?p='+cpostno);};} }
+
+if(typeof window.orig_onload == "function") window.orig_onload();
+}
+
+//]]>
+</script>
+</body>
+</html>·m4іO–      Yу°ЏYу°Ь>Y”       7    :http://www.cyberforum.ru/visual-cpp/thread1451833.html necko:classified 1 strongly-framed 1 request-method GET response-head HTTP/1.1 200 OK
+Server: nginx/1.12.1
+Date: Fri, 27 Oct 2017 22:17:52 GMT
+Content-Type: text/html; charset=windows-1251
+X-Powered-By: PHP/5.6.31
+Cache-Control: private
+Pragma: private
+ original-response-headers Server: nginx/1.12.1
+Date: Fri, 27 Oct 2017 22:17:52 GMT
+Content-Type: text/html; charset=windows-1251
+Transfer-Encoding: chunked
+Connection: keep-alive
+Keep-Alive: timeout=15
+X-Powered-By: PHP/5.6.31
+Cache-Control: private
+Pragma: private
+Set-Cookie: bborig_cookieuser=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=/
+Set-Cookie: bbsessionhash=d095f3d7ebdb4cfba3af54ae0e0b4789; path=/; HttpOnly
+Set-Cookie: bblastvisit=1509142672; expires=Sat, 27-Oct-2018 22:17:52 GMT; Max-Age=31536000; path=/
+Set-Cookie: bblastactivity=0; expires=Sat, 27-Oct-2018 22:17:52 GMT; Max-Age=31536000; path=/
+Set-Cookie: vbseo_loggedin=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=/
+ charset windows-1251 uncompressed-len 0 predictor::resource-count 75 predictor::http://cyberstatic.net/clientscript/vbulletin_css/cyberforum.css 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/vbulletin_important.css?v=389 1,1,1509142671,4096 predictor::http://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/yahoo-dom-event/yahoo-dom-event.js?v=389 1,1,1509142671,4096 predictor::http://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/connection/connection-min.js?v=389 1,1,1509142671,4096 predictor::http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/custom/jquery.browser.min.js 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/vbulletin_global.js?v=389 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/vbulletin_menu.js?v=389 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/vbulletin_vbpost.js 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/vbulletin_post_loader.js?v=389 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/vbulletin_md5.js?v=389 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/vbulletin_css/geshi.css 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/vbulletin_css/spoiler.css 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/kr_scripts/tests/addedit.js 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/kr_scripts/bestanswer/bestanswer.js 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/kr_scripts/thumbsup/thumbs.css 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/kr_scripts/thumbsup/thumbsup.js 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/sorttable.js 1,1,1509142671,4096 predictor::http://cyberstatic.net/images/cyberforum_logo.png 1,1,1509142671,4096 predictor::http://cyberstatic.net/images/misc/11x11progress.gif 1,1,1509142671,4096 predictor::http://cyberstatic.net/images/attach/rar.gif 1,1,1509142671,4096 predictor::https://video-play.ru/zaglushki/zagl59cccefbd3f52.js 1,1,1509142671,4096 predictor::http://cyberstatic.net/images/buttons/quote_icon.png 1,1,1509142671,4096 predictor::http://cyberstatic.net/images/buttons/viewpost-right.png 1,1,1509142671,4096 predictor::https://aliexpress-internet.ru/js/cf34fy65ji.js 1,1,1509142671,4096 predictor::http://cyberstatic.net/images/buttons/reply.png 1,1,1509142671,4096 predictor::http://cyberstatic.net/images/buttons/newthread.png 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/vbulletin_lightbox.js?v=389 1,1,1509142671,4096 predictor::http://top-fwz1.mail.ru/counter?id=1495058;t=49;l=1 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/custom/CtrlPagenav.js 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/custom/spoiler.js 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/custom/topbutton.js 1,1,1509142671,4096 predictor::http://cyberstatic.net/clientscript/custom/selectcode.js 1,1,1509142671,4096 predictor::http://yastatic.net/es5-shims/0.0.2/es5-shims.min.js 1,1,1509142671,4096 predictor::http://yastatic.net/share2/share.js 1,1,1509142671,4096 net-response-time-onstart 730 net-response-time-onstop 939 predictor::http://cyberstatic.net/images/misc/menu_open.gif 1,1,1509142671,4096 predictor::http://an.yandex.ru/system/context.js 1,1,1509142671,4096 predictor::http://www.google.com/cse/cse.js?cx=002908739175610154434:5s2a2m9gv-a 1,1,1509142671,4096 predictor::http://site.yandex.net/v2.0/js/all.js 1,1,1509142671,4096 predictor::https://www.google.com/jsapi?autoload=%7B%22modules%22%3A%5B%7B%22name%22%3A%22search%22%2C%22version%22%3A%221.0%22%2C%22callback%22%3A%22__gcse.scb%22%2C%22style%22%3A%22https%3A%2F%2Fwww.google.com%2Fcse%2Fstatic%2Fstyle%2Flook%2Fdefault.css%22%2C%22language%22%3A%22ru%22%7D%5D%7D 1,1,1509142671,4096 predictor::https://an.yandex.ru/resource/context_static_r_3303.js 1,1,1509142671,4096 predictor::https://www.google.com/uds/api/search/1.0/bb73d6800fca299b36665ebff4d01037/default+ru.css 1,1,1509142671,4096 predictor::https://www.google.com/cse/static/style/look/default.css 1,1,1509142671,4096 predictor::https://www.google.com/uds/api/search/1.0/bb73d6800fca299b36665ebff4d01037/default+ru.I.js 1,1,1509142671,4096 predictor::https://yastatic.net/jquery/1.6.2/jquery.min.js 1,1,1509142671,4096 predictor::https://www.googleapis.com/generate_204 1,1,1509142671,4096 predictor::http://counter.yadro.ru/hit?t12.2;rhttps%3A//www.google.com/;s1920*975*24;uhttp%3A//www.cyberforum.ru/visual-cpp/thread1451833.html;hFailed%20to%20load%20image%3A%20Unable%20to%20open%20file%20-%20Visual%20C++%20-%20CyberForum.ru;0.49178770001606786 1,1,1509142671,4096 predictor::http://top-fwz1.mail.ru/js/code.js 1,1,1509142671,4096 predictor::https://www.google-analytics.com/analytics.js 1,1,1509142671,4096 predictor::https://mc.yandex.ru/metrika/watch.js 1,1,1509142671,4096 predictor::https://aliexpress-internet.ru/banners/160x90/4.jpg 1,1,1509142671,4096 predictor::http://cse.google.com/adsense/search/async-ads.js 1,1,1509142671,4096 predictor::http://www.google.com/cse/static/images/1x/googlelogo_lightgrey_46x16dp.png 1,1,1509142671,4096 predictor::https://www.google.com/cse/static/images/1x/googlelogo_grey_46x15dp.png 1,1,1509142671,4096 predictor::http://clients1.google.com/generate_204 1,1,1509142671,4096 predictor::https://site.yandex.net/v2.0/js/suggest.js 1,1,1509142671,4096 predictor::https://site.yandex.net/v2.0/js/opensearch.js 1,1,1509142671,4096 predictor::https://site.yandex.net/v2.0/i/yandex-hint-rb.png 1,1,1509142671,4096 predictor::https://www.google-analytics.com/r/collect?v=1&_v=j65&a=1695937599&t=pageview&_s=1&dl=http%3A%2F%2Fwww.cyberforum.ru%2Fvisual-cpp%2Fthread1451833.html&dr=https%3A%2F%2Fwww.google.com%2F&ul=es-es&de=windows-1251&dt=Failed%20to%20load%20image%3A%20Unable%20to%20open%20file%20-%20Visual%20C%2B%2B%20-%20CyberForum.ru&sd=24-bit&sr=1920x975&vp=918x840&je=0&fl=27.0%20r0&_u=IEBAAMABI~&jid=291570009&gjid=1294437613&cid=451004804.1509142676&tid=UA-595018-2&_gid=425029843.1509142676&_r=1&z=1365586176 1,1,1509142671,4096 predictor::http://top-fwz1.mail.ru/counter?js=13;id=1495058;u=http%3A//www.cyberforum.ru/visual-cpp/thread1451833.html;r=https%3A//www.google.com/;st=1509142675313;title=Failed%20to%20load%20image%3A%20Unable%20to%20open%20file%20-%20Visual%20C%2B%2B%20-%20CyberForum.ru;s=1920*975;vp=918*840;touch=0;hds=1;flash=27.0;sid=b0467d23ee4bc0a4;ver=60;_=0.9645713581160865 1,1,1509142671,4096 predictor::https://site.yandex.net/v2.0/js/punycode.js 1,1,1509142671,4096 predictor::https://mc.yandex.ru/metrika/advert.gif 1,1,1509142671,4096 predictor::https://pagead2.googlesyndication.com/pagead/show_ads.js 1,1,1509142671,4096 predictor::https://yastatic.net/safeframe/1-1-0/loader.js 1,1,1509142671,4096 predictor::https://yastatic.net/safeframe-bundles/0.19/host.js 1,1,1509142671,4096 predictor::https://adservice.google.co.cr/adsid/integrator.js?domain=www.cyberforum.ru 1,1,1509142671,4096 predictor::https://adservice.google.com/adsid/integrator.js?domain=www.cyberforum.ru 1,1,1509142671,4096 predictor::https://pagead2.googlesyndication.com/pub-config/r20160913/ca-pub-1191230850516122.js 1,1,1509142671,4096 predictor::https://pagead2.googlesyndication.com/pagead/js/r20171025/r20170110/show_ads_impl.js 1,1,1509142671,4096 predictor::https://pagead2.googlesyndication.com/pagead/js/r20171025/r20170110/osd.js 1,1,1509142671,4096 predictor::https://an.yandex.ru/rtbcount/19Q25t-1bIW79J5HYVKbm9Bh9jM41Okt2JkV1P4AbP9n0fQISGAOzSbPPztXZay2dGAUY3wVUA3r2RFQvE6EJmAY__________yFfiVlhhjI9QVHt6QLwiXLgWMh3wq6Qmi0?test-tag=126993593008130&rnd=1509142694942 1,1,1509142671,4096 predictor::http://pagead2.googlesyndication.com/pagead/js/r20171025/r20170110/show_ads_impl.js 1,1,1509142671,4096 predictor::http://top-fwz1.mail.ru/tracker?js=13;id=1495058;e=RT/beat;sid=b0467d23ee4bc0a4;ids=1495058;ver=60;_=0.22540817858097062 1,1,1509142671,4096 predictor::http://top-fwz1.mail.ru/tracker?js=13;id=1495058;e=RT/beat;sid=b0467d23ee4bc0a4;ids=1495058;ver=60;_=0.8776272994434774 1,1,1509142671,4096 predictor::http://top-fwz1.mail.ru/tracker?js=13;id=1495058;e=RT/unload;sid=b0467d23ee4bc0a4;ids=1495058;ver=60;_=0.9431193939163363 1,1,1509142671,4096   ћ°

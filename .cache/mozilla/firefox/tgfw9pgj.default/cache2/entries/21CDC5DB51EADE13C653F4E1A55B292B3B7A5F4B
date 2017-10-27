@@ -1,0 +1,190 @@
+(function() {
+  var customTracker = {
+  init: function() {
+    function getImageElement(module, action, data = {}) {
+      var image = document.createElement('img');
+      image.style.display = "none";
+
+      switch (module) {
+        case 'recommendations':
+          var source = '//ab.blogs.es/abtest.png?recommendationsAction=' + action + '&device=' +
+            device + '&recommendationVersion=' + recommendationVersion;
+          if (campaignPost) {
+            source += '&campaign=recommended_club';
+          }
+          if (data.containers) {
+            source += '&containers=' + data.containers;
+          }
+          break;
+        case 'sidebarRecommendations':
+          source = '//ab.blogs.es/abtest.png?sidebarRecommendations=' + action + '&device=' + device;
+          break;
+        case 'campaigns':
+          var source = '//ab.blogs.es/abtest.png?event=' + action +
+            '&campaignId=' + data.campaignId +
+            '&medium=recommended_posts&device=' + device;
+          break;
+        case 'editorialCampaigns':
+          var source = `//ab.blogs.es/abtest.png?event=${action}&editorialCampaignId=${data.editorialCampaignId}`;
+          break;
+      }
+      image.src = source;
+      return image;
+    }
+
+    function triggerSidebarRecommendationTracker(sidebarModule) {
+      sidebarModule.append(getImageElement('sidebarRecommendations', 'view'));
+      var sidebarRecommendations = sidebarModule.getElementsByTagName('a');
+      for (var i = 0; i < sidebarRecommendations.length; i++) {
+        sidebarRecommendations[i].addEventListener("click", function(e) {
+          e.preventDefault();
+          var target = e.currentTarget;
+          var url = target.href;
+          var image = getImageElement('sidebarRecommendations', 'click');
+          image.onload = function() {
+            window.location = url;
+          }
+          target.append(image);
+        });
+      }
+    }
+
+    function triggerCampaignTracker(campaignPost) {
+      var campaignId = campaignPost.dataset.campaignid;
+      campaignPost.append(
+        getImageElement('campaigns', 'view', {campaignId})
+      );
+      campaignPost
+        .addEventListener("click", function(e) {
+          e.preventDefault();
+          var url = campaignPost.dataset.url;
+          image = getImageElement('campaigns', 'click', {campaignId});
+          image.onload = function() {
+            return window.location = url;
+          };
+          campaignPost.append(image);
+        });
+    }
+
+    function triggerEditorialCampaignTracker(editorialCampaignPost) {
+      var editorialCampaignId = editorialCampaignPost.dataset.editorialcampaignid;
+      editorialCampaignPost.append(
+        getImageElement('editorialCampaigns', 'view', {editorialCampaignId})
+      );
+      editorialCampaignPost
+        .addEventListener("click", function(e) {
+          e.preventDefault();
+          var url = editorialCampaignPost.dataset.url;
+          image = getImageElement('editorialCampaigns', 'click', {editorialCampaignId});
+          image.onload = function() {
+            return window.location = url;
+          };
+          campaignPost.append(image);
+        });
+    }
+
+    function triggerRecommendationTracker() {
+      if (null != recommendedPostsElements) {
+        var containers = [];
+
+        for (var i = 0; i < recommendedPosts.length; i++) {
+          var container = recommendedPosts[i].getAttribute("data-container");
+          if (container) {
+            containers.push(container);
+          }
+        }
+
+        relatedHorizontalPosts.append(
+          getImageElement(
+            'recommendations',
+            'view',
+            { containers: containers.join() }
+          )
+        );
+
+        for (var i = 0; i < recommendedPostsElements.length; i++) {
+          var container = recommendedPostsElements[i].parentNode.getAttribute("data-container");
+
+          recommendedPostsElements[i].addEventListener("click", function(e) {
+            e.preventDefault();
+            var target = e.currentTarget;
+            var image = getImageElement(
+              'recommendations',
+              'click',
+              { containers: container }
+            );
+            image.onload = function() {
+              window.location = target.href;
+            }
+            target.append(image);
+          });
+        }
+      }
+    }
+
+    var campaignPost = document.getElementById('campaignPost');
+    var editorialCampaignPost = document.getElementById('editorialCampaignPost');
+    var relatedHorizontalPosts = document.getElementById('relatedHorizontalPosts');
+    var recommendedPostsElements = relatedHorizontalPosts.getElementsByClassName('js-recommendation');
+    var recommendedPosts = relatedHorizontalPosts.getElementsByClassName("horizontal-related-posts");
+    var recommendationVersion = 157;
+    var device = WSL2.config.device;
+
+    if (null != campaignPost) {
+      triggerCampaignTracker(campaignPost);
+    }
+    if (null != editorialCampaignPost) {
+      triggerEditorialCampaignTracker(editorialCampaignPost);
+    }
+    triggerRecommendationTracker();
+    var sidebarModule = document.getElementsByClassName('related-alts');
+    if (sidebarModule.length > 0) {
+      triggerSidebarRecommendationTracker(sidebarModule[0]);
+    }
+  }
+};
+
+  function renderRecommendations() {
+    var recommendationDiv = document.getElementById('recommendedPosts');
+    recommendationDiv.innerHTML = "\n\n \n \n  \n \n <section id=\"relatedHorizontalPosts\" class=\"post-related-posts articles-full-width related-horizontal-posts\">\n  <p class=\"section-title\">También te puede gustar</p>\n  <div class=\"post-related-content\">\n   <ul>\n    \n     \n      \n      <li class=\"horizontal-related-posts\"  data-container=\"v6\" >\n       <a href=\"https://www.vidaextra.com.mx/industria/crean-soul-engine-motor-de-desarrollo-de-videojuego-en-guadalajara\" class=\"js-recommendation\">\n        \n         <div class=\"recommendation-figure\">\n          <picture>\n           \n           \n           \n           <source class=\"sf-lazy\" media=\"(min-width: 1023px)\" sf-srcset=\"https://i.blogs.es/4766db/soul_engine/500_333.jpg\">\n           <source class=\"sf-lazy\" media=\"(min-width: 767px)\" sf-srcset=\"https://i.blogs.es/4766db/soul_engine/200_133.jpg\">\n           <source class=\"sf-lazy\" sf-srcset=\"https://i.blogs.es/4766db/soul_engine/150_150.jpg\">\n           <img class=\"sf-lazy\"\n            sf-src=\"https://i.blogs.es/4766db/soul_engine/150_150.jpg\"\n            sf-srcset=\"https://i.blogs.es/4766db/soul_engine/150_150.jpg, https://i.blogs.es/4766db/soul_engine/200_133.jpg 767w, https://i.blogs.es/4766db/soul_engine/500_333.jpg 1023w\"\n            alt=\"En Guadalajara crean &#34;Soul Engine&#34;, motor de desarrollo de videojuegos\"\n            sizes=\"(min-width: 768px) 50vw, 100vw\">\n          </picture>\n         </div>\n        \n       </a>\n       <a href=\"https://www.vidaextra.com.mx/industria/crean-soul-engine-motor-de-desarrollo-de-videojuego-en-guadalajara\" class=\"js-recommendation\"><span>En Guadalajara crean &#34;Soul Engine&#34;, motor de desarrollo de videojuegos</span></a>\n      </li>\n     \n    \n     \n      \n      <li class=\"horizontal-related-posts\"  data-container=\"v8\" >\n       <a href=\"/java-j2ee/codenarc-analisis-estatico-de-codigo-groovy\" class=\"js-recommendation\">\n        \n         <div class=\"recommendation-figure\">\n          <picture>\n           \n           \n           \n           <source class=\"sf-lazy\" media=\"(min-width: 1023px)\" sf-srcset=\"https://i.blogs.es/b10ece/codenarc-logo/500_333.png\">\n           <source class=\"sf-lazy\" media=\"(min-width: 767px)\" sf-srcset=\"https://i.blogs.es/b10ece/codenarc-logo/200_133.png\">\n           <source class=\"sf-lazy\" sf-srcset=\"https://i.blogs.es/b10ece/codenarc-logo/150_150.png\">\n           <img class=\"sf-lazy\"\n            sf-src=\"https://i.blogs.es/b10ece/codenarc-logo/150_150.png\"\n            sf-srcset=\"https://i.blogs.es/b10ece/codenarc-logo/150_150.png, https://i.blogs.es/b10ece/codenarc-logo/200_133.png 767w, https://i.blogs.es/b10ece/codenarc-logo/500_333.png 1023w\"\n            alt=\"CodeNarc: Análisis estático de código Groovy\"\n            sizes=\"(min-width: 768px) 50vw, 100vw\">\n          </picture>\n         </div>\n        \n       </a>\n       <a href=\"/java-j2ee/codenarc-analisis-estatico-de-codigo-groovy\" class=\"js-recommendation\"><span>CodeNarc: Análisis estático de código Groovy</span></a>\n      </li>\n     \n    \n     \n      \n      <li class=\"horizontal-related-posts\"  data-container=\"v2\" >\n       <a href=\"https://www.vidaextra.com/juegos-retro/el-legendario-pong-de-atari-regresa-en-forma-de-mesita-para-el-cafe\" class=\"js-recommendation\">\n        \n         <div class=\"recommendation-figure\">\n          <picture>\n           \n           \n           \n           <source class=\"sf-lazy\" media=\"(min-width: 1023px)\" sf-srcset=\"https://i.blogs.es/fbd741/zspzboi3sm9u1v3jy9f6/500_333.jpg\">\n           <source class=\"sf-lazy\" media=\"(min-width: 767px)\" sf-srcset=\"https://i.blogs.es/fbd741/zspzboi3sm9u1v3jy9f6/200_133.jpg\">\n           <source class=\"sf-lazy\" sf-srcset=\"https://i.blogs.es/fbd741/zspzboi3sm9u1v3jy9f6/150_150.jpg\">\n           <img class=\"sf-lazy\"\n            sf-src=\"https://i.blogs.es/fbd741/zspzboi3sm9u1v3jy9f6/150_150.jpg\"\n            sf-srcset=\"https://i.blogs.es/fbd741/zspzboi3sm9u1v3jy9f6/150_150.jpg, https://i.blogs.es/fbd741/zspzboi3sm9u1v3jy9f6/200_133.jpg 767w, https://i.blogs.es/fbd741/zspzboi3sm9u1v3jy9f6/500_333.jpg 1023w\"\n            alt=\"El legendario Pong de Atari regresa en forma de... ¿mesita para el café?\"\n            sizes=\"(min-width: 768px) 50vw, 100vw\">\n          </picture>\n         </div>\n        \n       </a>\n       <a href=\"https://www.vidaextra.com/juegos-retro/el-legendario-pong-de-atari-regresa-en-forma-de-mesita-para-el-cafe\" class=\"js-recommendation\"><span>El legendario Pong de Atari regresa en forma de... ¿mesita para el café?</span></a>\n      </li>\n     \n    \n     \n      \n      <li class=\"horizontal-related-posts\"  data-container=\"v7\" >\n       <a href=\"https://www.genbeta.com/paso-a-paso/sacale-mas-partido-al-modo-hibernacion-de-windows-10-con-estos-comandos\" class=\"js-recommendation\">\n        \n         <div class=\"recommendation-figure\">\n          <picture>\n           \n           \n           \n           <source class=\"sf-lazy\" media=\"(min-width: 1023px)\" sf-srcset=\"https://i.blogs.es/0d521b/laptop-1890547_1920/500_333.jpg\">\n           <source class=\"sf-lazy\" media=\"(min-width: 767px)\" sf-srcset=\"https://i.blogs.es/0d521b/laptop-1890547_1920/200_133.jpg\">\n           <source class=\"sf-lazy\" sf-srcset=\"https://i.blogs.es/0d521b/laptop-1890547_1920/150_150.jpg\">\n           <img class=\"sf-lazy\"\n            sf-src=\"https://i.blogs.es/0d521b/laptop-1890547_1920/150_150.jpg\"\n            sf-srcset=\"https://i.blogs.es/0d521b/laptop-1890547_1920/150_150.jpg, https://i.blogs.es/0d521b/laptop-1890547_1920/200_133.jpg 767w, https://i.blogs.es/0d521b/laptop-1890547_1920/500_333.jpg 1023w\"\n            alt=\"Sácale más partido al modo hibernación de Windows 10 con estos comandos\"\n            sizes=\"(min-width: 768px) 50vw, 100vw\">\n          </picture>\n         </div>\n        \n       </a>\n       <a href=\"https://www.genbeta.com/paso-a-paso/sacale-mas-partido-al-modo-hibernacion-de-windows-10-con-estos-comandos\" class=\"js-recommendation\"><span>Sácale más partido al modo hibernación de Windows 10 con estos comandos</span></a>\n      </li>\n     \n    \n     \n      \n      <li class=\"horizontal-related-posts\"  data-container=\"homePagePosts\" >\n       <a href=\"https://www.genbetadev.com/paradigmas-de-programacion/principios-de-una-arquitectura-limpia-mantenible-y-testeable\" class=\"js-recommendation\">\n        \n         <div class=\"recommendation-figure\">\n          <picture>\n           \n           \n           \n           <source class=\"sf-lazy\" media=\"(min-width: 1023px)\" sf-srcset=\"https://i.blogs.es/9953c3/5370376951_5690dc5cd2_o/500_333.jpg\">\n           <source class=\"sf-lazy\" media=\"(min-width: 767px)\" sf-srcset=\"https://i.blogs.es/9953c3/5370376951_5690dc5cd2_o/200_133.jpg\">\n           <source class=\"sf-lazy\" sf-srcset=\"https://i.blogs.es/9953c3/5370376951_5690dc5cd2_o/150_150.jpg\">\n           <img class=\"sf-lazy\"\n            sf-src=\"https://i.blogs.es/9953c3/5370376951_5690dc5cd2_o/150_150.jpg\"\n            sf-srcset=\"https://i.blogs.es/9953c3/5370376951_5690dc5cd2_o/150_150.jpg, https://i.blogs.es/9953c3/5370376951_5690dc5cd2_o/200_133.jpg 767w, https://i.blogs.es/9953c3/5370376951_5690dc5cd2_o/500_333.jpg 1023w\"\n            alt=\"Principios de una arquitectura limpia: mantenible y testeable\"\n            sizes=\"(min-width: 768px) 50vw, 100vw\">\n          </picture>\n         </div>\n        \n       </a>\n       <a href=\"https://www.genbetadev.com/paradigmas-de-programacion/principios-de-una-arquitectura-limpia-mantenible-y-testeable\" class=\"js-recommendation\"><span>Principios de una arquitectura limpia: mantenible y testeable</span></a>\n      </li>\n     \n    \n     \n      \n      <li class=\"horizontal-related-posts\"  data-container=\"homePagePosts\" >\n       <a href=\"https://www.genbetadev.com/desarrollo-web/creacion-de-aplicaciones-react-the-agile-way\" class=\"js-recommendation\">\n        \n         <div class=\"recommendation-figure\">\n          <picture>\n           \n           \n           \n           <source class=\"sf-lazy\" media=\"(min-width: 1023px)\" sf-srcset=\"https://i.blogs.es/3cc483/1-hsisluifmo6kblfpoktlow/500_333.jpeg\">\n           <source class=\"sf-lazy\" media=\"(min-width: 767px)\" sf-srcset=\"https://i.blogs.es/3cc483/1-hsisluifmo6kblfpoktlow/200_133.jpeg\">\n           <source class=\"sf-lazy\" sf-srcset=\"https://i.blogs.es/3cc483/1-hsisluifmo6kblfpoktlow/150_150.jpeg\">\n           <img class=\"sf-lazy\"\n            sf-src=\"https://i.blogs.es/3cc483/1-hsisluifmo6kblfpoktlow/150_150.jpeg\"\n            sf-srcset=\"https://i.blogs.es/3cc483/1-hsisluifmo6kblfpoktlow/150_150.jpeg, https://i.blogs.es/3cc483/1-hsisluifmo6kblfpoktlow/200_133.jpeg 767w, https://i.blogs.es/3cc483/1-hsisluifmo6kblfpoktlow/500_333.jpeg 1023w\"\n            alt=\"Creación de aplicaciones React &#34;The Agile Way&#34; \"\n            sizes=\"(min-width: 768px) 50vw, 100vw\">\n          </picture>\n         </div>\n        \n       </a>\n       <a href=\"https://www.genbetadev.com/desarrollo-web/creacion-de-aplicaciones-react-the-agile-way\" class=\"js-recommendation\"><span>Creación de aplicaciones React &#34;The Agile Way&#34; </span></a>\n      </li>\n     \n    \n     \n      \n      <li class=\"horizontal-related-posts\"  data-container=\"v3\" >\n       <a href=\"https://www.genbeta.com/multimedia/kingsway-el-juego-de-rol-que-transcurre-en-un-sistema-operativo\" class=\"js-recommendation\">\n        \n         <div class=\"recommendation-figure\">\n          <picture>\n           \n           \n           \n           <source class=\"sf-lazy\" media=\"(min-width: 1023px)\" sf-srcset=\"https://i.blogs.es/045121/screenshot05/500_333.png\">\n           <source class=\"sf-lazy\" media=\"(min-width: 767px)\" sf-srcset=\"https://i.blogs.es/045121/screenshot05/200_133.png\">\n           <source class=\"sf-lazy\" sf-srcset=\"https://i.blogs.es/045121/screenshot05/150_150.png\">\n           <img class=\"sf-lazy\"\n            sf-src=\"https://i.blogs.es/045121/screenshot05/150_150.png\"\n            sf-srcset=\"https://i.blogs.es/045121/screenshot05/150_150.png, https://i.blogs.es/045121/screenshot05/200_133.png 767w, https://i.blogs.es/045121/screenshot05/500_333.png 1023w\"\n            alt=\"Kingsway, el juego de rol que transcurre en un sistema operativo\"\n            sizes=\"(min-width: 768px) 50vw, 100vw\">\n          </picture>\n         </div>\n        \n       </a>\n       <a href=\"https://www.genbeta.com/multimedia/kingsway-el-juego-de-rol-que-transcurre-en-un-sistema-operativo\" class=\"js-recommendation\"><span>Kingsway, el juego de rol que transcurre en un sistema operativo</span></a>\n      </li>\n     \n    \n     \n      \n      <li class=\"horizontal-related-posts\"  data-container=\"v6\" >\n       <a href=\"https://www.xatakahome.com/ocio/esta-mesita-de-cafe-que-trae-al-mitico-pong-al-mundo-real-es-el-mueble-que-querras-tener-en-el-salon\" class=\"js-recommendation\">\n        \n         <div class=\"recommendation-figure\">\n          <picture>\n           \n           \n           \n           <source class=\"sf-lazy\" media=\"(min-width: 1023px)\" sf-srcset=\"https://i.blogs.es/0fa0ed/74377e4c3d8ff0a98656af29aa2e5729_original/500_333.jpg\">\n           <source class=\"sf-lazy\" media=\"(min-width: 767px)\" sf-srcset=\"https://i.blogs.es/0fa0ed/74377e4c3d8ff0a98656af29aa2e5729_original/200_133.jpg\">\n           <source class=\"sf-lazy\" sf-srcset=\"https://i.blogs.es/0fa0ed/74377e4c3d8ff0a98656af29aa2e5729_original/150_150.jpg\">\n           <img class=\"sf-lazy\"\n            sf-src=\"https://i.blogs.es/0fa0ed/74377e4c3d8ff0a98656af29aa2e5729_original/150_150.jpg\"\n            sf-srcset=\"https://i.blogs.es/0fa0ed/74377e4c3d8ff0a98656af29aa2e5729_original/150_150.jpg, https://i.blogs.es/0fa0ed/74377e4c3d8ff0a98656af29aa2e5729_original/200_133.jpg 767w, https://i.blogs.es/0fa0ed/74377e4c3d8ff0a98656af29aa2e5729_original/500_333.jpg 1023w\"\n            alt=\"Esta mesita de café que trae al mítico Pong al mundo real es el mueble que querrás tener en el salón \"\n            sizes=\"(min-width: 768px) 50vw, 100vw\">\n          </picture>\n         </div>\n        \n       </a>\n       <a href=\"https://www.xatakahome.com/ocio/esta-mesita-de-cafe-que-trae-al-mitico-pong-al-mundo-real-es-el-mueble-que-querras-tener-en-el-salon\" class=\"js-recommendation\"><span>Esta mesita de café que trae al mítico Pong al mundo real es el mueble que querrás tener en el salón </span></a>\n      </li>\n     \n    \n   </ul>\n  </div>\n </section>\n\n";
+    var event = document.createEvent('Event');
+    event.initEvent('recommendationsRendered', true, true);
+    document.dispatchEvent(event);
+
+    
+      var sidebarModule = document.getElementsByClassName('related-alts');
+      if (sidebarModule.length > 0) {
+        sidebarModule[0].innerHTML += "\n <p class=\"aside-title\">TE RECOMENDAMOS</p>\n <ul>\n  \n   \n   <li class=\"related-item\">\n    <a href=\"https://www.xatakahome.com/ocio/esta-mesita-de-cafe-que-trae-al-mitico-pong-al-mundo-real-es-el-mueble-que-querras-tener-en-el-salon\">\n     <img\n      src=\"https://i.blogs.es/0fa0ed/74377e4c3d8ff0a98656af29aa2e5729_original/150_150.jpg\"\n      alt=\"Esta mesita de café que trae al mítico Pong al mundo real es el mueble que querrás tener en el salón \"\n     >\n     <div class=\"related-item-info\">\n      <h3 class=\"related-item-title\">Esta mesita de café que trae al mítico Pong al mundo real es el mueble que querrás tener en el salón </h3>\n     </div>\n    </a>\n   </li>\n  \n   \n   <li class=\"related-item\">\n    <a href=\"https://magnet.xataka.com/que-pasa-cuando/el-truco-detras-de-todos-esos-videos-de-helicopteros-en-los-que-las-helices-parecen-no-moverse\">\n     <img\n      src=\"https://i.blogs.es/e99688/helicoptero/150_150.jpg\"\n      alt=\"El truco detrás de todos esos vídeos de helicópteros en los que las hélices parecen no moverse\"\n     >\n     <div class=\"related-item-info\">\n      <h3 class=\"related-item-title\">El truco detrás de todos esos vídeos de helicópteros en los que las hélices parecen no moverse</h3>\n     </div>\n    </a>\n   </li>\n  \n   \n   <li class=\"related-item\">\n    <a href=\"https://www.xataka.com/videojuegos/minecraft-rompe-las-barreras-virtuales-controlar-las-luces-de-casa-desde-alli-es-posible\">\n     <img\n      src=\"https://i.blogs.es/88e444/minecraft2/150_150.jpg\"\n      alt=\"Minecraft rompe las barreras virtuales: controlar las luces de casa desde allí es posible \"\n     >\n     <div class=\"related-item-info\">\n      <h3 class=\"related-item-title\">Minecraft rompe las barreras virtuales: controlar las luces de casa desde allí es posible </h3>\n     </div>\n    </a>\n   </li>\n  \n </ul>\n";
+        event.initEvent('sidebarRecommendationsRendered', true, true);
+        document.dispatchEvent(event);
+      }
+    
+    customTracker.init();
+  }
+
+  if ("loading" !== document.readyState) {
+    renderRecommendations();
+  } else {
+    document.addEventListener("DOMContentLoaded", renderRecommendations);
+  }
+})();
+����L�      Y�@Y�A>Y�>       �    :https://lrk0kdx4ri.execute-api.eu-west-1.amazonaws.com/production/recommendation/genbetadev/sfml-2-elaborando-un-juego-completo/CR/1?category=programacion-de-videojuegos&picture_tag=1 necko:classified 1 strongly-framed 1 security-info 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 request-method GET response-head HTTP/2.0 200 OK
+content-type: application/javascript
+content-length: 20733
+date: Fri, 27 Oct 2017 20:46:56 GMT
+x-amzn-requestid: f8bbdea4-bb57-11e7-8eea-c11d3b129297
+x-amzn-trace-id: sampled=0;root=1-59f39b40-cbb148e1ce1c315af0db9231
+x-cache: Miss from cloudfront
+via: 1.1 2b9113e25093a7b65f5fea387ef4e79d.cloudfront.net (CloudFront)
+x-amz-cf-id: _JN0aj429_Nw_RiOCQNWUl5hvq2T4HufeK93YNCS5Mwvrh77mM1Guw==
+X-Firefox-Spdy: h2
+ original-response-headers content-type: application/javascript
+content-length: 20733
+date: Fri, 27 Oct 2017 20:46:56 GMT
+x-amzn-requestid: f8bbdea4-bb57-11e7-8eea-c11d3b129297
+x-amzn-trace-id: sampled=0;root=1-59f39b40-cbb148e1ce1c315af0db9231
+x-cache: Miss from cloudfront
+via: 1.1 2b9113e25093a7b65f5fea387ef4e79d.cloudfront.net (CloudFront)
+x-amz-cf-id: _JN0aj429_Nw_RiOCQNWUl5hvq2T4HufeK93YNCS5Mwvrh77mM1Guw==
+X-Firefox-Spdy: h2
+ uncompressed-len 0 net-response-time-onstart 710 net-response-time-onstop 711   P�

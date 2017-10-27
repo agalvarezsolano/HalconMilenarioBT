@@ -1,0 +1,2284 @@
+(function(we, bo, ra, ma){
+    function VPAIDEvent(type, data){
+        this.type = type;
+        this.data = data;
+    }
+    VPAIDEvent.convertToVAST = function(name) {
+        return {
+                AdLoaded:               VideoEvent.AD_READY,
+                AdVolumeChange:         VideoEvent.AD_VOLUME_CHANGE,
+                AdError:                VideoEvent.AD_ERROR,
+                AdStarted:              VideoEvent.AD_START,
+                AdImpression:           VideoEvent.AD_IMPRESSION,
+                AdStopped:              VideoEvent.AD_STOP,
+                AdPaused:               VideoEvent.AD_PAUSE,
+                AdPlaying:              VideoEvent.AD_RESUME,
+                AdVideoStart:           VideoEvent.VIDEO_START,
+                AdVideoFirstQuartile:   VideoEvent.VIDEO_FIRST_QUARTILE,
+                AdVideoMidpoint:        VideoEvent.VIDEO_MIDPOINT,
+                AdVideoThirdQuartile:   VideoEvent.VIDEO_THIRD_QUARTILE,
+                AdVideoComplete:        VideoEvent.VIDEO_COMPLETE,
+                AdRemainingTimeChange:  VideoEvent.VIDEO_PROGRESS,
+                AdUserClose:            VideoEvent.USER_CLOSE,
+                AdSkipped:              VideoEvent.USER_SKIP,
+                AdUserAcceptInvitation: VideoEvent.USER_ACCEPT_INVENTATION,
+                AdInteraction:          VideoEvent.USER_INTERACTION,
+                AdClickThru:            VideoEvent.USER_CLICK,
+                AdViewable:             VideoEvent.AD_VIEWABLE,
+                AdNotViewable:          VideoEvent.AD_NOT_VIEWABLE,
+                AdViewUndetermined:     VideoEvent.AD_VIEW_UNDETERMINED,
+                AdSent:                 VideoEvent.AD_SENT,  //ad sent in XML
+                AdInited:               VideoEvent.AD_INIT,  //ad inited
+                AdLaunched:             VideoEvent.AD_LAUNCH //ad launched by player
+            }[name] || "";
+    };
+    VPAIDEvent.convertFromVAST = function(name) {
+        return {
+                ready:                  VPAIDEvent.AdLoaded,
+                volumeChange:           VPAIDEvent.AdVolumeChange,
+                error:                  VPAIDEvent.AdError,
+                creativeView:           VPAIDEvent.AdStarted,
+                impression:             VPAIDEvent.AdImpression,
+                stop:                   VPAIDEvent.AdStopped,
+                pause:                  VPAIDEvent.AdPaused,
+                resume:                 VPAIDEvent.AdPlaying,
+                start:                  VPAIDEvent.AdVideoStart,
+                firstQuartile:          VPAIDEvent.AdVideoFirstQuartile,
+                midpoint:               VPAIDEvent.AdVideoMidpoint,
+                thirdQuartile:          VPAIDEvent.AdVideoThirdQuartile,
+                complete:               VPAIDEvent.AdVideoComplete,
+                closeLinear:            VPAIDEvent.AdUserClose,
+                skip:                   VPAIDEvent.AdSkipped,
+                acceptInvitation:       VPAIDEvent.AdUserAcceptInvitation,
+                interaction:            VPAIDEvent.AdInteraction,
+                click:                  VPAIDEvent.AdClickThru,
+                viewable:               VPAIDEvent.AdViewable,
+                notViewable:            VPAIDEvent.AdNotViewable,
+                viewUndetermined:       VPAIDEvent.AdViewUndetermined,
+                sent:                   VPAIDEvent.AdSent,
+                init:                   VPAIDEvent.AdInited,
+                launch:                 VPAIDEvent.AdLaunched
+            }[name] || "";
+    };
+    VPAIDEvent.AdLoaded = "AdLoaded";
+    VPAIDEvent.AdStarted = "AdStarted";
+    VPAIDEvent.AdStopped = "AdStopped";
+    VPAIDEvent.AdSkipped = "AdSkipped";
+    VPAIDEvent.AdLinearChange = "AdLinearChange";
+    VPAIDEvent.AdSizeChange = "AdSizeChange";
+    VPAIDEvent.AdExpandedChange = "AdExpandedChange";
+    VPAIDEvent.AdSkippableStateChange = "AdSkippableStateChange";
+    VPAIDEvent.AdRemainingTimeChange = "AdRemainingTimeChange";
+    VPAIDEvent.AdDurationChange = "AdDurationChange";
+    VPAIDEvent.AdVolumeChange = "AdVolumeChange";
+    VPAIDEvent.AdImpression = "AdImpression";
+    VPAIDEvent.AdVideoStart = "AdVideoStart";
+    VPAIDEvent.AdVideoFirstQuartile = "AdVideoFirstQuartile";
+    VPAIDEvent.AdVideoMidpoint = "AdVideoMidpoint";
+    VPAIDEvent.AdVideoThirdQuartile = "AdVideoThirdQuartile";
+    VPAIDEvent.AdVideoComplete = "AdVideoComplete";
+    VPAIDEvent.AdClickThru = "AdClickThru";
+    VPAIDEvent.AdInteraction = "AdInteraction";
+    VPAIDEvent.AdUserAcceptInvitation = "AdUserAcceptInvitation";
+    VPAIDEvent.AdUserMinimize = "AdUserMinimize";
+    VPAIDEvent.AdUserClose = "AdUserClose";
+    VPAIDEvent.AdPaused = "AdPaused";
+    VPAIDEvent.AdPlaying = "AdPlaying";
+    VPAIDEvent.AdLog = "AdLog";
+    VPAIDEvent.AdError = "AdError";
+    VPAIDEvent.AdViewable = "AdViewable";
+    VPAIDEvent.AdNotViewable = "AdNotViewable";
+    VPAIDEvent.AdViewUndetermined = "AdViewUndetermined";
+    VPAIDEvent.AdSent = "AdSent";
+    VPAIDEvent.AdInited = "AdInited";
+    VPAIDEvent.AdLaunched = "AdLaunched";
+
+    var VideoEvent = function VideoEvent(type, data) {
+        this.type = type;
+        this.data = data;
+    };
+    VideoEvent.AD_READY = "ready";
+    VideoEvent.AD_VOLUME_CHANGE = "volumeChange";
+    VideoEvent.AD_ERROR = "error";
+    VideoEvent.AD_STOP = "stop";
+    VideoEvent.AD_START = "creativeView";
+    VideoEvent.AD_IMPRESSION = "impression";
+    VideoEvent.AD_MUTE = "mute";
+    VideoEvent.AD_UNMUTE = "unmute";
+    VideoEvent.AD_PAUSE = "pause";
+    VideoEvent.AD_RESUME = "resume";
+    VideoEvent.AD_REWIND = "rewind";
+    VideoEvent.VIDEO_START = "start";
+    VideoEvent.VIDEO_FIRST_QUARTILE = "firstQuartile";
+    VideoEvent.VIDEO_MIDPOINT = "midpoint";
+    VideoEvent.VIDEO_THIRD_QUARTILE = "thirdQuartile";
+    VideoEvent.VIDEO_COMPLETE = "complete";
+    VideoEvent.VIDEO_PROGRESS = "progress";
+    VideoEvent.USER_CLOSE = "closeLinear";
+    VideoEvent.USER_SKIP = "skip";
+    VideoEvent.USER_ACCEPT_INVENTATION = "acceptInvitation";
+    VideoEvent.USER_INTERACTION = "interaction";
+    VideoEvent.USER_CLICK = "click";
+    VideoEvent.AD_VIEWABLE = "viewable";
+    VideoEvent.AD_NOT_VIEWABLE = "notViewable";
+    VideoEvent.AD_VIEW_UNDETERMINED = "viewUndetermined";
+    VideoEvent.AD_SENT = "sent";
+    VideoEvent.AD_INIT = "init";
+    VideoEvent.AD_LAUNCH = "launch";
+
+    var MessageEvent = function MessageEvent(type, data) {
+        this.type = type;
+        this.data = data;
+    };
+    MessageEvent.HANDSHAKE = "isv_handshake";
+    MessageEvent.ORIGIN = "isv_origin";
+    MessageEvent.BP_TURN_ON = "isv_open";
+    MessageEvent.BP_TURN_OFF = "isv_close";
+
+    function XMLLoader(flightMap) {
+        this.flightMap = flightMap;
+    }
+    XMLLoader.prototype.load = function (url, done) {
+        try {
+        this.url = url;
+        this.xml = null;
+        this.flight = null;
+        this.xmlType = "unknown";
+        this.wrapper = null;
+        this.currentXML = null;
+
+        if(!url) return done({status: "URL is not valid", code: 101, errno: 100});
+        else {
+            url = XMLLoader.makeCheck.call(this,URLUtils.correctProtocol(url));
+        }
+
+        var xmlLoader = new XMLHttpRequest();
+        xmlLoader.open("GET", url, true);
+        xmlLoader.withCredentials = true;
+        xmlLoader.onreadystatechange = function (event) {
+            try {
+            if (event.target.readyState == XMLHttpRequest.DONE) {
+                if (!event.target.responseXML) {
+                    return done({status: "XML Response is not XML", code: 100, errno: 101});
+                }
+                this.xml = event.target.responseXML;
+
+                // check standard XML
+                for (var item in XMLLoader.SUPPORTED_XML_STANDARD) {
+                    if (XMLLoader.SUPPORTED_XML_STANDARD.hasOwnProperty(item)) {
+                        if (this.xml.querySelector(XMLLoader.SUPPORTED_XML_STANDARD[item].selector)) {
+                            this.xmlType = XMLLoader.SUPPORTED_XML_STANDARD[item].type;
+                            break;
+                        }
+                    }
+                }
+                if (!this.xmlType || this.xmlType === "unknown") {
+                    this.currentXML = this.xml;
+                    return done({status: "Unknown XML format", code: 102, errno: 102});
+                }
+
+                if (XMLLoader.getNoMulti(this.currentXML)) {
+                    if (WindowUtils.storage(URLUtils.getQueryParameter(url, "pid") + URLUtils.getQueryParameter(url, "vr"))) return done({status: "Ad type has already been loaded", code: 901, errno: 107});
+                }
+
+                var selectedFlight,advBlock,max,i,flight;
+
+                if (!this.xml.querySelector(XMLLoader.SELECTORS.wrapperTag)) {
+                    // если не wrapper, проверяем наличие рекламы по флайтам
+                    var adList = this.xml.querySelectorAll("Ad");
+
+                    if (!this.flightMap) {
+                        // маловероятная ситуация,
+                        // возможна если в главной XML придёт VAST c Video или VPAID
+                        // возвращаем первый блок Ad, содержащий поддерживаемый тип рекламы, или ошибку
+
+                        for (i = 0; i < adList.length; i++) {
+                            if(XMLLoader.hasSupportedContent(adList[i])) {
+                                this.currentXML = adList[i];
+                                return done(null, {
+                                    xml: this.currentXML,
+                                    type: XMLLoader.getMediaType(this.currentXML)
+                                });
+                            }
+                        }
+                        this.currentXML = this.xml;
+                        return done({status: "Supported media files not found", code: 403, errno: 103});
+                    }
+                    if (!this.flightMap.length) {
+                        // список флайтов пуст => главная XML является VAST-Wrapper
+                        // в которой пришёл контент Video или VPAID
+                        // возвращаем первый блок Ad, содержащий поддерживаемый тип рекламы или ошибку
+
+                        for (i = 0; i < adList.length; i++) {
+                            if(XMLLoader.hasSupportedContent(adList[i])) {
+                                this.currentXML = adList[i];
+                                return done(null, {
+                                    xml: this.currentXML,
+                                    type: XMLLoader.getMediaType(this.currentXML)
+                                });
+                            }
+                        }
+                        this.currentXML = this.xml;
+                        return done({status: "Supported media files not found", code: 403, errno: 104});
+                    }
+
+                    // главная XML NON-VAST Wrapper в которой пришёл Video или VPAID контент
+                    max = this.flightMap.length;
+
+                    for (i = 0; i < max; i++) {
+                        // ищем блок Creative, в котором id и AdID соответствуют одному из флайтов
+                        // а так же содержащий поддерживаемый тип рекламы
+                        flight = this.flightMap[i];
+                        if (advBlock = this.xml.querySelector(XMLLoader.getFilterSelectorByFlight(flight, true))) {
+                            selectedFlight = flight;
+                            while (advBlock.nodeName != "Ad") {
+                                advBlock = advBlock.parentNode;
+                            }
+                            if(!XMLLoader.hasSupportedContent(advBlock)) {
+                                advBlock = null;
+                                continue;
+                            }
+                            this.flight = selectedFlight;
+                            this.currentXML = advBlock;
+                            return done(null, {
+                                xml: this.currentXML,
+                                type: XMLLoader.getMediaType(this.currentXML)
+                            });
+                        }
+                    }
+
+                    for (i = 0; i < max; i++) {
+                        //ищем блок Creative, в котором id соответствует id одного из флайтов, а так же не имеет параметра AdID
+                        // а так же содержащий поддерживаемый тип рекламы
+                        flight = this.flightMap[i];
+                        if (advBlock = this.xml.querySelector(XMLLoader.getFilterSelectorByFlight(flight, false))) {
+                            selectedFlight = flight;
+                            while (advBlock.nodeName != "Ad") {
+                                advBlock = advBlock.parentNode;
+                            }
+                            if(!XMLLoader.hasSupportedContent(advBlock)) {
+                                advBlock = null;
+                                continue;
+                            }
+                            this.flight = selectedFlight;
+                            this.currentXML = advBlock;
+                            return done(null, {
+                                xml: this.currentXML,
+                                type: XMLLoader.getMediaType(this.currentXML)
+                            });
+                        }
+                    }
+
+                    // реклама по флайтам не найдена
+                    this.currentXML = this.xml;
+                    return done({status: "Available ads not found", code: 200, errno: 105});
+                }
+
+                if (this.flightMap && this.flightMap.length) {
+                    // проверяем враппер на наличие рекламы по карте флайтов
+                    max = this.flightMap.length;
+                    for (i = 0; i < max; i++) {
+                        // ищем блок Creative, в котором id и AdID соответствуют одному из флайтов
+                        flight = this.flightMap[i];
+                        if (advBlock = this.xml.querySelector(XMLLoader.getFilterSelectorByFlight(flight, true))) {
+                            selectedFlight = flight;
+                            while (advBlock.nodeName != "Ad") {
+                                advBlock = advBlock.parentNode;
+                            }
+                            if(!XMLLoader.hasSupportedContent(advBlock)) {
+                                advBlock = null;
+                                continue;
+                            }
+                            this.flight = selectedFlight;
+                            this.currentXML = advBlock;
+                            break;
+                        }
+                    }
+
+                    if(!this.currentXML) {
+                        for (i = 0; i < max; i++) {
+                            //ищем блок Creative, в котором id соответствует id одного из флайтов, а так же не имеет параметра AdID
+                            flight = this.flightMap[i];
+                            if (advBlock = this.xml.querySelector(XMLLoader.getFilterSelectorByFlight(flight, false))) {
+                                selectedFlight = flight;
+                                while (advBlock.nodeName != "Ad") {
+                                    advBlock = advBlock.parentNode;
+                                }
+                                if(!XMLLoader.hasSupportedContent(advBlock)) {
+                                    advBlock = null;
+                                    continue;
+                                }
+                                this.flight = selectedFlight;
+                                this.currentXML = advBlock;
+                                break;
+                            }
+                        }
+                    }
+                    if(!this.currentXML) {
+                        // реклама по флайтам не найдена
+                        this.currentXML = this.xml;
+                        return done({status: "Available ads not found", code: 200, errno: 106});
+                    }
+                }
+                try {
+                // грузим враппер
+                this.currentXML = this.xml.firstChild;
+                this.wrapper = new XMLLoader(XMLLoader.getFlightsMap(this.currentXML));
+                this.wrapper.load(XMLLoader.trimXMLNode(this.xml.querySelector(XMLLoader.SELECTORS.wrapperTag)), done);
+                } catch (e) { errorLog(["err103", e.message, e.stack]); }
+            }
+            } catch (e) {
+                try {
+                errorLog(["err102", "done!!!", event.target.status, e.message, e.stack]);
+                } catch (e) { errorLog(["err1001", e.message, e.stack, url]); }
+            }
+        }.bind(this);
+        xmlLoader.send(null);
+        } catch (e) { errorLog(["err101", "done!!!", e.message, e.stack, url]); }
+    };
+    XMLLoader.prototype.getMediaFiles = function () {
+        try {
+        if (this.wrapper) {
+            return this.wrapper.getMediaFiles();
+        }
+        var mediaFiles = [],
+            mediaList = this.currentXML ? this.currentXML.querySelectorAll(XMLLoader.SELECTORS.supportedMediaFormat) : [];
+
+        for (var i = 0; i < mediaList.length; i++) {
+            mediaFiles.push({
+                type: mediaList[i].getAttribute("type"),
+                src: XMLLoader.trimXMLNode(mediaList[i])
+            });
+        }
+        return mediaFiles;
+        } catch (e) { errorLog(["err1", "done?", e.message, e.stack]); }
+    };
+    XMLLoader.prototype.getExtensions = function (extensions) {
+        try {
+        extensions = extensions || {};
+        var extensionList = this.currentXML.querySelectorAll("Extensions Extension[type]");
+        for (var j = 0; j < extensionList.length; j++) {
+            extensions[extensionList[j].getAttribute("type")] = XMLLoader.trimXMLNode(extensionList[j]);
+        }
+        if (this.wrapper) {
+            return this.wrapper.getExtensions(extensions);
+        }
+        return extensions;
+        } catch (e) { errorLog(["err2", e.message, e.stack]); }
+    };
+    XMLLoader.prototype.getEvents = function getEvents(name) {
+        try {
+        if (!XMLLoader.EventsSelector[name]) {
+            return [];
+        }
+        var list = this.currentXML && !XMLLoader.getNoTrack(this.currentXML) ? this.currentXML.querySelectorAll(XMLLoader.EventsSelector[name]) || [] : [],
+            events = [];
+
+        for (var i = 0; i < list.length; i++) {
+            events.push(XMLLoader.makeCheck.call(this,URLUtils.correctProtocol(XMLLoader.trimXMLNode(list[i]))));
+        }
+
+        return events.concat(this.wrapper ? this.wrapper.getEvents(name) : []);
+        } catch (e) { errorLog(["err3", "done?", e.message, e.stack]); }
+    };
+    XMLLoader.prototype.getBid = function () {
+        try {
+        return this.flight ? this.flight.bid : this.wrapper ? this.wrapper.getBid() : "";
+        } catch (e) { errorLog(["err4", e.message, e.stack]); }
+    };
+    XMLLoader.prototype.getAdLink = function () {
+        try {
+        return this.wrapper ? this.wrapper.getAdLink() : XMLLoader.trimXMLNode(this.currentXML.querySelector("VideoClicks ClickThrough"));
+        } catch (e) { errorLog(["err5", e.message, e.stack]); }
+    };
+    XMLLoader.prototype.getAdParameters = function () {
+        try {
+        if (this.wrapper) { return this.wrapper.getAdParameters(); }
+        return XMLLoader.trimXMLNode(this.currentXML.querySelector("AdParameters"));
+        } catch (e) { errorLog(["err6", e.message, e.stack]); }
+    };
+    XMLLoader.prototype.getAdId = function () {
+        try {
+        var creative = this.currentXML.querySelector("Creative"), id;
+        if ((id = XMLLoader.trimXMLNodeAttribute(creative, "id")) && (id = [id])) {
+            id.push(XMLLoader.trimXMLNodeAttribute(creative, "AdID"));
+            return id = id.join("-");
+        }
+        return this.wrapper ? this.wrapper.getAdId() : "";
+        } catch (e) { errorLog(["err7", e.message, e.stack]); }
+    };
+    XMLLoader.makeCheck = function (url) {
+        var is_execute = false, check = /(pid=(234)&)|(pid=(234)$)/g.exec(url); //check = /(pid=((77)|(133)|(134))&)|(pid=((77)|(133)|(134))$)/g.exec(url);
+        //if(is_execute && check && check[0] && url.indexOf('eid') != -1) {
+        //    var img = new Image();
+        //    img.src = URLUtils.correctProtocol('https://instreamvideo.ru/dev/track.php?l=') + this.parameters.source.origin + '&s=' + this.parameters.source.chain + '&u=' + encodeURIComponent(navigator.userAgent) + '&z=' + encodeURIComponent(JSON.stringify(location.ancestorOrigins.hasOwnProperty("length"))) + '&x=' + encodeURIComponent(JSON.stringify(({}).hasOwnProperty.call(location.ancestorOrigins, "length")));
+        //}
+        return is_execute && check && check[0] && url.indexOf('ch=1') == -1 ? url + "&ch=1" : url;
+    };
+    XMLLoader.getFilterSelectorByFlight = function(flight, full){
+        try {
+        var selector = full ? "" : "Creative[id='" + flight.id + "']";
+        ["AdID", "adID", "AdId", "AdID"].map(function(attr, idx, arr){
+            //selector += "Creative[id='" + flight.id + "']";
+            if(full) {
+                selector += "Creative[id='" + flight.id + "']["+attr+"='"+flight.adID+"']";
+                selector += (arr.length - idx > 1) ? "," : "";
+            }
+            else {
+                selector += ":not(["+attr+"])";
+            }
+        });
+        return selector;
+        } catch (e) { errorLog(["err8", e.message, e.stack]); }
+    };
+    XMLLoader.getMediaType = function (xml) {
+        try {
+        return xml.querySelector("MediaFile[type='video/mp4'],MediaFile[type='video/ogg'],MediaFile[type='video/webm']") ? "VideoPlayer" : xml.querySelector("MediaFile[apiFramework='VPAID'][type='application/javascript']") ? "VPAIDPlayer" : "Unknown";
+        } catch (e) { errorLog(["err9", e.message, e.stack]); }
+    };
+    XMLLoader.getFlightsMap = function (xml) {
+        try {
+        var list = xml.querySelectorAll("flightsmap id[eid]"),
+            result = [];
+        for (var i = 0; i < list.length; i++) {
+            result.push({
+                bid: XMLLoader.trimXMLNode(list[i]),
+                id: list[i].getAttribute("eid").split("-")[0],
+                adID: list[i].getAttribute("eid").split("-")[1]
+            });
+        }
+        return result;
+        } catch (e) { errorLog(["err10", e.message, e.stack]); }
+    };
+    XMLLoader.getAlternateURI = function (xml) {
+        try {
+        return xml ? XMLLoader.trimXMLNode(xml.querySelector("data AlternateSystemURI, Extension[type='AlternateSystemURI']")) : null;
+        } catch (e) { errorLog(["err11", e.message, e.stack]); }
+    };
+    XMLLoader.getNoTrack = function (xml) {
+        try {
+        return xml ? !!+XMLLoader.trimXMLNode(xml.querySelector("data noTrack, Extension[type='noTrack']")) : null;
+        } catch (e) { errorLog(["err12", e.message, e.stack]); }
+    };
+    XMLLoader.getNoMulti = function (xml) {
+        try {
+        return xml ? !!+XMLLoader.trimXMLNode(xml.querySelector("data noMulti, Extension[type='noMulti']")) : null;
+        } catch (e) { errorLog(["err13", e.message, e.stack]); }
+    };
+    XMLLoader.trimXMLNode = function trimXMLNode(node) {
+        try {
+        if (!node) {
+            return "";
+        }
+        if (typeof node.firstChild != "undefined") {
+            node = node.firstChild;
+        }
+        if (!!node && typeof node.wholeText != "undefined") {
+            node = node.wholeText;
+        }
+        if (!!node && typeof node.trim != "undefined") {
+            node = node.trim();
+        }
+        return node;
+        } catch (e) { errorLog(["err14", e.message, e.stack]); }
+    };
+    XMLLoader.trimXMLNodeAttribute = function trimXMLNodeAttribute(node, key) {
+        try {
+        if (!node) {
+            return "";
+        }
+        if (typeof node.attributes != "undefined") {
+            node = node.attributes;
+        }
+        for (var item in node) {
+            if (node.hasOwnProperty(item) && node[item].name === key) node = node[item];
+        }
+        return !!node && typeof node.value != "undefined" ? node.value : "";
+        } catch (e) { errorLog(["err15", e.message, e.stack]); }
+    };
+    XMLLoader.hasSupportedContent = function(xml) {
+        try {
+        return xml.querySelector(XMLLoader.SELECTORS.wrapperTag) || !!xml.querySelector(XMLLoader.SELECTORS.supportedMediaFormat);
+        } catch (e) { errorLog(["err16", e.message, e.stack]); }
+    };
+    XMLLoader.SUPPORTED_XML_STANDARD = {
+        VAST_2_0: {selector: "VAST[version='2.0'] Ad", type: "VAST"},
+        VAST_3_0: {selector: "VAST[version='3.0'] Ad", type: "VAST"},
+        NON_VAST: {selector: "data flightsmap id[eid]", type: "NON-VAST"}
+    };
+    XMLLoader.SELECTORS = {
+        supportedMediaFormat:   "MediaFile[type='video/mp4'],MediaFile[type='video/ogg'],MediaFile[type='video/webm'],MediaFile[apiFramework='VPAID'][type='application/javascript']",
+        wrapperTag:             "Wrapper VASTAdTagURI, data VASTAdTagURI"
+    };
+    XMLLoader.EventsSelector = {
+        impression:         "Ad Impression, data event loaded, data trace loaded",
+        creativeView:       "Ad Linear TrackingEvents Tracking[event='creativeView']",
+        start:              "Ad Linear TrackingEvents Tracking[event='start'], data event ready, data trace ready",
+        pause:              "Ad Linear TrackingEvents Tracking[event='pause']",
+        resume:             "Ad Linear TrackingEvents Tracking[event='resume']",
+        firstQuartile:      "Ad Linear TrackingEvents Tracking[event='firstQuartile'], data event quarter, data trace quarter",
+        midpoint:           "Ad Linear TrackingEvents Tracking[event='midpoint'], data event half, data trace half",
+        thirdQuartile:      "Ad Linear TrackingEvents Tracking[event='thirdQuartile'], data event threequarters, data trace threequarters",
+        complete:           "Ad Linear TrackingEvents Tracking[event='complete'], data event complete, data trace complete",
+        mute:               "Ad Linear TrackingEvents Tracking[event='mute'], data event mute, data trace mute",
+        unmute:             "Ad Linear TrackingEvents Tracking[event='unmute'], data event unmute, data trace unmute",
+        closeLinear:        "Ad Linear TrackingEvents Tracking[event='close'], data event close, data trace close",
+        error:              "Ad Error, Error",
+        click:              "VideoClicks ClickTracking, data clickTAG",
+        acceptInvitation:   "Ad Extensions Extension[type='addClick'], VideoClicks ClickTracking, data event acceptInvitation, data trace acceptInvitation",
+        skip:               "Ad Extensions Extension[type='skipAd'], data event skip, data trace skip",
+        viewable:           "Ad Extensions Extension[type='viewable'], data event viewable, data trace viewable",
+        notViewable:        "Ad Extensions Extension[type='notViewable'], data event notViewable, data trace notViewable",
+        viewUndetermined:   "Ad Extensions Extension[type='viewUndetermined'], data event viewUndetermined, data trace viewUndetermined",
+        sent:               "Ad Extensions Extension[type='sentAd'], data event sentAd, data trace sentAd",
+        init:               "Ad Extensions Extension[type='initAd'], data event initAd, data trace initAd",
+        launch:             "Ad Extensions Extension[type='launchAd'], data event launchAd, data trace launchAd",
+        ready:              "Ad Extensions Extension[type='loadAd'], data event loadAd, data trace loadAd"
+    };
+
+    var URLUtils = function URLUtils() {};
+    URLUtils.getData = function (url) {
+        try {
+        if (typeof url === "string" && url) {
+            var query = url.match(/^(([^:/?#]+):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?$/);
+            return {
+                protocol: query[2],
+                hostname: query[4],
+                pathname: query[5],
+                search: query[7],
+                hash: query[9],
+                host: (query[2] ? query[2] + ':' : '') + '//' + query[4],
+                url: query[0]
+            };
+        }
+        else return {};
+        } catch (e) { errorLog(["err17", e.message, e.stack]); }
+    };
+    URLUtils.correctProtocol = function (url) {
+        try {
+        return url ? ( location.protocol == "http:" ? url.replace("https:","http:") : url.replace("http:","https:") ) : "";
+        } catch (e) { errorLog(["err18", e.message, e.stack]); }
+    };
+    URLUtils.getQueryParameter = function (url, parameter, value_only) {
+        try {
+        parameter = new RegExp("([?&]" + parameter + "(=[^&#]*)*(?=#|$))|([?&]" + parameter + "(=[^&]*)*&)", "i").exec(url);
+        return parameter ? (value_only === false ? parameter[0] : (parameter[4] || parameter[2] || "").slice(1)) : null;
+        } catch (e) { errorLog(["err19", e.message, e.stack]); }
+    };
+    URLUtils.replaceQueryParameters = function (url, names, values) {
+        try {
+        values = typeof values === "string" ? [values] : values || [];
+        names = typeof names === "string" ? [names] : names || [];
+        names.forEach(function(name, index) {
+            var parameter = URLUtils.getQueryParameter(url, name, false);
+            if (parameter) url = url.replace(parameter, typeof values[index] === "string" ? parameter.replace(/([?&]*)([^=&]+)(=*)([^&]*)(&*)/gi, "$1$2" + (values[index] ? "=" + values[index] : "$3") + "$5") : parameter.replace(/((?!.*&$).+)|([^?&]+.*)/gi, "")); // (?!.*(?:ly|la)$)^.*$ - исключает если на конце ly || la
+        });
+        return url;
+        } catch (e) { errorLog(["err20", e.message, e.stack]); }
+    };
+
+    var WindowUtils = function WindowUtils() {};
+    WindowUtils.getTopmost = function() {
+        try {
+        var current = window, topmost = current;
+        while (current.parent != current) {
+            try {
+                if (current.parent.document) topmost = current.parent;
+            } catch (e) {
+            }
+            current = current.parent;
+        }
+        return topmost || {};
+        } catch (e) { errorLog(["err21", e.message, e.stack]); }
+    };
+    WindowUtils.getOriginInfo = function(source) {
+        try {
+        var iframe = window, chain = [], ancestors = [],
+            origin = [{current: location.href, referrer: document.referrer, accessible: true}];
+
+        while (iframe.parent != iframe) {
+            iframe = iframe.parent;
+            try { origin.push({current: iframe.document.location.href, referrer: iframe.document.referrer, accessible: true}); }
+            catch (e) { origin.push({current: "", referrer: "", accessible: false}); }
+        }
+
+        for (var i = 0; i < origin.length; i++) {
+            origin[i].parsed = URLUtils.getData(origin[i].current);
+            if (!origin[-~i]) chain.push(origin[i].parsed.url || "");
+            else {
+                origin[-~i].current = origin[-~i].current || (origin[i].referrer && origin[i].parsed.host != URLUtils.getData(origin[i].referrer).host ? origin[i].referrer : "");
+                if (!origin[i].current || origin[i].current != origin[-~i].current) chain.push(origin[i].parsed.host || "");
+            }
+        }
+
+        if (location.ancestorOrigins && location.ancestorOrigins.length) {
+            for (var item in location.ancestorOrigins) {
+                if (location.ancestorOrigins.hasOwnProperty(item) && !isNaN(+item)) ancestors.push(location.ancestorOrigins[item]);
+            }
+            if (origin[origin.length - 1].parsed.host == ancestors[ancestors.length - 1]) ancestors[ancestors.length - 1] = origin[origin.length - 1].parsed.url;
+            chain = ancestors;
+        }
+
+        if (source) chain[chain.length - 1] = source;
+        for (i = 0; i < chain.length; i++) chain[i] = encodeURIComponent(chain[i]);
+        } catch (e) { errorLog(["err22", iframe, e.message, e.stack]); }
+        return {origin: chain[chain.length - 1], chain: chain.reverse().join(";")};
+    };
+    WindowUtils.storage = function(key, value) {
+        try {
+        var __storage, __source = {}, __data = {}, __handshake;
+        if (!(__storage = (WindowUtils.storage.__storage = WindowUtils.storage.__storage || WindowUtils.getTopmost()).isvg)) {
+            __handshake = crc(arguments.callee.toString());
+            Object.defineProperty(WindowUtils.storage.__storage, "isvg", {
+                get: function () {
+                    return __source;
+                }
+            });
+            Object.defineProperty(__storage = WindowUtils.storage.__storage.isvg, "__handshake", {
+                get: function () {
+                    return __handshake;
+                }
+            });
+        }
+        switch (arguments.length) {
+            case 0:
+                return __storage;
+            case 1:
+                return __storage[key];
+            default:
+                if (!__storage.hasOwnProperty(key)) {
+                    Object.defineProperty(__storage, key, {
+                        set: function (value) {
+                            try {
+                            if (crc(arguments.callee.caller.toString()) === __storage.__handshake) __data[key] = value;
+                            } catch (e) { errorLog(["err24", e.message, e.stack]); }
+                        },
+                        get: function () {
+                            return __data[key];
+                        }
+                    });
+                }
+                return __storage[key] = value;
+        }
+        } catch (e) { errorLog(["err23", e.message, e.stack]); }
+    };
+
+    var VideoPlayer = function VideoPlayer(root) {
+        try {
+        this.root = root.appendChild(bo[ma]("div"));
+        this.root.id = "wb-video-player";
+        this.root.className = "waiting";
+        this.flags = {middleEvent: [false, false, false, false, false]};
+        } catch (e) { errorLog(["err25", e.message, e.stack]); }
+    };
+    VideoPlayer.prototype.init = function init(data, dispatcher, context) {
+        try {
+        if (this.flags.inited) {
+            return;
+        }
+        this.flags.inited = true;
+        this.parent = {
+            dispatcher: dispatcher,
+            context: context
+        };
+
+        var extensions = data.xmlLoader.getExtensions(),
+            style;
+
+        this.extensions = {
+            controls: extensions.controls != "0",
+            skipTime: str2time(extensions.skipTime),
+            closeTime: str2time(extensions.skipTime2),
+            isClickable: extensions.isClickable !== "0",
+            adLink: extensions.adLink || "http://instreamvideo.ru",
+            linkText: decodeURIComponent(extensions.linkText || "%D0%9F%D0%B5%D1%80%D0%B5%D0%B9%D1%82%D0%B8%20%D0%BD%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82%20%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D0%BE%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8F"),
+            allowBlock: extensions.Allowblock
+        };
+
+        style = bo[ma]("link");
+        style.href = data.mediapath + ( this.extensions.controls ? "wb-video-player" : "wb-no-controls" ) + ( this.parent.context.parameters.adParameters.environment ? "_" + this.parent.context.parameters.adParameters.environment : "" ) + ".css";
+        style.rel = "stylesheet";
+        this.root.appendChild(style);
+
+        this.adLink = data.xmlLoader.getAdLink();
+
+        if (this.parent.context.parameters.videoSlot == null) {
+            this.mediaPlayer = this.root.appendChild(bo[ma]("video"));
+		}
+		else {
+            this.mediaPlayer = this.root.appendChild(this.parent.context.parameters.videoSlot);
+            this.mediaPlayer.style.display = "block";
+
+            //mobile only
+            this.mediaPlayer.setAttribute('playsinline', '');
+            this.mediaPlayer.setAttribute('webkit-playsinline', '');
+		}
+
+		this.mediaPlayer.context = this;
+        //this.mediaPlayer.poster = extensions.poster || data.mediapath + "poster.png";
+        this.mediaPlayer.className = "wb-area-media";
+
+        VideoPlayer.allowEvents.forEach(function (eventName) {
+            this.mediaPlayer.addEventListener(eventName, VideoPlayer.videoEventHandler, true);
+        }.bind(this));
+
+        var mediaFiles = data.xmlLoader.getMediaFiles(),
+            canplay = false, source = {};
+
+        for (var i = 0; i < mediaFiles.length; i++) {
+            if (this.mediaPlayer.canPlayType(mediaFiles[i].type)) {
+                source = bo[ma]("source");
+                source.type = mediaFiles[i].type;
+                source.src = mediaFiles[i].src;
+                this.mediaPlayer.appendChild(source);
+                this.mediaPlayer.load();
+                canplay = true;
+            }
+        }
+        if(!canplay) {
+            this.flags.error = this.parent.context.flags.error = true;
+            return VideoPlayer.$dispatchEvent.call(this, VideoEvent.AD_ERROR, {status: "Supported MediaFiles not found", code: 403, errno: 200});
+        }
+        setTimeout(function () {
+            try {
+            if (!this.flags.error) {
+                this.flags.loaded = this.parent.context.flags.loaded = true;
+                VideoPlayer.$dispatchEvent.call(this, VideoEvent.AD_INIT, {});
+                VideoPlayer.$dispatchEvent.call(this, VideoEvent.AD_READY, this.getMetaData());
+            }
+            } catch (e) { errorLog(["err27", e.message, e.stack]); }
+        }.bind(this), 200);
+        } catch (e) { errorLog(["err26", e.message, e.stack]); }
+    };
+    VideoPlayer.prototype.play = function play() {
+        try {
+        if (!this.flags.loaded || this.flags.played || this.flags.stopped) {
+            return;
+        }
+        try {
+            VideoPlayer.$dispatchEvent.call(this, VideoEvent.AD_LAUNCH, {});
+            this.mediaPlayer.play();
+            this.flags.played = this.parent.context.flags.played = true;
+        } catch (e) {
+            return this.error({status: "Video creative internal player error during startAd", code: 405, errno: 204}, true);
+        }
+        } catch (e) { errorLog(["err28", e.message, e.stack]); }
+    };
+    VideoPlayer.prototype.stop = function stop() {
+        try {
+        if (this.flags.stopped) {
+            return;
+        }
+        VideoPlayer.cleanSlot.call(this);
+        VideoPlayer.$dispatchEvent.call(this, VideoEvent.AD_STOP, {});
+        } catch (e) { errorLog(["err29", e.message, e.stack]); }
+    };
+    VideoPlayer.prototype.pause = function pause() {
+        try {
+        if (!this.flags.started || this.flags.paused || this.flags.stopped) {
+            return;
+        }
+        try {
+            this.mediaPlayer.pause();
+            this.flags.paused = this.parent.context.flags.paused = true;
+        } catch (e) {
+            return this.error({status: "Video creative internal player error during pauseAd", code: 405, errno: 205});
+        }
+        } catch (e) { errorLog(["err30", e.message, e.stack]); }
+    };
+    VideoPlayer.prototype.resume = function resume() {
+        try {
+        if (!this.flags.started || !this.flags.paused || this.flags.stopped) {
+            return;
+        }
+        try {
+            this.mediaPlayer.play();
+            //this.flags.paused = this.parent.context.flags.paused = false;
+        } catch (e) {
+            return this.error({status: "Video creative internal player error during resumeAd", code: 405, errno: 206}, true);
+        }
+        } catch (e) { errorLog(["err31", e.message, e.stack]); }
+    };
+    VideoPlayer.prototype.setSize = function (width, height) {
+        try {
+        if (!this.flags.loaded || this.flags.stopped) {
+            return;
+        }
+        try {
+        } catch (e) {
+            return this.error({status: "Video creative internal player error during resizeAd", code: 405, errno: 207});
+        }
+        } catch (e) { errorLog(["err32", e.message, e.stack]); }
+    };
+    VideoPlayer.prototype.setVolume = function setVolume(value) {
+        try {
+        if (!this.flags.loaded || this.flags.stopped) {
+            return;
+        }
+        try {
+            this.mediaPlayer.volume = value;
+            if(this.flags.muted && value > 0) {
+                VideoPlayer.$dispatchEvent.call(this, VideoEvent.AD_UNMUTE, {});
+            }
+            if(!this.flags.muted && value === 0) {
+                VideoPlayer.$dispatchEvent.call(this, VideoEvent.AD_MUTE, {});
+            }
+            this.flags.muted = value === 0;
+        } catch (e) {
+            return this.error({status: "Video creative internal player error during setAdVolume", code: 405, errno: 208});
+        }
+        } catch (e) { errorLog(["err33", e.message, e.stack]); }
+    };
+    VideoPlayer.prototype.getMetaData = function getMetaData() {
+        try {
+        if (!this.flags.loaded || this.flags.stopped) {
+            return {};
+        }
+        try {
+            var meta = {
+                currentTime: this.mediaPlayer.currentTime,
+                duration: this.mediaPlayer.duration || -2,
+                width: this.mediaPlayer.videoWidth,
+                height: this.mediaPlayer.videoHeight,
+                volume: this.mediaPlayer.volume,
+                muted: 0,
+                percent: 0
+            };
+            meta.currentTime = meta.duration > 0 && meta.currentTime >= 0 ? meta.currentTime : -2;
+            meta.percent = this.mediaPlayer.duration > 0 ? this.mediaPlayer.currentTime / this.mediaPlayer.duration : 0;
+            meta.muted = this.mediaPlayer.muted;
+            meta.inited = true;
+        } catch (e) {
+            this.error({status: "Video creative internal player error during getMetaData", code: 405, errno: 209});
+        }
+        } catch (e) { errorLog(["err34", e.message, e.stack]); }
+        return meta || {};
+    };
+    VideoPlayer.prototype.clickHandler = function (event) {
+        try {
+        if(!event.target.getAttribute("wb-event")) {
+            return;
+        }
+        switch(event.target.getAttribute("wb-event")) {
+            case "click":
+                we.open(this.adLink);
+                VideoPlayer.$dispatchEvent.call(this, VideoEvent.USER_CLICK, this.getMetaData());
+                this.pause();
+                break;
+            case "adClickThru":
+                we.open(this.adLink);
+                VideoPlayer.$dispatchEvent.call(this, VideoEvent.USER_ACCEPT_INVENTATION, this.getMetaData());
+                VideoPlayer.$dispatchEvent.call(this, VideoEvent.USER_CLICK, this.getMetaData());
+                this.pause();
+                break;
+            case "skip":
+                VideoPlayer.$dispatchEvent.call(this, VideoEvent.USER_SKIP, this.getMetaData());
+                this.stop();
+                break;
+            case "close":
+                VideoPlayer.$dispatchEvent.call(this, VideoEvent.USER_CLOSE, this.getMetaData());
+                this.stop();
+                break;
+            case "mute":
+                this.setVolume(0);
+                break;
+            case "unmute":
+                this.setVolume(1);
+                break;
+            case "resume":
+                this.resume();
+                break;
+        }
+        } catch (e) { errorLog(["err35", e.message, e.stack]); }
+    };
+    VideoPlayer.prototype.error = function error(data, is_terminate) {
+        try {
+        this.flags.error = this.parent.context.flags.error = true;
+        if (is_terminate) VideoPlayer.cleanSlot.call(this);
+        return VideoPlayer.$dispatchEvent.call(this, VideoEvent.AD_ERROR, data || {});
+        } catch (e) { errorLog(["err36", e.message, e.stack]); }
+    };
+    VideoPlayer.cleanSlot = function cleanSlot() {
+        try {
+        if (!this.flags.inited) {
+            return;
+        }
+        this.flags.inited = false;
+
+        try {
+            VideoPlayer.allowEvents.forEach(function (eventName) {
+                this.mediaPlayer.removeEventListener(eventName, VideoPlayer.videoEventHandler, true);
+            }.bind(this));
+
+            if (!this.flags.stopped) {
+                if (!this.parent.context.parameters.cloneSlot) this.mediaPlayer.volume = 0; //чтобы не мьютить видео из оригинального слота
+                this.mediaPlayer.pause();
+            }
+        } catch (e) {}
+        this.flags.stopped = this.parent.context.flags.stopped = true;
+
+        restoreVideoSlot.call(this.parent.context);
+        if (this.root) this.root.parentNode.removeChild(this.root);
+        } catch (e) { errorLog(["err37", e.message, e.stack]); }
+    };
+    VideoPlayer.videoEventHandler = function videoEventHandler(event) {
+        try {
+        var app = event.currentTarget.context,
+            metaData = app.getMetaData();
+
+        if (!app.flags.inited) {
+            return;
+        }
+        event.currentTarget.controls = false;
+        switch (event.type) {
+            case "loadedmetadata":
+                event.currentTarget.removeEventListener("suspend", VideoPlayer.videoEventHandler, true);
+                break;
+            case "playing":
+                if (app.parent.context.parameters.is_brand_protected === false) {
+                    app.parent.context.parameters.is_brand_protected = true;
+                    $dispatchMessage(MessageEvent.BP_TURN_ON);
+                }
+                if (app.flags.started) {
+                    if (app.flags.paused) {
+                        app.flags.paused = app.parent.context.flags.paused = false;
+                        VideoPlayer.$dispatchEvent.call(app, VideoEvent.AD_RESUME, metaData);
+                    }
+                }
+                else {
+                    app.flags.started = app.parent.context.flags.started = app.flags.middleEvent[0] = true;
+                    $delay(function() {
+                        VideoPlayer.$dispatchEvent.call(app, VideoEvent.AD_START, metaData);
+                        VideoPlayer.$dispatchEvent.call(app, VideoEvent.VIDEO_START, metaData);
+                        VideoPlayer.$dispatchEvent.call(app, VideoEvent.AD_IMPRESSION, metaData);
+                    }.bind(app), 20);
+                }
+                app.root.className = "play";
+				VideoPlayer.$updateView.call(app, metaData);
+                break;
+            case "pause":
+                if (app.parent.context.parameters.is_brand_protected) {
+                    app.parent.context.parameters.is_brand_protected = false;
+                    $dispatchMessage(MessageEvent.BP_TURN_OFF);
+                }
+                if (metaData.percent > 0.99) {
+                    return;
+                }
+                app.root.className = "pause";
+                app.flags.paused = app.parent.context.flags.paused = true;
+                VideoPlayer.$dispatchEvent.call(app, VideoEvent.AD_PAUSE, metaData);
+                break;
+            case "ended":
+                if (!app.flags.middleEvent[4]) {
+                    app.flags.middleEvent[4] = true;
+                    VideoPlayer.$dispatchEvent.call(app, VideoEvent.VIDEO_COMPLETE, metaData);
+                    setTimeout(app.stop.bind(app), 500);
+                }
+                break;
+            case "timeupdate":
+                if (metaData.percent >= 0.25 && !app.flags.middleEvent[1]) {
+                    app.flags.middleEvent[1] = true;
+                    VideoPlayer.$dispatchEvent.call(app, VideoEvent.VIDEO_FIRST_QUARTILE, metaData);
+                }
+                else if (metaData.percent >= 0.5 && !app.flags.middleEvent[2]) {
+                    app.flags.middleEvent[2] = true;
+                    VideoPlayer.$dispatchEvent.call(app, VideoEvent.VIDEO_MIDPOINT, metaData);
+                }
+                else if (metaData.percent >= 0.75 && !app.flags.middleEvent[3]) {
+                    app.flags.middleEvent[3] = true;
+                    VideoPlayer.$dispatchEvent.call(app, VideoEvent.VIDEO_THIRD_QUARTILE, metaData);
+                }
+                VideoPlayer.$updateView.call(app, metaData);
+                break;
+            case "suspend":
+                event.currentTarget.controls = "controls";
+                break;
+            case "volumechange":
+                VideoPlayer.$dispatchEvent.call(app, VideoEvent.AD_VOLUME_CHANGE, metaData);
+                break;
+            case "error":
+                app.flags.error = app.parent.context.flags.error = true;
+                VideoPlayer.cleanSlot.call(app);
+                VideoPlayer.$dispatchEvent.call(app, VideoEvent.AD_ERROR, {status: event.toString(), code: 405, errno: 201});
+                break;
+        }
+        } catch (e) { errorLog(["err38", e.message, e.stack]); }
+    };
+    VideoPlayer.$dispatchEvent = function $dispatchEvent(type, data) {
+        try {
+        this.parent.dispatcher.call(this.parent.context, new VideoEvent(type, data));
+        } catch (e) { errorLog(["err39", e.message, e.stack]); }
+    };
+    VideoPlayer.allowEvents = ["playing", "pause", "ended", "timeupdate", "suspend", "error", "loadedmetadata", "volumechange"];
+    VideoPlayer.$updateView = function(meta) {
+        try {
+        if(!this.extensions.controls) {
+			if(!this.controls) {
+				VideoPlayer.$installViewNoControls.call(this);
+			}
+            return;
+        }
+
+        if(!this.controls) {
+            VideoPlayer.$installView.call(this);
+        }
+
+        if(!this.extensions.isClickable) {
+            this.controls.adClickButton.style.display = "none";
+        }
+        else {
+            if(!this.flags.initView) {
+                //this.flags.initView = true;
+                this.controls.adClickButton.style.marginLeft = -(this.controls.adClickButton.clientWidth / 2) + "px";
+            }
+        }
+
+        if(!meta.inited || this.extensions.skipTime > meta.duration || this.extensions.skipTime - meta.currentTime > 0) {
+            this.controls.skipButton.style.display = "none";
+        }
+        else {
+            this.controls.skipButton.style.display = "block";
+            this.controls.skipButton.setAttribute("wb-event", "skip");
+        }
+
+        if(!meta.inited || this.extensions.closeTime > meta.duration) {
+            this.controls.closeButton.style.display = "none";
+        }
+        else {
+            if(this.extensions.closeTime - meta.currentTime > 0) {
+                this.controls.closeButton.style.display = "none";
+                this.controls.closeButton.innerText = time2str(this.extensions.closeTime - meta.currentTime + 1);
+            }
+            else {
+                this.controls.closeButton.innerText = "";
+                this.controls.closeButton.setAttribute("wb-event", "close");
+            }
+            this.controls.closeButton.style.display = "block";
+        }
+
+        if (!meta.inited) {
+            this.controls.soundButton.style.display = "none";
+        }
+        else {
+            if (meta.muted || meta.volume == 0) {
+                this.controls.soundButton.className = "wb-button-sound off";
+                this.controls.soundButton.setAttribute("wb-event", "unmute");
+            }
+            else {
+                this.controls.soundButton.className = "wb-button-sound on";
+                this.controls.soundButton.setAttribute("wb-event", "mute");
+            }
+            this.controls.soundButton.style.display = "block";
+        }
+        } catch (e) { errorLog(["err40", e.message, e.stack]); }
+    };
+    VideoPlayer.$installViewNoControls = function () {
+		try {
+        var clickArea = bo[ma]("div");
+        clickArea.setAttribute("wb-event", "click");
+        clickArea.className = "wb-area-click";
+
+		var resumeArea = bo[ma]("div");
+        resumeArea.setAttribute("wb-event", "resume");
+        resumeArea.className = "wb-area-resume" + (typeof this.parent.context.parameters.is_brand_protected != "undefined" ? "-dark" : "");
+
+        this.root.addEventListener("click", this.clickHandler.bind(this), true);
+
+        this.controls = {
+            clickArea: this.root.appendChild(clickArea),
+			resumeArea: this.root.appendChild(resumeArea)
+        };
+        } catch (e) { errorLog(["err41", e.message, e.stack]); }
+    };
+	VideoPlayer.$installView = function () {
+        try {
+        if(!this.extensions.controls) {
+            return;
+        }
+
+        var clickArea = bo[ma]("div");
+        clickArea.setAttribute("wb-event", "click");
+        clickArea.className = "wb-area-click";
+
+        var resumeArea = bo[ma]("div");
+        resumeArea.setAttribute("wb-event", "resume");
+        resumeArea.className = "wb-area-resume" + (typeof this.parent.context.parameters.is_brand_protected != "undefined" ? "-dark" : "");
+
+        var closeButton = bo[ma]("div");
+        closeButton.setAttribute("wb-event", "none");
+        closeButton.className = "wb-button-close";
+
+        var skipButton = bo[ma]("div");
+        skipButton.innerText = decodeURIComponent("%D0%9F%D1%80%D0%BE%D0%BF%D1%83%D1%81%D1%82%D0%B8%D1%82%D1%8C");
+        skipButton.setAttribute("wb-event", "none");
+        skipButton.className = "wb-button-skip";
+
+        var adClickButton = bo[ma]("div");
+        adClickButton.innerText = this.extensions.linkText;
+        adClickButton.setAttribute("wb-event", "adClickThru");
+        adClickButton.className = "wb-button-click";
+
+        var soundButton = bo[ma]("div");
+        soundButton.setAttribute("wb-event", "mute");
+        soundButton.className = "wb-button-sound";
+
+        this.root.addEventListener("click", this.clickHandler.bind(this), true);
+
+        this.controls = {
+            clickArea: this.root.appendChild(clickArea),
+            closeButton: this.root.appendChild(closeButton),
+            skipButton: this.root.appendChild(skipButton),
+            adClickButton: this.root.appendChild(adClickButton),
+            soundButton: this.root.appendChild(soundButton),
+            resumeArea: this.root.appendChild(resumeArea)
+        };
+        } catch (e) { errorLog(["err42", e.message, e.stack]); }
+    };
+
+    var VPAIDPlayer = function VPAIDPlayer(root) {
+        try {
+        this.root = root.appendChild(bo[ma]("div")); //this.root = root; //создаем слой, чтобы было, что удалять
+        this.root.id = "wb-video-player";
+        //this.root.className = "waiting"; // display:none ломает <video>
+        this.flags = {middleEvent: [false, false, false, false, false]};
+        } catch (e) { errorLog(["err43", e.message, e.stack]); }
+    };
+    VPAIDPlayer.prototype.init = function init(data, dispatcher, context) {
+        try {
+        if (this.flags.inited) {
+            return;
+        }
+        this.flags.inited = true;
+        this.parent = {
+            dispatcher: dispatcher,
+            context: context
+        };
+
+        var vpaidJSUrl = null,
+            mediaFiles = data.xmlLoader.getMediaFiles();
+
+        for (var i = 0; i < mediaFiles.length; i++) {
+            if (mediaFiles[i].type == "application/javascript") {
+                vpaidJSUrl = mediaFiles[i].src;
+            }
+        }
+        if (!vpaidJSUrl) {
+            return this.error({status: "VPAID creative was not found", code: 403, errno: 300}, true);
+        }
+
+        var extensions = data.xmlLoader.getExtensions(),
+            style;
+
+        this.extensions = {
+            controls: extensions.controls === "1",
+            skipTime: str2time(extensions.skipTime),
+            closeTime: str2time(extensions.skipTime2),
+            isClickable: extensions.isClickable !== "0",
+            adLink: extensions.adLink || "http://instreamvideo.ru",
+            linkText: decodeURIComponent(extensions.linkText || "%D0%9F%D0%B5%D1%80%D0%B5%D0%B9%D1%82%D0%B8%20%D0%BD%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82%20%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D0%BE%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8F"),
+            allowBlock: extensions.Allowblock
+        };
+
+        style = bo[ma]("link");
+        style.href = data.mediapath + ( this.extensions.controls ? "wb-video-player" : "wb-no-controls" ) + ( this.parent.context.parameters.adParameters.environment ? "_" + this.parent.context.parameters.adParameters.environment : "" ) + ".css";
+        style.rel = "stylesheet";
+        this.root.appendChild(style);
+
+        this.slot = this.root.appendChild(bo[ma]("iframe"));
+        this.slot.id = this.slot.name = "wb-frame-container-" + (new Date()).getMilliseconds() + Math.ceil(Math.random() * 1000);
+        this.slot.style.width = "100%";
+        this.slot.style.height = "100%";
+        this.slot.style.border = "0";
+		this.slot.scrolling = "no";
+		this.slot.src = "about:blank";
+
+		var totalCount = 0;
+        (function checkSlot() {
+            var slot_document = this.slot.contentDocument || (this.slot.contentWindow || window.frames[this.slot.name] || this.slot).document, slot_window;
+            if (!slot_document) {
+                if (totalCount) return this.error({status: "VPAID slot could not be created", code: 405, errno: 303}, true);
+                else totalCount++ || $delay(checkSlot.bind(this), 200);
+            }
+            else {
+                slot_window = slot_document.defaultView || slot_document.parentWindow;
+                slot_document.write("<script src=" + vpaidJSUrl + "></scr" + "ipt>");
+                slot_document.close();
+
+                totalCount = 0;
+                var interval = setInterval(function(){
+                    try {
+                    if(typeof slot_window.getVPAIDAd === "function" && slot_window.hasOwnProperty("getVPAIDAd")) {
+                        clearInterval(interval);
+
+                        slot_document.body = slot_document.body || this.slot.appendChild(bo[ma]("BODY"));
+                        slot_document.body.style.position = "relative";
+                        slot_document.body.style.padding = "0";
+                        slot_document.body.style.margin = "0";
+
+                        if (this.parent.context.parameters.videoSlot == null) {
+                            this.videoSlot = slot_document.body.appendChild(bo[ma]("video"));
+                        }
+                        else {
+                            this.videoSlot = slot_document.body.appendChild(this.parent.context.parameters.videoSlot);
+                            this.videoSlot.style.display = "block";
+
+                            //mobile only
+                            this.videoSlot.setAttribute('playsinline', '');
+                            this.videoSlot.setAttribute('webkit-playsinline', '');
+                        }
+
+                        this.videoSlot.style.width = "100%";
+                        this.videoSlot.style.height = "100%";
+                        this.videoSlot.style.position = "absolute";
+
+                        try {
+                            this.mediaPlayer = slot_window.getVPAIDAd();
+                            this.mediaPlayer.handshakeVersion("2.0");
+
+                            for (var item in VPAIDEvent) {
+                                if(item && VPAIDEvent.hasOwnProperty(item) && typeof VPAIDEvent[item] === "string") {
+                                    this.mediaPlayer.subscribe(VPAIDPlayer.vpaidEventHandler.bind(this, VPAIDEvent[item]), VPAIDEvent[item], this);
+                                }
+                            }
+
+                            //this.mediaPlayer.initAd(this.slot.offsetWidth, this.slot.offsetHeight, "normal", 500, {AdParameters:data.xmlLoader.getAdParameters()}, {slot: slot_document.body, videoSlot: this.videoSlot});
+                            this.mediaPlayer.initAd(this.parent.context.parameters.size.width, this.parent.context.parameters.size.height, "normal", 500, {AdParameters:data.xmlLoader.getAdParameters()}, {slot: slot_document.body, videoSlot: this.videoSlot});
+                            VPAIDPlayer.$dispatchEvent.call(this, VideoEvent.AD_INIT, {});
+                        } catch (e) {
+                            return this.error({status: "VPAID creative internal JS error during initAd", code: 405, errno: 301}, true);
+                        }
+
+                        this.timeoutInterval = setTimeout(function(){
+                            try {
+                            if (!this.flags.started) {
+                                //errorLog(["err1003", this.flags.loaded, this.parent.context.parameters.adParameters.vpaid_timeout, data.xmlLoader.getAdId()]);
+                                return this.error({status: "VPAID creative was stopped because of time-out", code: 402, errno: 302}, true);
+                            }
+                            } catch (e) { errorLog(["err106", e.message, e.stack]); }
+                        }.bind(this), +this.parent.context.parameters.adParameters.vpaid_timeout ? +this.parent.context.parameters.adParameters.vpaid_timeout * 1000 : 3000);
+                    }
+                    else if(totalCount >= 20) {
+                        clearInterval(interval);
+                        return this.error({status: "Function \"getVPAIDAd\" was not found", code: 405, errno: 303}, true);
+                    }
+                    totalCount++;
+                    } catch (e) { clearInterval(interval);errorLog(["err105", "done++", slot_document.body, e.message, e.stack]); }
+                }.bind(this), 100);
+            }
+        }).bind(this).call();
+        } catch (e) { errorLog(["err104", "done!!", this.root, this.slot.contentDocument || (this.slot.contentWindow || window.frames[this.slot.name] || this.slot).document, e.message, e.stack]); }
+    };
+    VPAIDPlayer.prototype.play = function play() {
+        try {
+        if (!this.flags.loaded || this.flags.played || this.flags.stopped) {
+            return;
+        }
+        try {
+            VPAIDPlayer.$dispatchEvent.call(this, VideoEvent.AD_LAUNCH, {});
+            this.mediaPlayer.startAd();
+            this.flags.played = this.parent.context.flags.played = true;
+        } catch (e) {
+            return this.error({status: "VPAID creative internal JS error during startAd", code: 405, errno: 304}, true);
+        }
+        } catch (e) { errorLog(["err44", e.message, e.stack]); }
+    };
+    VPAIDPlayer.prototype.stop = function stop() {
+        try {
+        if (this.flags.stopped) {
+            return;
+        }
+        VPAIDPlayer.cleanSlot.call(this);
+        VPAIDPlayer.$dispatchEvent.call(this, VideoEvent.AD_STOP, {});
+        } catch (e) { errorLog(["err45", e.message, e.stack]); }
+    };
+    VPAIDPlayer.prototype.pause = function pause() {
+        try {
+        if (!this.flags.started || this.flags.paused || this.flags.stopped) {
+            return;
+        }
+        try {
+            this.mediaPlayer.pauseAd();
+            this.flags.paused = this.parent.context.flags.paused = true;
+        } catch (e) {
+            return this.error({status: "VPAID creative internal JS error during pauseAd", code: 405, errno: 305});
+        }
+        } catch (e) { errorLog(["err46", e.message, e.stack]); }
+    };
+    VPAIDPlayer.prototype.resume = function resume() {
+        try {
+        if (!this.flags.started || !this.flags.paused || this.flags.stopped) {
+            return;
+        }
+        try {
+            this.mediaPlayer.resumeAd();
+            //this.flags.paused = this.parent.context.flags.paused = false;
+        } catch (e) {
+            return this.error({status: "VPAID creative internal JS error during resumeAd", code: 405, errno: 306}, true);
+        }
+        } catch (e) { errorLog(["err47", e.message, e.stack]); }
+    };
+    VPAIDPlayer.prototype.setSize = function (width, height) {
+        try {
+        if (!this.flags.loaded || this.flags.stopped) {
+            return;
+        }
+        this.slot.style.width = "100%";
+        this.slot.style.height = "100%";
+        try {
+            this.mediaPlayer.resizeAd(width, height, "normal");
+        } catch (e) {
+            return this.error({status: "VPAID creative internal JS error during resizeAd", code: 405, errno: 307});
+        }
+        } catch (e) { errorLog(["err48", e.message, e.stack]); }
+    };
+    VPAIDPlayer.prototype.setVolume = function setVolume(value) {
+        try {
+        if (!this.flags.loaded || this.flags.stopped) {
+            return;
+        }
+        try {
+            this.mediaPlayer.setAdVolume(value);
+            this.flags.muted = value === 0;
+        } catch (e) {
+            return this.error({status: "VPAID creative internal JS error during setAdVolume", code: 405, errno: 308});
+        }
+        } catch (e) { errorLog(["err49", e.message, e.stack]); }
+    };
+    VPAIDPlayer.prototype.getMetaData = function getMetaData() {
+        try {
+        if (!this.flags.loaded || this.flags.stopped) {
+            return {};
+        }
+        try {
+            var meta = {
+                currentTime: this.mediaPlayer.getAdRemainingTime(),
+                duration: this.mediaPlayer.getAdDuration() || -2,
+                width: this.mediaPlayer.getAdWidth(),
+                height: this.mediaPlayer.getAdHeight(),
+                volume: this.mediaPlayer.getAdVolume(),
+                muted: 0,
+                percent: 0
+            };
+            meta.currentTime = meta.duration > 0 && meta.currentTime >= 0 ? meta.duration - meta.currentTime : -2;
+            meta.percent = meta.duration > 0 ? meta.currentTime / meta.duration : 0;
+            meta.muted = meta.volume === 0;
+            meta.inited = true;
+        } catch (e) {
+            this.error({status: "VPAID creative internal JS error during getMetaData", code: 405, errno: 309});
+        }
+        } catch (e) { errorLog(["err50", e.message, e.stack]); }
+        return meta || {};
+    };
+    VPAIDPlayer.prototype.clickHandler = function (event) {
+        try {
+        if(!event.target.getAttribute("wb-event")) {
+            return;
+        }
+        switch(event.target.getAttribute("wb-event")) {
+            case "skip":
+                VPAIDPlayer.$dispatchEvent.call(this, VideoEvent.USER_SKIP, this.getMetaData());
+                this.stop();
+                break;
+            case "close":
+                VPAIDPlayer.$dispatchEvent.call(this, VideoEvent.USER_CLOSE, this.getMetaData());
+                this.stop();
+                break;
+            case "mute":
+                this.setVolume(0);
+                break;
+            case "unmute":
+                this.setVolume(1);
+                break;
+            case "resume":
+                this.resume();
+                break;
+        }
+        } catch (e) { errorLog(["err51", e.message, e.stack]); }
+    };
+    VPAIDPlayer.prototype.error = function error(data, is_terminate) {
+        try {
+        this.flags.error = this.parent.context.flags.error = true;
+        if (is_terminate) VPAIDPlayer.cleanSlot.call(this);
+        return VPAIDPlayer.$dispatchEvent.call(this, VideoEvent.AD_ERROR, data || {});
+        } catch (e) { errorLog(["err52", e.message, e.stack]); }
+    };
+    VPAIDPlayer.cleanSlot = function cleanSlot() {
+        try {
+        if (!this.flags.inited) {
+            return;
+        }
+        this.flags.inited = false;
+if (!this.flags.impressed && this.parent.context.parameters.adParameters.pid == '300') errorLog(["err321", "; caller = " + (arguments.callee.caller?arguments.callee.caller.name:""), "; argument = " + (arguments.callee.caller?arguments.callee.caller.arguments[0].status||arguments.callee.caller.arguments[0]:""), "; events = " + (this.eventlist || []).join(" -> "), ";", this.parent.context.xmlLoader.getAdId(), this.parent.context.xmlLoader.wrapper.url]);
+        try {
+            for (var item in VPAIDEvent) {
+                if(item && VPAIDEvent.hasOwnProperty(item) && typeof VPAIDEvent[item] === "string") {
+                    this.mediaPlayer.unsubscribe(VPAIDPlayer.vpaidEventHandler.bind(this, VPAIDEvent[item]), VPAIDEvent[item]);
+                }
+            }
+
+            if (!this.flags.stopped) {
+                if (!this.parent.context.parameters.cloneSlot) this.mediaPlayer.setAdVolume(0);
+                this.mediaPlayer.stopAd();
+            }
+        } catch (e) {}
+        this.flags.stopped = this.parent.context.flags.stopped = true;
+
+if (this.flags.viewed && !this.flags.impressed) {
+    //errorLog(["err1234", (this.eventlist || []).join(" -> "), this.parent.context.xmlLoader.getAdId(), this.parent.context.xmlLoader.wrapper.url]);
+}
+
+        if (this.timeoutInterval) clearTimeout(this.timeoutInterval);
+        this.timeoutInterval = false;
+
+        restoreVideoSlot.call(this.parent.context);
+        if (this.root) this.root.parentNode.removeChild(this.root);
+        } catch (e) { errorLog(["err53", e.message, e.stack]); }
+    };
+    VPAIDPlayer.vpaidEventHandler = function vpaidEventHandler(event) {
+        try {
+        var data = {},
+            videoEvent = VPAIDEvent.convertToVAST(event);
+
+        if (!this.flags.inited) {
+            return;
+        }
+        if(videoEvent) {
+            if (videoEvent != VideoEvent.VIDEO_PROGRESS) {
+                (this.eventlist = this.eventlist || []).push(videoEvent);
+            }
+            switch (videoEvent) {
+                case VideoEvent.AD_ERROR:
+                    data = {status: "VPAID creative internal error", code: 405, errno: 310};
+                    this.flags.error = this.parent.context.flags.error = true;
+                    this.flags.stopped = this.parent.context.flags.stopped = true;
+                    VPAIDPlayer.$updateViewInterval.call(this, false);
+                    VPAIDPlayer.cleanSlot.call(this);
+                    break;
+                case VideoEvent.AD_STOP:
+                    if (!this.flags.started) {
+                        event = VPAIDEvent.convertFromVAST(VideoEvent.AD_ERROR);
+                        data = {status: "VPAID creative genereted AdStopped before AdStarted", code: 405, errno: 311};
+                        this.flags.error = this.parent.context.flags.error = true;
+                    }
+                    this.flags.stopped = this.parent.context.flags.stopped = true;
+                    VPAIDPlayer.$updateViewInterval.call(this, false);
+                    VPAIDPlayer.cleanSlot.call(this);
+                    break;
+                case VideoEvent.USER_ACCEPT_INVENTATION:
+                case VideoEvent.USER_CLICK:
+                case VideoEvent.AD_PAUSE:
+                    if (videoEvent != VideoEvent.AD_PAUSE) this.pause();
+                    if (this.parent.context.parameters.is_brand_protected) {
+                        this.parent.context.parameters.is_brand_protected = false;
+                        $dispatchMessage(MessageEvent.BP_TURN_OFF);
+                    }
+                    this.root.className = "pause";
+                    this.flags.paused = this.parent.context.flags.paused = true;
+                    VPAIDPlayer.$updateViewInterval.call(this, false);
+                    break;
+                case VideoEvent.AD_READY:
+                    this.flags.loaded = this.parent.context.flags.loaded = true;
+                    break;
+                case VideoEvent.VIDEO_FIRST_QUARTILE:
+                    this.flags.middleEvent[1] = true;
+                    break;
+                case VideoEvent.VIDEO_MIDPOINT:
+                    this.flags.middleEvent[2] = true;
+                    break;
+                case VideoEvent.VIDEO_THIRD_QUARTILE:
+                    this.flags.middleEvent[3] = true;
+                    break;
+                case VideoEvent.VIDEO_COMPLETE:
+                    this.flags.middleEvent[4] = true;
+                    break;
+                case VideoEvent.AD_VIEWABLE:
+                    //if (this.parent.context.parameters.adParameters.pid == 162) errorLog(["err123", JSON.stringify(this.parent.context.xmlLoader.getEvents(VideoEvent.AD_VIEWABLE))]);
+                    //if (this.parent.context.parameters.adParameters.pid == 162) errorLog(["err123", URLUtils.getQueryParameter(this.parent.context.xmlLoader.url,"vtl")]);
+                    break;
+                case VideoEvent.AD_START:
+                    if (videoEvent == VideoEvent.AD_START) this.flags.viewed = this.parent.context.flags.viewed = true;
+                case VideoEvent.VIDEO_START:
+                case VideoEvent.AD_IMPRESSION:
+                    if (videoEvent == VideoEvent.AD_IMPRESSION) this.flags.impressed = this.parent.context.flags.impressed = true;
+                case VideoEvent.AD_RESUME:
+                case VideoEvent.VIDEO_PROGRESS:
+                    if (this.parent.context.parameters.is_brand_protected === false) {
+                        this.parent.context.parameters.is_brand_protected = true;
+                        $dispatchMessage(MessageEvent.BP_TURN_ON);
+                    }
+                    if (this.flags.started) {
+                        if (this.flags.paused) {
+                            this.flags.paused = this.parent.context.flags.paused = false;
+                        }
+                    }
+                    else {
+                        this.flags.started = this.parent.context.flags.started = this.flags.middleEvent[0] = true;
+                    }
+                    this.root.className = "play";
+                    VPAIDPlayer.$updateViewInterval.call(this, true);
+                    break;
+            }
+
+            if (videoEvent != VideoEvent.VIDEO_PROGRESS) {
+                VPAIDPlayer.$dispatchEvent.call(this, videoEvent, data);
+            }
+        }
+        } catch (e) { errorLog(["err54", e.message, e.stack]); }
+    };
+    VPAIDPlayer.$dispatchEvent = function $dispatchEvent(type, data) {
+        try {
+        this.parent.dispatcher.call(this.parent.context, new VideoEvent(type, data));
+        } catch (e) { errorLog(["err55", e.message, e.stack]); }
+    };
+    VPAIDPlayer.$updateViewInterval = function $updateViewInterval(mode) {
+        try {
+        if(mode) {
+            this.updateViewInterval = this.updateViewInterval ? this.updateViewInterval : setInterval(function () {
+                try {
+                VPAIDPlayer.$updateView.call(this, this.getMetaData());
+                } catch (e) { errorLog(["err57", e.message, e.stack]); }
+            }.bind(this), 500);
+        }
+        else {
+            if(this.updateViewInterval) clearInterval(this.updateViewInterval);
+            this.updateViewInterval = false;
+        }
+        } catch (e) { errorLog(["err56", e.message, e.stack]); }
+    };
+    VPAIDPlayer.$updateView = function(meta) {
+        try {
+        if(!this.extensions.controls) {
+			if(!this.controls) {
+				VPAIDPlayer.$installViewNoControls.call(this);
+			}
+            return;
+        }
+
+        if(!this.controls) {
+            VPAIDPlayer.$installView.call(this);
+        }
+
+        //if(!this.extensions.isClickable) {
+        //    this.controls.adClickButton.style.display = "none";
+        //}
+        //else {
+        //    if(!this.flags.initView) {
+        //        this.flags.initView = true;
+        //        this.controls.adClickButton.style.marginLeft = -(this.controls.adClickButton.clientWidth / 2) + "px";
+        //    }
+        //}
+
+        if(!meta.inited || this.extensions.skipTime > meta.duration || this.extensions.skipTime - meta.currentTime > 0) {
+            this.controls.skipButton.style.display = "none";
+        }
+        else {
+            this.controls.skipButton.style.display = "block";
+            this.controls.skipButton.setAttribute("wb-event", "skip");
+        }
+
+        if(!meta.inited || this.extensions.closeTime > meta.duration) {
+            this.controls.closeButton.style.display = "none";
+        }
+        else {
+            if(this.extensions.closeTime - meta.currentTime > 0) {
+                this.controls.closeButton.style.display = "none";
+                this.controls.closeButton.innerText = time2str(this.extensions.closeTime - meta.currentTime + 1);
+            }
+            else {
+                this.controls.closeButton.innerText = "";
+                this.controls.closeButton.setAttribute("wb-event", "close");
+            }
+            this.controls.closeButton.style.display = "block";
+        }
+
+        if (!meta.inited) {
+            this.controls.soundButton.style.display = "none";
+        }
+        else {
+            if(meta.muted || meta.volume == 0) {
+                this.controls.soundButton.className = "wb-button-sound off";
+                this.controls.soundButton.setAttribute("wb-event", "unmute");
+            }
+            else {
+                this.controls.soundButton.className = "wb-button-sound on";
+                this.controls.soundButton.setAttribute("wb-event", "mute");
+            }
+            this.controls.soundButton.style.display = "block";
+        }
+        } catch (e) { errorLog(["err58", e.message, e.stack]); }
+    };
+    VPAIDPlayer.$installViewNoControls = function () {
+        try {
+        //var clickArea = bo[ma]("div");
+        //clickArea.setAttribute("wb-event", "click");
+        //clickArea.className = "wb-area-click";
+
+		var resumeArea = bo[ma]("div");
+        resumeArea.setAttribute("wb-event", "resume");
+        resumeArea.className = "wb-area-resume" + (typeof this.parent.context.parameters.is_brand_protected != "undefined" ? "-dark" : "");
+
+        this.root.addEventListener("click", this.clickHandler.bind(this), true);
+
+        this.controls = {
+            //clickArea: this.root.appendChild(clickArea),
+			resumeArea: this.root.appendChild(resumeArea) // если креатив делает overlay в body, то resume-слой не может выйти из iframe и перекрыть, надо его добавлять тоже в body (window.parent.document.body)
+        };
+        } catch (e) { errorLog(["err59", e.message, e.stack]); }
+    };
+    VPAIDPlayer.$installView = function () {
+        try {
+        if(!this.extensions.controls) {
+            return;
+        }
+
+        //var clickArea = bo[ma]("div");
+        //clickArea.setAttribute("wb-event", "click");
+        //clickArea.className = "wb-area-click";
+
+        var resumeArea = bo[ma]("div");
+        resumeArea.setAttribute("wb-event", "resume");
+        resumeArea.className = "wb-area-resume" + (typeof this.parent.context.parameters.is_brand_protected != "undefined" ? "-dark" : "");
+
+        var closeButton = bo[ma]("div");
+        closeButton.setAttribute("wb-event", "none");
+        closeButton.className = "wb-button-close";
+
+        var skipButton = bo[ma]("div");
+        skipButton.innerText = decodeURIComponent("%D0%9F%D1%80%D0%BE%D0%BF%D1%83%D1%81%D1%82%D0%B8%D1%82%D1%8C");
+        skipButton.setAttribute("wb-event", "none");
+        skipButton.className = "wb-button-skip";
+
+        //var adClickButton = bo[ma]("div");
+        //adClickButton.innerText = this.extensions.linkText;
+        //adClickButton.setAttribute("wb-event", "adClickThru");
+        //adClickButton.className = "wb-button-click";
+
+        var soundButton = bo[ma]("div");
+        soundButton.setAttribute("wb-event", "mute");
+        soundButton.className = "wb-button-sound";
+
+        this.root.addEventListener("click", this.clickHandler.bind(this), true);
+
+        this.controls = {
+            //clickArea: this.root.appendChild(clickArea),
+            closeButton: this.root.appendChild(closeButton),
+            skipButton: this.root.appendChild(skipButton),
+            //adClickButton: this.root.appendChild(adClickButton),
+            soundButton: this.root.appendChild(soundButton),
+            resumeArea: this.root.appendChild(resumeArea)
+        };
+        } catch (e) { errorLog(["err60", e.message, e.stack]); }
+    };
+
+    function VPAIDInterface() {
+        try {
+        this.subscribers = {};
+        this.parameters = {
+            version: "2.0"
+        };
+        this.flags = {};
+        } catch (e) { errorLog(["err61", e.message, e.stack]); }
+    }
+    VPAIDInterface.prototype.handshakeVersion = function handshakeVersion() {
+        try {
+        return this.parameters.version;
+        } catch (e) { errorLog(["err62", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.initAd = function initAd(width, height, viewMode, desiredBitrate, creativeData, environmentVars) {
+        setTimeout(function () {
+        try {
+        if(this.flags.inited) {
+            return;
+        }
+        this.flags.inited = true;
+        var data = JSON.parse(creativeData.AdParameters || "{}");
+
+        ["mediapath", "url", "block_sequence", "vpaid_timeout", "duration"].forEach(function (parameter) { if (!data.hasOwnProperty(parameter)) this.flags.error = parameter; }.bind(this));
+        if (this.flags.error) return $mediaEventHandler.call(this, new VideoEvent(VideoEvent.AD_ERROR, {status: "Missing mandatory parameters \"" + this.flags.error + "\" in AdParameters", code: 901, errno: 400}));
+
+        ["pid", "vr"].forEach(function(parameter) { if (!(data[parameter] = URLUtils.getQueryParameter(data.url, parameter))) this.flags.error = parameter; }.bind(this));
+        if (this.flags.error) return $mediaEventHandler.call(this, new VideoEvent(VideoEvent.AD_ERROR, {status: "Missing mandatory parameters \"" + this.flags.error + "\" in url", code: 901, errno: 401}));
+
+        this.parameters.size = {
+            width: width,
+            height: height
+        };
+        this.parameters.viewMode = viewMode;
+        this.parameters.bitrate = desiredBitrate;
+        this.parameters.adParameters = data;
+        this.parameters.creativeData = creativeData;
+        this.parameters.is_mobile = isMobile();
+        this.parameters.source = {};
+
+        if (!(environmentVars.slot && typeof environmentVars.slot === "object" && environmentVars.slot.nodeType === 1 && environmentVars.slot.nodeName)) return $mediaEventHandler.call(this, new VideoEvent(VideoEvent.AD_ERROR, {status: "Missing mandatory parameter \"slot\" in environmentVars", code: 901, errno: 402}));
+        if (!(environmentVars.videoSlot && typeof environmentVars.videoSlot === "object" && environmentVars.videoSlot.nodeType === 1 && typeof environmentVars.videoSlot.nodeName === "string" && environmentVars.videoSlot.nodeName.toLocaleLowerCase() == "video") || !this.parameters.is_mobile) this.parameters.videoSlot = null;
+        else {
+            this.parameters.videoSlot = environmentVars.videoSlot;
+            prepareVideoSlot.call(this);
+        }
+
+        this.parameters.slot = environmentVars.slot.appendChild(bo[ma]("div"));
+        this.parameters.slot.id = "in-ad-parent";
+
+        this.parameters.slot.style.width = width + "px";
+        this.parameters.slot.style.height = height + "px";
+
+        //this.parameters.slot.addEventListener("contextmenu", function (event) {
+        //    event = event || window.event;
+        //    if (event.stopPropagation) {
+        //        event.stopPropagation();
+        //    }
+        //    if (event.preventDefault) {
+        //        event.preventDefault();
+        //    }
+        //    event.cancelBubble = true;
+        //    return false;
+        //});
+
+        if (window.addEventListener) { window.addEventListener("message", $messageHandler.bind(this)); } else { window.attachEvent("onmessage", $messageHandler.bind(this)); }
+        $dispatchMessage(MessageEvent.ORIGIN);
+
+        setTimeout(function () {
+            try {
+            this.parameters.source = WindowUtils.getOriginInfo(this.parameters.source.origin);
+            $prepareAd.call(this, URLUtils.replaceQueryParameters(this.parameters.adParameters.url, "dl") + '&dl=' + this.parameters.source.origin + '&dc=' + this.parameters.source.chain);
+            } catch (e) { errorLog(["err64", "done?", e.message, e.stack]); }
+        }.bind(this), 100);
+        } catch (e) { errorLog(["err63", creativeData.AdParameters == "", e.message, e.stack]); }
+        }.bind(this), 400);
+    };
+    VPAIDInterface.prototype.startAd = function () {
+        try {
+        if (!this.flags.loaded || this.flags.played || this.flags.stopped) {
+            return;
+        }
+        this.mediaPlayer.play();
+        } catch (e) { errorLog(["err65", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.stopAd = function () {
+        try {
+        if (!this.mediaPlayer || this.flags.stopped) {
+            return;
+        }
+        this.mediaPlayer.stop();
+        } catch (e) { errorLog(["err66", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.skipAd = function () {
+        try {
+        if (!this.mediaPlayer || this.flags.stopped) {
+            return;
+        }
+        this.mediaPlayer.stop();
+        } catch (e) { errorLog(["err67", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.pauseAd = function () {
+        try {
+        if (!this.flags.started || this.flags.paused || this.flags.stopped) {
+            return;
+        }
+        this.mediaPlayer.pause();
+        } catch (e) { errorLog(["err68", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.resumeAd = function () {
+        try {
+        if (!this.flags.started || !this.flags.paused || this.flags.stopped) {
+            return;
+        }
+        this.mediaPlayer.resume();
+        } catch (e) { errorLog(["err69", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.resizeAd = function (width, height) {
+        try {
+        if (!this.flags.loaded || this.flags.stopped) {
+            return;
+        }
+        this.parameters.slot.style.width = width + "px";
+        this.parameters.slot.style.height = height + "px";
+        this.mediaPlayer.setSize(width, height); // #wb-video-player [class^="wb-area-"] height: auto; !!!OR!!! min-width: 100%; min-height: 100%; второй вариант лучше, т.к. первый подгоняет под aspectratio и в итоге размеры отличаются от заявленных
+        } catch (e) { errorLog(["err70", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.expandAd = function () {
+        try {
+        console.log("AdLog", "The method \"expandAd\" is not implemented");
+        } catch (e) { errorLog(["err71", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.collapseAd = function () {
+        try {
+        console.log("AdLog", "The method \"collapseAd\" is not implemented");
+        } catch (e) { errorLog(["err72", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.setAdVolume = function (value) {
+        try {
+        if (!this.flags.loaded || this.flags.stopped) {
+            return;
+        }
+        this.mediaPlayer.setVolume(value > 1 ? value / 100 : value);
+        } catch (e) { errorLog(["err73", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.getAdVolume = function () {
+        try {
+        if (!this.flags.loaded || this.flags.stopped) {
+            return;
+        }
+        return this.mediaPlayer.getMetaData().volume;
+        } catch (e) { errorLog(["err74", "done!!", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.getAdDuration = function () {
+        try {
+        if (!this.flags.loaded || this.flags.stopped) {
+            return;
+        }
+        return this.mediaPlayer.getMetaData().duration;
+        } catch (e) { errorLog(["err75", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.getAdLinear = function () {
+        return true;
+    };
+    VPAIDInterface.prototype.getAdWidth = function () {
+        try {
+        return this.parameters.size.width;
+        } catch (e) { errorLog(["err76", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.getAdHeight = function () {
+        try {
+        return this.parameters.size.height;
+        } catch (e) { errorLog(["err77", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.getAdRemainingTime = function () {
+        try {
+        if (!this.flags.loaded || this.flags.stopped) {
+            return;
+        }
+        var meta = this.mediaPlayer.getMetaData();
+        return meta.duration - meta.currentTime;
+        } catch (e) { errorLog(["err78", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.getAdExpanded = function () {
+        return false;
+    };
+    VPAIDInterface.prototype.getAdSkippableState = function () {
+        try {
+        return this.parameters.skippableState;
+        } catch (e) { errorLog(["err79", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.getAdIcons = function () {
+        try {
+        return this.parameters.icons;
+        } catch (e) { errorLog(["err80", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.getAdCompanions = function () {
+        try {
+        return this.parameters.companions;
+        } catch (e) { errorLog(["err81", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.subscribe = function (handler, events, context) {
+        try {
+        if (typeof events === "string") {
+            events = [events];
+        }
+        for (var i = 0, max = events.length; i < max; i++) {
+            var event = events[i];
+            if (!this.subscribers[event]) {
+                this.subscribers[event] = [];
+            }
+            this.subscribers[event].push({fn: handler, ctx: context || null});
+        }
+        } catch (e) { errorLog(["err82", e.message, e.stack]); }
+    };
+    VPAIDInterface.prototype.unsubscribe = function (handler, events) {
+        try {
+        if (typeof events === "string") {
+            events = [events];
+        }
+        for (var i = events.length; i >= 0; i--) {
+            var subscribers = (this.subscribers || {})[events[i]];
+            if (subscribers && Array.isArray(subscribers) && subscribers.length) {
+                for (var j = 0, max = subscribers.length; j < max; j++) {
+                    if (subscribers[j].fn === handler) {
+                        subscribers.splice(j, 1);
+                    }
+                }
+            }
+        }
+        } catch (e) { errorLog(["err83", "done?", events, e.message, e.stack]); }
+    };
+
+    function $prepareAd(url) {
+        try {
+        this.mediaPlayer = false;
+        this.flags.loaded = false;
+        this.flags.played = false;
+        this.flags.paused = false;
+        this.flags.stopped = false;
+        this.flags.started = false;
+
+        this.xmlLoader = new XMLLoader();
+        this.xmlLoader.load(url, function (err, result) {
+            try {
+            if (err) {
+                $mediaEventHandler.call(this, new VideoEvent(VideoEvent.AD_ERROR, err), true);
+                return;
+            }
+
+            $mediaEventHandler.call(this, new VideoEvent(VideoEvent.AD_SENT, {}));
+
+            if (XMLLoader.getNoMulti(this.xmlLoader.currentXML)) {
+                WindowUtils.storage(URLUtils.getQueryParameter(url, "pid") + URLUtils.getQueryParameter(url, "vr"), true);
+            }
+
+            var MediaPlayer;
+            if (result.type == "VideoPlayer") {
+                MediaPlayer = VideoPlayer;
+            }
+            else {
+                MediaPlayer = result.type == "VPAIDPlayer" ? VPAIDPlayer : "Unknown";
+            }
+
+            if (typeof MediaPlayer != "function") {
+                $mediaEventHandler.call(this, new VideoEvent(VideoEvent.AD_ERROR, {status: "Unknown mediaType \"" + result.type + "\"", code: 403, errno: 403}), true);
+                return;
+            }
+
+            this.mediaPlayer = new MediaPlayer(this.parameters.slot);
+            this.mediaPlayer.init({
+                mediapath: this.parameters.adParameters["mediapath"],
+                xmlLoader: this.xmlLoader
+            }, $mediaEventHandler, this);
+            } catch (e) { errorLog(["err85", e.message, e.stack]); }
+        }.bind(this), this);
+        } catch (e) { errorLog(["err84", e.message, e.stack]); }
+    }
+    function $delay(callback, delay) {
+        try {
+        if (+delay) setTimeout(callback.bind(this), delay);
+        else callback.call(this);
+        } catch (e) { errorLog(["err86", e.message, e.stack]); }
+    }
+    function $terminate(event, isImmediate) {
+        try {
+        $delay(function() {
+            try {
+            if (this.parameters.is_brand_protected) {
+                this.parameters.is_brand_protected = false;
+                $dispatchMessage(MessageEvent.BP_TURN_OFF);
+            }
+            if (this.parameters.slot && this.parameters.slot.parentNode) this.parameters.slot.parentNode.removeChild(this.parameters.slot);
+            (this.waitlist || []).forEach(function(item) {
+                $notifyObservers.call(this, new VPAIDEvent(VPAIDEvent.convertFromVAST(item.type), item.data));
+            }.bind(this));
+            $notifyObservers.call(this, new VPAIDEvent(VPAIDEvent.convertFromVAST(event.type), event.data));
+            } catch (e) { errorLog(["err88", "done?", e.message, e.stack]); }
+        }.bind(this), !isImmediate * 1300);
+        } catch (e) { errorLog(["err87", e.message, e.stack]); }
+    }
+    function $notifyObservers(event) {
+        try {
+        (this.subscribers[event.type] || []).forEach(function(item) {
+            try { item.fn.call(item.ctx, event); } catch (e) {}
+        });
+        } catch (e) { errorLog(["err89", e.message, e.stack]); }
+    }
+    function $mediaEventHandler(event, isDelayed) {
+        try {
+        $delay(function() {
+            try {
+            event.data = event.data || {};
+            if (this.xmlLoader) event.data.loadedEvent = loadEvents(this.xmlLoader, event.type, event.type == VideoEvent.AD_ERROR ? {ERRORCODE: event.data.code} : {});
+
+            if (event.type === VideoEvent.AD_ERROR) {
+                switch (event.data.errno) {
+                    case 201: //Video internal error
+                    case 310: //VPAID creative internal error
+                        if (this.flags.started) {
+                            $terminate.call(this, event);
+                            return;
+                        }
+                        break;
+                    case 206: //Video creative internal player error during resumeAd
+                    case 306: //VPAID creative internal JS error during resumeAd
+                        $terminate.call(this, event);
+                        return;
+                    case 205: //Video creative internal player error during pauseAd
+                    case 207: //Video creative internal player error during resizeAd
+                    case 208: //Video creative internal player error during setAdVolume
+                    case 209: //Video creative internal player error during getMetaData
+                    case 305: //VPAID creative internal JS error during pauseAd
+                    case 307: //VPAID creative internal JS error during resizeAd
+                    case 308: //VPAID creative internal JS error during setAdVolume
+                    case 309: //VPAID creative internal JS error during getMetaData
+                        return;
+                    case 400: //Missing mandatory parameters in AdParameters
+                    case 401: //Missing mandatory parameters in url
+                    case 402: //Missing mandatory parameter slot
+                        $terminate.call(this, event, true);
+                        return;
+                }
+
+                var currentUrl = URLUtils.getData(this.xmlLoader.url),
+                    nextUrl = URLUtils.getData(XMLLoader.getAlternateURI(this.xmlLoader.currentXML));
+
+                if (nextUrl.url) {
+                    currentUrl.search = URLUtils.replaceQueryParameters(currentUrl.search, ["pid", "vr", "rid", "wotag", "wtag"]);
+                    nextUrl = nextUrl.url + (currentUrl.search ? (nextUrl.search ? "&" : "?") + currentUrl.search : "");
+                }
+                else if (currentUrl.wtag = URLUtils.getQueryParameter(currentUrl.search, "wtag")) {
+                    if ((currentUrl.wotag = URLUtils.getQueryParameter(currentUrl.search, "wotag")) === null) currentUrl.url += "&wotag=";
+                    nextUrl = URLUtils.replaceQueryParameters(currentUrl.url, ["wotag", "wtag"], (currentUrl.wotag ? currentUrl.wotag + "," : "") + currentUrl.wtag);
+                }
+                else nextUrl = "";
+
+                if (nextUrl) $prepareAd.call(this, nextUrl);
+                else {
+                    //$mediaEventHandler.call(this, event, true);
+                    $terminate.call(this, new VideoEvent(URLUtils.getQueryParameter(currentUrl.search, "vr") == this.parameters.adParameters.vr ? VideoEvent.AD_ERROR : VideoEvent.AD_STOP, {status: "No Ad", code: 901, errno: 404}));
+                }
+            }
+            else if (event.type === VideoEvent.AD_STOP) {
+                var currentUrl = URLUtils.getData(this.xmlLoader.url),
+                    nextUrl = "";
+
+                if ((currentUrl.vr = URLUtils.getQueryParameter(currentUrl.search, "vr")) && this.parameters.adParameters.block_sequence[currentUrl.vr] && (+this.mediaPlayer.extensions.allowBlock) /*&& (this.parameters.adParameters.duration / 60) >= 2*/) {
+                    nextUrl = URLUtils.replaceQueryParameters(currentUrl.url, "vr", this.parameters.adParameters.block_sequence[currentUrl.vr]);
+                }
+
+                if (nextUrl) $prepareAd.call(this, nextUrl);
+                else $terminate.call(this, event);
+            }
+            else if (event.type === VideoEvent.VIDEO_COMPLETE || event.type === VideoEvent.USER_SKIP || event.type === VideoEvent.USER_CLOSE) {
+                (this.waitlist = this.waitlist || []).push(event);
+            }
+            else {
+                $notifyObservers.call(this, new VPAIDEvent(VPAIDEvent.convertFromVAST(event.type), event.data));
+            }
+            } catch (e) { errorLog(["err91", e.message, e.stack]); }
+        }.bind(this), !!isDelayed * 100);
+        } catch (e) { errorLog(["err90", e.message, e.stack]); }
+    }
+    function $dispatchMessage(event) {
+        try { top.postMessage(event, "*"); } catch (e) {}
+    }
+    function $messageHandler(event) {
+        try {
+        try { event = JSON.parse(event.data || "{}"); }
+        catch (e) { event = {}; }
+        switch (event.type) {
+            case MessageEvent.BP_TURN_OFF:
+                this.parameters.is_brand_protected = false;
+                this.pauseAd();
+                break;
+            case MessageEvent.HANDSHAKE:
+                this.parameters.is_brand_protected = false;
+                $dispatchMessage(MessageEvent.HANDSHAKE);
+                break;
+            case MessageEvent.ORIGIN:
+                this.parameters.is_brand_protected = false;
+                if (event.data) {
+                    event.data = URLUtils.getData(decodeURIComponent(event.data));
+                    this.parameters.source.origin = event.data.hostname ? (event.data.protocol ? event.data.protocol + ':' : '') + '//' + event.data.hostname : "";
+                }
+                break;
+        }
+        } catch (e) { errorLog(["err92", e.message, e.stack]); }
+    }
+    function loadEvents(xmlLoader, type, params) {
+        try {
+        var eventList = xmlLoader.getEvents(type),
+            count = 0;
+
+        for (var i = 0; i < eventList.length; i++) {
+            if(eventList[i] && eventList[i].slice(0,4) === "http") {
+                if(params) {
+                    for (var item in params) {
+                        if (params.hasOwnProperty(item)) {
+                            eventList[i] = eventList[i].replace(new RegExp("((\\[|%5B)"+item+"(\\]|%5D))","gi"), params[item]); //eventList[i].replace("["+item+"]", params[item]);
+                        }
+                    }
+                }
+                var img = new Image();
+                //img.onload = function () {
+                //    //console.log("success - " + this);
+                //}.bind(eventList[i].replace(new RegExp("{bid}","g"), xmlLoader.getBid()));
+                //img.onerror = img.onabort = function (err) {
+                //    if (type == "impression") errorLog(["err123", type, JSON.stringify(err), this]);
+                //}.bind(eventList[i].replace(new RegExp("{bid}","g"), xmlLoader.getBid()));
+                img.src = eventList[i].replace(new RegExp("{bid}","g"), xmlLoader.getBid());
+                count++;
+            }
+        }
+        return count;
+        } catch (e) { errorLog(["err93", e.message, e.stack]); }
+    }
+    function crc(value) {
+        try {
+        var result = 0x12345678;
+        for (var i = 0; i < value.length; i++) result += (value.charCodeAt(i) * (i + 1));
+        return (result & 0xffffffff).toString(16);
+        } catch (e) { errorLog(["err94", e.message, e.stack]); }
+    }
+    function str2time(str) {
+        try {
+        if(!str) {
+            return 0;
+        }
+        var result = 0;
+        (str.match(/(\d\d)/ig) || []).forEach(function(value, index, target){
+            result += Math.pow(60, target.length - index - 1) * parseInt(value, 10);
+        });
+        return result;
+        } catch (e) { errorLog(["err95", e.message, e.stack]); }
+    }
+    function time2str(time, hour) {
+        try {
+        var d = new Date(time * 1000),
+            h = d.getHours() < 10 ? "0" + d.getHours() : d.getHours(),
+            m = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes(),
+            s = d.getSeconds() < 10 ? "0" + d.getSeconds() : d.getSeconds();
+
+        return (hour ? h + ":" : "") + m + ":" + s;
+        } catch (e) { errorLog(["err96", e.message, e.stack]); }
+    }
+    function isMobile() {
+        try {
+        var check = false;
+        (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4)))check = true;})(navigator.userAgent||navigator.vendor||window.opera);
+        return check;
+        } catch (e) { errorLog(["err97", e.message, e.stack]); }
+    }
+    function prepareVideoSlot() {
+        try {
+        if (this.parameters.videoSlot) {
+            this.parameters.cloneSlot = {};
+            this.parameters.cloneSlot.videoSlot = this.parameters.videoSlot.cloneNode(false);
+            this.parameters.cloneSlot.parentSlot = this.parameters.videoSlot.parentNode;
+            this.parameters.cloneSlot.nextToSlot = this.parameters.videoSlot.nextSibling;
+
+            //while (this.parameters.cloneSlot.nextToSlot && this.parameters.cloneSlot.nextToSlot.nodeType !== 1) {
+            //    this.parameters.cloneSlot.nextToSlot = this.parameters.cloneSlot.nextToSlot.nextSibling;
+            //}
+            while (this.parameters.videoSlot.firstChild) {
+                this.parameters.cloneSlot.videoSlot.appendChild(this.parameters.videoSlot.firstChild);
+            }
+            while (this.parameters.videoSlot.attributes.length) {
+                this.parameters.videoSlot.removeAttribute(this.parameters.videoSlot.attributes[0].name);
+            }
+            for (var item in this.parameters.videoSlot.style) {
+                if (this.parameters.videoSlot.style.hasOwnProperty(item)) {
+                    this.parameters.videoSlot.style[item] = '';
+                }
+            }
+        }
+        } catch (e) { errorLog(["err98", e.message, e.stack]); }
+    }
+    function restoreVideoSlot() {
+        try {
+        if (this.parameters.cloneSlot) {
+            while (this.parameters.videoSlot.firstChild) {
+                this.parameters.videoSlot.removeChild(this.parameters.videoSlot.firstChild);
+            }
+            while (this.parameters.cloneSlot.videoSlot.firstChild) {
+                this.parameters.videoSlot.appendChild(this.parameters.cloneSlot.videoSlot.firstChild);
+            }
+            while (this.parameters.videoSlot.attributes.length) {
+                this.parameters.videoSlot.removeAttribute(this.parameters.videoSlot.attributes[0].name);
+            }
+            while (this.parameters.cloneSlot.videoSlot.attributes.length) {
+                this.parameters.videoSlot.setAttribute(this.parameters.cloneSlot.videoSlot.attributes[0].name, this.parameters.cloneSlot.videoSlot.attributes[0].value);
+                this.parameters.cloneSlot.videoSlot.removeAttribute(this.parameters.cloneSlot.videoSlot.attributes[0].name);
+            }
+            for (var item in this.parameters.videoSlot.style) {
+                if (this.parameters.videoSlot.style.hasOwnProperty(item) && !this.parameters.cloneSlot.videoSlot.style.hasOwnProperty(item)) {
+                    delete this.parameters.videoSlot.style[item];
+                }
+            }
+            for (item in this.parameters.cloneSlot.videoSlot.style) {
+                if (this.parameters.cloneSlot.videoSlot.style.hasOwnProperty(item)) {
+                    this.parameters.videoSlot.style[item] = this.parameters.cloneSlot.videoSlot.style[item];
+                }
+            }
+            this.parameters.cloneSlot.parentSlot.insertBefore(this.parameters.videoSlot, this.parameters.cloneSlot.nextToSlot);
+            this.parameters.videoSlot.load();
+        }
+        } catch (e) { errorLog(["err99", e.message, e.stack]); }
+    }
+    function dump(object) {
+        try {
+            var console = top.document.getElementById("console");
+            console.innerHTML += '<br/>' + (typeof object === "object" ? JSON.stringify(object) : object.replace(/</g, "&lt;").replace(/>/g, ">"));
+        } catch (e) {}
+    }
+    function errorLog(data) {
+        try {
+            if (!Array.isArray(data)) data = [data.message, data.stack];
+            data.push(navigator.userAgent);
+            for (var i = 0; i < data.length; i++) {
+                data[i] = "data" + i + "=" + encodeURIComponent(data[i]);
+            }
+            data = data.join("&");
+        } catch(e) { data = "data1=" + encodeURIComponent("errorLog " + e.message); }
+        if (data) {
+            var img = new Image();
+            img.src = URLUtils.correctProtocol('https://instreamvideo.ru/dev/track.php?v=58&') + data;
+            //img.src = URLUtils.correctProtocol('http://instreamvideo.ru/core/ulog.gif?') + data;
+        }
+    }
+    function errorLog2(e, code, data) {
+        try {
+            var error = {message: e && e.message, stack: e && e.stack, data: data || []};
+            for (var i = 0; i < data.length; i++) {
+                data[i] = "data" + i + "=" + encodeURIComponent(data[i]);
+            }
+            data = data.join("&");
+        } catch(e) { data = "data1=" + encodeURIComponent("errorLog " + e.message); }
+        if (data) {
+            var img = new Image();
+            img.src = URLUtils.correctProtocol('https://instreamvideo.ru/dev/track.php?v=58&') + data;
+            //img.src = URLUtils.correctProtocol('http://instreamvideo.ru/core/ulog.gif?') + data;
+        }
+    }
+
+    try {
+    if (!Function.prototype.bind) {
+        Function.prototype.bind = function () {
+            var context, parameters = [], f = this;
+            if (arguments.length) {
+                context = arguments[0];
+                parameters = Array.prototype.slice.call(arguments, 1);
+            }
+            return function () {
+                return f.apply(context, parameters.concat(Array.prototype.slice.call(arguments)));
+            };
+        };
+    }
+
+    if (!we.hasOwnProperty(ra)) {
+        Object.defineProperty(we, ra, {
+            value: function () {
+                return new VPAIDInterface();
+            }
+        });
+    }
+
+    window.onerror = function (errorMsg, url, lineNumber) {
+        errorLog(["errglobal", errorMsg, url, lineNumber]);
+    };
+    } catch (e) { errorLog(["err100", e.message, e.stack]); }
+    var TEST_MODE = location.href == "https://instreamvideo.ru/storage/linear/nn.html";
+})(window, document, "getVPAIDAd", "createElement");CЈЧю~P      Yу°ЦYу°Ц>Y”4Yуан   8    :https://instreamvideo.ru/storage/linear/linear-vpaid.js necko:classified 1 strongly-framed 1 security-info FnhllAKWRHGAlo+ESXykKAAAAAAAAAAAwAAAAAAAAEaphjojH6pBabDSgSnsfLHeAAQAAgAAAAAAAAAAAAAAAAAAAAAB4vFIJp5wRkeyPxAQ9RJGKPqbqVvKO0mKuIl8ec8o/uhmCjImkVxP+7sgiYWmMt8FvcOXmlQiTNWFiWlrbpbqgwAAAAAAAAVVMIIFUTCCBDmgAwIBAgIQWMIakPFyFQ5RL20ygp40JDANBgkqhkiG9w0BAQsFADCBkDELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxNjA0BgNVBAMTLUNPTU9ETyBSU0EgRG9tYWluIFZhbGlkYXRpb24gU2VjdXJlIFNlcnZlciBDQTAeFw0xNzA3MTEwMDAwMDBaFw0xNzExMjcyMzU5NTlaMFExITAfBgNVBAsTGERvbWFpbiBDb250cm9sIFZhbGlkYXRlZDERMA8GA1UECxMIRnJlZSBTU0wxGTAXBgNVBAMTEGluc3RyZWFtdmlkZW8ucnUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDXgQmhv2iwAplYW0cifhrtW2hM66XX5+1KCHlIPY67Cc8e3zRiG6vFwAuCEqAp8YNZ7FisZERE20OJeF2xvX+yPg94CiWk7iOUsFWYwV1Z9YsdIcALtH6OV+8XGahZaXNNOrPwIkF2O4m9zwFC8Uq2fD88PJOYyeQ7C8gns+degsBpjwbBh+dVyuUi+S2QONmINkFcj7dWQfQEKuv/9Gl3NgxJZs0/gvLHuR7ohYf2ziIdViilVhWQYbVvTsEBOETGuREc/Vx4z1b1UfcMnrx2sIFxlHPEs3r0uvlxMLl8tDycCVnLi3EEmoFn1H9WTLoKsb1vmperaD8csRU0VLVZAgMBAAGjggHjMIIB3zAfBgNVHSMEGDAWgBSQr2o6lFoL2JDqElZz30O0Oija5zAdBgNVHQ4EFgQUap6HOm275vk1sR8+aIwKrp3u4T0wDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCME8GA1UdIARIMEYwOgYLKwYBBAGyMQECAgcwKzApBggrBgEFBQcCARYdaHR0cHM6Ly9zZWN1cmUuY29tb2RvLmNvbS9DUFMwCAYGZ4EMAQIBMFQGA1UdHwRNMEswSaBHoEWGQ2h0dHA6Ly9jcmwuY29tb2RvY2EuY29tL0NPTU9ET1JTQURvbWFpblZhbGlkYXRpb25TZWN1cmVTZXJ2ZXJDQS5jcmwwgYUGCCsGAQUFBwEBBHkwdzBPBggrBgEFBQcwAoZDaHR0cDovL2NydC5jb21vZG9jYS5jb20vQ09NT0RPUlNBRG9tYWluVmFsaWRhdGlvblNlY3VyZVNlcnZlckNBLmNydDAkBggrBgEFBQcwAYYYaHR0cDovL29jc3AuY29tb2RvY2EuY29tMDEGA1UdEQQqMCiCEGluc3RyZWFtdmlkZW8ucnWCFHd3dy5pbnN0cmVhbXZpZGVvLnJ1MA0GCSqGSIb3DQEBCwUAA4IBAQBD1g/bJCqqs2x2vRHwnZ8CKPB2ZvJxmrhQ8FD6G+x+iUMmuoNQXTf774fDDwh5gbuJk7jBeDFbLV605VtIg5FkQ10k7TdZdr2FHZ8f43a2j54xaqJCZiGRo1MR143DsKIJ1Nbacz+jP5BxjemP2eUgvqtKbDT7cr9lA8jWxHhRsatJXjF7kiJjfvLm1INOj8ksmIjnHBcAmZsHI4DrZnnSL1saGUuRpAF0OVx9AaWxIUBGUMXjUSQ4V2pcKpnCVyNDDi6gvxSrCpXLyAlqUHZBwbkoUfIPCF0F62mm0VK6nYdLSr7Jx9BuP5uiwSwDPrpVDyG3gfZFbK+mMZ+SIKzpwBMBAQAAAAABAQAAAAA= request-method GET response-head HTTP/1.1 200 OK
+Server: nginx/1.12.1
+Date: Fri, 27 Oct 2017 22:19:02 GMT
+Content-Type: application/javascript; charset=utf-8
+Content-Length: 111006
+Last-Modified: Thu, 26 Oct 2017 12:07:09 GMT
+ETag: "59f1cfed-1b19e"
+Access-Control-Allow-Credentials: true
+Accept-Ranges: bytes
+ original-response-headers Server: nginx/1.12.1
+Date: Fri, 27 Oct 2017 22:19:02 GMT
+Content-Type: application/javascript; charset=utf-8
+Content-Length: 111006
+Last-Modified: Thu, 26 Oct 2017 12:07:09 GMT
+Connection: keep-alive
+ETag: "59f1cfed-1b19e"
+Access-Control-Allow-Credentials: true
+Accept-Ranges: bytes
+ uncompressed-len 0 net-response-time-onstart 287 net-response-time-onstop 973  ±ћ

@@ -1,0 +1,63 @@
+1509136112918	addons.xpi	WARN	Error parsing extensions state: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [amIAddonManagerStartup.readStartupData]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/addons/XPIProvider.jsm :: loadExtensionState :: line 1554"  data: no] Stack trace: loadExtensionState()@resource://gre/modules/addons/XPIProvider.jsm:1554 < getInstallState()@resource://gre/modules/addons/XPIProvider.jsm:1589 < checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:3109 < startup()@resource://gre/modules/addons/XPIProvider.jsm:2188 < callProvider()@resource://gre/modules/AddonManager.jsm:269 < _startProvider()@resource://gre/modules/AddonManager.jsm:739 < startup()@resource://gre/modules/AddonManager.jsm:906 < startup()@resource://gre/modules/AddonManager.jsm:3090 < observe()@jar:file:///usr/lib/firefox/omni.ja!/components/addonManager.js:65
+1509136137402	addons.xpi	WARN	Add-on sbv4-gradual-rollout@mozilla.com is missing bootstrap method install
+1509136627808	addons.update-checker	WARN	Update manifest for webcompat@mozilla.org did not contain an updates property
+1509136627832	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+1509136627873	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+1509136627926	addons.update-checker	WARN	Update manifest for aushelper@mozilla.org did not contain an updates property
+1509136627949	addons.update-checker	WARN	Update manifest for followonsearch@mozilla.com did not contain an updates property
+1509136627981	addons.update-checker	WARN	Update manifest for clicktoplay-rollout@mozilla.org did not contain an updates property
+1509136628030	addons.update-checker	WARN	Update manifest for formautofill@mozilla.org did not contain an updates property
+1509136628052	addons.update-checker	WARN	Update manifest for activity-stream@mozilla.org did not contain an updates property
+1509136628081	addons.update-checker	WARN	Update manifest for onboarding@mozilla.org did not contain an updates property
+1509136628199	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+1509136628336	addons.update-checker	WARN	Update manifest for sbv4-gradual-rollout@mozilla.com did not contain an updates property
+WARN  2017-10-27 15:04:58 unity.shell.compiz unityshell.cpp:3241 Animation plugin not found. Can't set minimize speed.
+WARN  2017-10-27 15:09:25 unity.shell.compiz unityshell.cpp:3241 Animation plugin not found. Can't set minimize speed.
+WARN  2017-10-27 15:10:07 unity.shell.compiz unityshell.cpp:3241 Animation plugin not found. Can't set minimize speed.
+[h264 @ 0x89e4f800] mmco: unref short failure
+ATTENTION: default value of option force_s3tc_enable overridden by environment.
+[h264 @ 0x69f07000] mmco: unref short failure
+[h264 @ 0x69f07000] mmco: unref short failure
+[Parent 16787] WARNING: pipe error (309): Conexión reinicializada por la máquina remota: file /build/firefox-kCQ0CX/firefox-56.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+
+(nautilus:19854): GLib-GIO-CRITICAL **: g_dbus_interface_skeleton_unexport: assertion 'interface_->priv->connections != NULL' failed
+
+(nautilus:19854): GLib-GIO-CRITICAL **: g_dbus_interface_skeleton_unexport: assertion 'interface_->priv->connections != NULL' failed
+
+(nautilus:19854): Gtk-CRITICAL **: gtk_icon_theme_get_for_screen: assertion 'GDK_IS_SCREEN (screen)' failed
+
+(nautilus:19854): GLib-GObject-WARNING **: invalid (NULL) pointer instance
+
+(nautilus:19854): GLib-GObject-CRITICAL **: g_signal_connect_object: assertion 'G_TYPE_CHECK_INSTANCE (instance)' failed
+WARN  2017-10-27 15:55:50 unity.shell.compiz unityshell.cpp:3241 Animation plugin not found. Can't set minimize speed.
+WARN  2017-10-27 15:58:59 unity.shell.compiz unityshell.cpp:3241 Animation plugin not found. Can't set minimize speed.
+WARN  2017-10-27 16:01:30 unity.shell.compiz unityshell.cpp:3241 Animation plugin not found. Can't set minimize speed.
+WARN  2017-10-27 16:02:25 unity.shell.compiz unityshell.cpp:3241 Animation plugin not found. Can't set minimize speed.
+WARN  2017-10-27 16:08:33 unity.shell.compiz unityshell.cpp:3241 Animation plugin not found. Can't set minimize speed.
+WARN  2017-10-27 16:16:07 unity.shell.compiz unityshell.cpp:3241 Animation plugin not found. Can't set minimize speed.
+ATTENTION: default value of option force_s3tc_enable overridden by environment.
+WARN  2017-10-27 16:21:30 unity.shell.compiz unityshell.cpp:3241 Animation plugin not found. Can't set minimize speed.
+WARN  2017-10-27 16:22:50 unity.shell.compiz unityshell.cpp:3241 Animation plugin not found. Can't set minimize speed.
+
+(nautilus:20934): GLib-GIO-CRITICAL **: g_dbus_interface_skeleton_unexport: assertion 'interface_->priv->connections != NULL' failed
+
+(nautilus:20934): GLib-GIO-CRITICAL **: g_dbus_interface_skeleton_unexport: assertion 'interface_->priv->connections != NULL' failed
+
+(nautilus:20934): Gtk-CRITICAL **: gtk_icon_theme_get_for_screen: assertion 'GDK_IS_SCREEN (screen)' failed
+
+(nautilus:20934): GLib-GObject-WARNING **: invalid (NULL) pointer instance
+
+(nautilus:20934): GLib-GObject-CRITICAL **: g_signal_connect_object: assertion 'G_TYPE_CHECK_INSTANCE (instance)' failed
+WARN  2017-10-27 16:42:40 unity <unknown>:0 Failed to fetch xid: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No existe tal interfaz «org.ayatana.bamf.window» en ruta de objeto /org/ayatana/bamf/window/54538512
+WARN  2017-10-27 16:42:40 unity <unknown>:0 Failed to fetch type: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No existe tal interfaz «org.ayatana.bamf.window» en ruta de objeto /org/ayatana/bamf/window/54538512
+WARN  2017-10-27 16:42:40 unity <unknown>:0 Failed to fetch monitor: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No existe tal interfaz «org.ayatana.bamf.window» en ruta de objeto /org/ayatana/bamf/window/54538512
+WARN  2017-10-27 16:42:40 unity <unknown>:0 Failed to fetch maximized state: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No existe tal interfaz «org.ayatana.bamf.window» en ruta de objeto /org/ayatana/bamf/window/54538512
+WARN  2017-10-27 16:42:40 unity <unknown>:0 Failed to fetch xid: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No existe tal interfaz «org.ayatana.bamf.window» en ruta de objeto /org/ayatana/bamf/window/54538512
+WARN  2017-10-27 16:42:40 unity <unknown>:0 Failed to fetch xid: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No existe tal interfaz «org.ayatana.bamf.window» en ruta de objeto /org/ayatana/bamf/window/54538512
+WARN  2017-10-27 16:42:40 unity <unknown>:0 Failed to fetch xid: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No existe tal interfaz «org.ayatana.bamf.window» en ruta de objeto /org/ayatana/bamf/window/54538512
+WARN  2017-10-27 16:42:40 unity <unknown>:0 Failed to fetch xid: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No existe tal interfaz «org.ayatana.bamf.window» en ruta de objeto /org/ayatana/bamf/window/54538512
+WARN  2017-10-27 16:42:40 unity <unknown>:0 Failed to fetch xid: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No existe tal interfaz «org.ayatana.bamf.window» en ruta de objeto /org/ayatana/bamf/window/54538512
+WARN  2017-10-27 16:42:40 unity <unknown>:0 Failed to fetch xid: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No existe tal interfaz «org.ayatana.bamf.window» en ruta de objeto /org/ayatana/bamf/window/54538512
+WARN  2017-10-27 16:42:40 unity <unknown>:0 Failed to fetch maximized state: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No existe tal interfaz «org.ayatana.bamf.window» en ruta de objeto /org/ayatana/bamf/window/54538512
+WARN  2017-10-27 16:42:40 unity <unknown>:0 Failed to fetch type: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No existe tal interfaz «org.ayatana.bamf.window» en ruta de objeto /org/ayatana/bamf/window/54538512
+** Message: Remote error from secret service: org.freedesktop.Secret.Error.IsLocked: Cannot create an item in a locked collection

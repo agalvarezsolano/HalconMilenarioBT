@@ -1,0 +1,407 @@
+$(function() {
+    // Link Targets
+    $('a[href][rel=external]').attr('target', '_blank');
+    // Image Title Attributes
+    $('img').each(function() {
+        $(this).attr('title', $(this).attr('alt'));
+    });
+    // Disable Submit Buttons
+    $('form').submit(function() {
+        $('input[type=submit][name!="more"][name!="cancel"]', this).prop('disabled', true);
+    });
+    // Code Reference
+    $('input[value="Code Reference"]').click(function() {
+        window.open('/coderef.php', 'coderef', 'width=630,height=787,status=0,toolbar=0,location=0,menubar=0,directories=0,resizable=0,scrollbars=0');
+    });
+    // Share Buttons
+    $('.share').click(function() {
+        window.open($(this).attr('href'), 'share', 'width=860,height=500,status=0,toolbar=0,location=0,menubar=0,directories=0,resizable=0,scrollbars=0');
+        return false;
+    });
+    // Spoilers
+    $('.spoiler').hover(function() {
+        $(this).find('.spoiler-text').css('background-color', '#ffffff');
+    }, function() {
+        $(this).find('.spoiler-text').css('background-color', '#000000');
+    });
+    // Toggle Other Systems
+    $('#toggle_other').click(function() {
+        if($('#other').is(':visible')) {
+            $('#other').slideUp('fast');
+            $(this).attr('src', '/images/buttons/nav-closed.png');
+            return false;
+        } else {
+            $('#other').slideDown('fast');
+            $(this).attr('src', '/images/buttons/nav-open.png');
+            return false;
+        }
+    });
+    // Toggle Navigation Menu
+    $('.nav-header').click(function() {
+        var selected = 'left' + $(this).attr('id').split('_')[0];
+        if($('#' + selected).is(':visible')) {
+           $('#' + selected).slideUp('fast');
+           $('#' + selected + '-arrow').attr('src', '/images/buttons/nav-closed.png');
+        } else {
+           $('#' + selected).slideDown('fast');
+           $('#' + selected + '-arrow').attr('src', '/images/buttons/nav-open.png');
+           $('div[id^="leftnav-"][id!="' + selected +'"]').each(function() {
+               if($(this).is(':visible')) {
+                   $(this).slideUp('fast');
+                   $('#' + $(this).attr('id') + '-arrow').attr('src', '/images/buttons/nav-closed.png');
+               }
+           });
+        }
+    });
+    // Header Resize on Scroll
+    $(document).scroll(function() {
+        if($(window).width() > 766 && $(window).height() > 800 && window.location.pathname.indexOf('fullview') < 0) {
+            if(typeof window.av_width == 'undefined' || typeof window.av_height == 'undefined') {
+                window.av_width = [];
+                window.av_height = [];
+                window.av_width['large'] = $('#userbox img').width();
+                window.av_height['large'] = $('#userbox img').height();
+                if(window.av_width['large'] > window.av_height['large']) {
+                    window.av_width['small'] = 40;
+                    window.av_height['small'] = Math.round(40 / (window.av_width['large'] / window.av_height['large']));
+                } else {
+                    window.av_width['small'] = Math.round(40 / (window.av_height['large'] / window.av_width['large']));
+                    window.av_height['small'] = 40;
+                }
+            }
+            if($(this).scrollTop() > 130) {
+                $('#header img:first').attr('src', '/resources/images/header/logo-small.png');
+                $('#userbox img').width(window.av_width['small']).height(window.av_height['small']);
+                if($('#userbox div:eq(1):contains("Register today")').length > 0) {
+                    $('#userbox div:eq(1)').text('Register today to access all features of the site!');
+                } else {
+                    $('.small-hide').css('display', 'none');
+                }
+                $('#header').addClass('small');
+                $('#userbox').addClass('small');
+                $('#search').addClass('small');
+                $('#nav-top').addClass('small');
+                $('#userbox.small img').parent().css('width', '40px').css('height', '40px');
+                $('#skinleft').css('top', '80px');
+                $('#skinright').css('top', '80px');
+            } else {
+                $('#skinright').css('top', '129px');
+                $('#skinleft').css('top', '129px');
+                $('#nav-top').removeClass('small');
+                $('#search').removeClass('small');
+                $('#userbox').removeClass('small');
+                $('#header').removeClass('small');
+                if($('#userbox div:eq(1):contains("Register today")').length > 0) {
+                    $('#userbox div:eq(1)').text('Register today to join in with discussions on the forum, post comments on the site, and upload your own sheets!');
+                } else {
+                    $('.small-hide').css('display', 'inline-block');
+                }
+                $('#userbox img').parent().css('width', '74px').css('height', '74px');
+                $('#userbox img').width(window.av_width['large']).height(window.av_height['large']);
+                $('#header img:first').attr('src', '/resources/images/header/logo.png');
+            }
+        }
+    });
+    // Resize comment images and videos
+    $('.commentContent img, #commentList img, #commentList iframe').each(function() {
+        var maxWidth = ($(this).parents('#commentList').length > 0 ? 200 : 700);
+        $(this).load(function() {
+            if($(this).width() > maxWidth) {
+                $(this).width(maxWidth);
+                $(this).height(Math.round(maxWidth / ($(this).attr('width') / $(this).attr('height'))));
+                if($(this).is('img')) {
+                    $(this).css('cursor', 'pointer');
+                    $(this).click(function() {
+                        window.open($(this).attr('src'), '_blank');
+                    });
+                }
+            }
+        });
+    });
+    // Unhide NSFW Content
+    $('.nsfw-warning').click(function() {
+        $(this).slideUp('fast');
+        $('.nsfw').slideDown('fast');
+    });
+    // Update Sheet Display Toggle
+    $('#toggle-link, #include-sheets').click(function() {
+        var word = '';
+        switch(location.host) {
+            case "www.models-resource.com":
+                word = "Models";
+                break;
+            case "www.sounds-resource.com":
+                word = "Sounds";
+                break;
+            case "www.spriters-resource.com":
+                word = "Sheets";
+                break;
+            case "www.textures-resource.com":
+                word = "Textures";
+                break;
+        }
+        // Toggle Sheets on Add Update Page
+        if($(this).attr('id') == 'include-sheets') {
+            if($(this).is(':checked')) {
+                $('#sheets_msg').html('Uncheck to post this update without ' + word.toLowerCase());
+            } else {
+                $('#sheets_msg').html('Check to include ' + word.toLowerCase() + ' with this update');
+            }
+        }
+        if($('#updatesheets').is(':visible')) {
+            $('#updatesheets').slideUp('slow');
+            $(this).html('Show ' + word);
+        } else {
+            $('#updatesheets').slideDown('slow');
+            $(this).html('Hide ' + word);
+        }
+        return $(this).attr('id') == 'include-sheets';
+    });
+    // Submitter Profile Console Toggle
+    $('[id$="-console-link"]').click(function() {
+        var id = $(this).attr('id').split('-')[0];
+        if($('#' + id + '-list td').is(':visible')) {
+            $('#' + id + '-list td').css('display', 'none');
+            $(this).html('Show');
+        } else {
+            $('#' + id + '-list td').css('display', 'table-cell');
+            $(this).html('Hide');
+        }
+        return false;
+    });
+    // Toggle Game Sections
+    $('.sect-collapse').click(function() {
+        var sect = $(this).parent().next();
+        if(sect.is(':visible')) {
+            $(this).parent().css('margin-bottom', '10px');
+            $(this).children('img').attr('src', '/images/buttons/nav-closed.png');
+            sect.slideUp('fast');
+        } else {
+            sect.slideDown('fast');
+            $(this).parent().css('margin-bottom', '0px');
+            $(this).children('img').attr('src', '/images/buttons/nav-open.png');
+        }
+    });
+    // Toggle Zip Contents
+    $('.zip-collapse').click(function() {
+        var zip = $(this).parent().next();
+        if(zip.is(':visible')) {
+            $(this).children('img').attr('src', '/images/buttons/nav-closed.png');
+            zip.slideUp('fast');
+        } else {
+            zip.slideDown('fast');
+            $(this).children('img').attr('src', '/images/buttons/nav-open.png');
+        }
+    });
+    // Edit Section Form
+    $('.edit-section').click(function() {
+        if(typeof window.original == 'undefined') {
+            window.original = [];
+        }
+        var id = $(this).attr('id').split('-')[1];
+        window.original[id] = $(this).siblings('div.sect-name').text();
+        $(this).siblings('div.sect-name').html('<input type="text" name="sect[' + id + ']" id="sect-' + id + '-form" size="40" class="formElement" value="' + $.trim(window.original[id]) + '" />');
+        $(this).css('display', 'none');
+        if(!$('#section-form-buttons').is(':visible')) {
+            $('#section-form-buttons').css('display', 'block');
+        }
+    });
+    $('#cancel_sections').click(function() {
+        $('#section-form-buttons').css('display', 'none');
+        $('input[name^="sect"]').each(function() {
+            $(this).parent().siblings('img.edit-section').css('display', 'initial');
+            $(this).parent().html(window.original[$(this).attr('id').split('-')[1]]);
+        });
+    });
+    // Temporary iframe Fix
+    $('iframe[src$="safari.html"]').css('display', 'none');
+    // Confirm Delete
+    $('#delete').change(function() {
+        var form = $(this).parents('form:first');
+        form.submit(function() {
+            if($('#delete').is(':checked')) {
+                if(confirm('You have marked this item for deletion. If you are sure, click OK. Otherwise, click Cancel.')) {
+                    return true;
+                } else {
+                    form.find('input[type="submit"]').removeProp('disabled');
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        });
+    });
+    // Toggle New Section Field
+    $('#sect, #console').change(function() {
+        if($(this).val() == 'new') {
+            $('#new-sect').css('display', 'inline');
+        } else {
+            $('#new-sect').css('display', 'none');
+        }
+    });
+    // Auto-Fill Sheet Name from File Name
+    $('#sheet-up').change(function() {
+        if($('#name').val() == '') {
+            var file = $(this).val();
+            var index1 = file.lastIndexOf('\\');
+            var index2 = file.lastIndexOf('.');
+            var name = file.substring(index1 + 1, index2)
+            $('#name').val(name);
+        }
+    });
+    // Auto-Select Radio Buttons and Checkboxes on Forms
+    $('input[type!="radio"][type!="checkbox"],textarea[name="other_text"]').change(function() {
+        if($(this).prevAll('input[type="radio"], input[type="checkbox"]').length) {
+            if($(this).val() != '') {
+                $(this).prevAll('input[type="radio"]:first, input[type="checkbox"]:first').prop('checked', true);
+                $(this).prevAll('input[type="radio"]:first, input[type="checkbox"]:first').trigger('change');
+            } else {
+                $(this).prevAll('input[type="checkbox"]:first').removeProp('checked');
+                $(this).prevAll('input[type="checkbox"]:first').trigger('change');
+            }
+        }
+    });
+    // Toggle Reject Form
+    $('[id^="reject-"]').click(function () {
+        var id = $(this).attr('id').split('-')[1];
+        if($('#reject_' + id).is(':visible')) {
+            $(this).html('REJECT');
+            $('#reject_' + id).fadeOut('slow');
+        } else {
+            $(this).html('CANCEL');
+            $('#reject_' + id).fadeIn('slow');
+        }
+        return false;
+    });
+    // Toggle Batch Reject PM
+    $('[id="batch_pm"]').change(function () {
+        if($(this).is(':checked')) {
+            $('#pm_form').fadeIn('slow');
+            $('#pm_sendas').fadeIn('slow');
+        } else {
+            $('#pm_form').fadeOut('slow');
+            $('#pm_sendas').fadeOut('slow');
+        }
+        return false;
+    });
+    // Confirm Rejections
+    $('input[value="Reject"]').click(function() {
+        if(confirm('You are about to reject this item. This action cannot be undone. Click OK to continue or Cancel to go back.')) {
+            return true;
+        } else {
+            $(this).removeProp('disabled');
+            return false;
+        }
+    });
+    // Confirm Cancellation
+    $('.cancel').click(function() {
+        return confirm('You are about to cancel this item, permanently removing it from the queue. This action cannot be undone. Click OK to continue or Cancel to go back.');
+    });
+    // Toggle Update Checkbox on Edit Pages
+    $('input[type="radio"][name="stype"]').change(function() {
+        if($('#update-row').length) {
+            if($(this).val() != 'keep') {
+                $('#update-row').fadeIn('slow');
+            } else {
+                $('#update-row').fadeOut('slow');
+            }
+        }
+    });
+    // Toggle Selected Game Status Field
+    $('select[id="game"]').change(function() {
+        var label = $('#game :selected').parent().attr('label');
+        if(label == 'Pending Games') {
+            $('#sel_game_status').val('0');
+        } else {
+            $('#sel_game_status').val('1');
+        }
+    });
+    // Toggle Preserve Shortname Checkbox
+    $('#edit_game_name').on('input propertychange paste', function() {
+        if($('#game_status').val() == 1 && $('#console').val() == window.console_id) {
+            if($(this).val() != window.game_name) {
+                $('#preserve_box').fadeIn('slow');
+            } else {
+                $('#preserve_box').fadeOut('slow');
+            }
+        }
+    });
+    // Toggle Auto-Approve Fields
+    $('#auto-approve').change(function() {
+        if($(this).is(':checked')) {
+            $('#row-update').fadeIn('slow');
+            $('#update').prop('disabled', false);
+            $('#row-notes').fadeOut('slow');
+            $('#notes').prop('disabled', true);
+        } else {
+            $('#row-notes').fadeIn('slow');
+            $('#notes').prop('disabled', false);
+            $('#row-update').fadeOut('slow');
+            $('#update').prop('disabled', true);
+        }
+    });
+    // Toggle Report Forms
+    $('.report-link').click(function() {
+        var reportForm = $('#' + $(this).attr('id') + '-form');
+        if(reportForm.is(':visible')) {
+            reportForm.fadeOut('slow', function() {
+                if($('#game-info-wrapper').length) {
+                    $('#game-info-wrapper').css('min-height', $('#game-info-wrapper').height() - reportForm.height());
+                }
+            });
+        } else {
+            reportForm.fadeIn('slow');
+            if($('#game-info-wrapper').length) {
+                $('#game-info-wrapper').css('min-height', $('#game-info-wrapper').height() + reportForm.height());
+            }
+        }
+        return false;
+    });
+    // Report Replies
+    $('input[type="checkbox"][name^="reply-"]').change(function() {
+        var id = $(this).attr('id').split('-')[1];
+        if($(this).is(':checked')) {
+            $('#resolve-' + id).html('Reply Below');
+            $('#reply-row-' + id).css('display', 'table-row');
+        } else {
+            $('#resolve-' + id).html('<a href="/process/resolve/' + id + '/">Resolve</a>');
+            $('#reply-row-' + id).css('display', 'none');
+        }
+    });
+    // Edit/Revise/Report Mouse-Overs
+    $('img[src$="edit.png"],img[src$="report.png"]').hover(function(e) {
+        var title = $(this).attr('src').split('/')[3].split('.')[0];
+        $('#' + title + '-title').css('top', e.pageY + 5);
+        $('#' + title + '-title').css('left', e.pageX + 5);
+        $('#' + title + '-title').fadeIn('fast');
+    }, function() {
+        $('#' + $(this).attr('src').split('/')[3].split('.')[0] + '-title').fadeOut('fast');
+    });
+    // Contact Form Check
+    $('input[type="radio"][name="message-type"]').change(function() {
+        if($(this).val() == 'yes') {
+            $('#message-check').html('<span style="color: #ff0000; font-weight: bold;">Thank you but we are not interested. We are happy with our design, we are doing fine in search results, your WordPress experience will not help with a site this specialized, and we do not need new advertisers or marketing. Take us off of your list and do not attempt to contact us again. Thanks!</span>');
+        } else {
+            $('#message-check').hide();
+            $('#message-form').show();
+        }
+    });
+});
+ö"À¼Ñ      Yó®–Yó®–>YÍ YùßÓ   9    :https://www.textures-resource.com/includes/js/scripts.js necko:classified 1 strongly-framed 1 security-info FnhllAKWRHGAlo+ESXykKAAAAAAAAAAAwAAAAAAAAEaphjojH6pBabDSgSnsfLHeAAQAAgAAAAAAAAAAAAAAAAAAAAAB4vFIJp5wRkeyPxAQ9RJGKPqbqVvKO0mKuIl8ec8o/uhmCjImkVxP+7sgiYWmMt8FvcOXmlQiTNWFiWlrbpbqgwAAAAAAAAi1MIIIsTCCB5mgAwIBAgISA6rKGwe3VoHdB68+a+mqYCOMMA0GCSqGSIb3DQEBCwUAMEoxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MSMwIQYDVQQDExpMZXQncyBFbmNyeXB0IEF1dGhvcml0eSBYMzAeFw0xNzA5MTMxNjIyMDBaFw0xNzEyMTIxNjIyMDBaMCUxIzAhBgNVBAMTGnN0b3JtLmJyb2tlbnJldm9sdXRpb24uY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtSBhbSur/2+vx1YE95QiUq7ZWwYfG1E6e01+e+yEvvI9BvEOghfn1TjvTQ5LMbu3ySU2XwAuWte3yHh3BaeVGQS27eszrNNtVXyJPxcuxeYDteOmsXVwGE03lwvLK6SVhTcmGRXlfi5gEXghibewKs9fzUSACPbQkE4WWImKUDEM2YsvC/yzbtEFq7ap7R+Z4W2MdENGtSWyqoZqdB5AWjUWOTV6anQ4uhEHZ6kuqrx84BUzavDD+9cM0oqDksXb4gIh4ixedRCoJIJ++FhW4fDimT/91q8/nFRyH3Ds9d+3F7zg4oUuL+eynvNyYDKR4t+PmhqDWxWVTN2tWi4+3QIDAQABo4IFtDCCBbAwDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBSbx8JyrP/rLMNGhRmMQ+A31/wCsDAfBgNVHSMEGDAWgBSoSmpjBH3duubRObemRWXv86jsoTBvBggrBgEFBQcBAQRjMGEwLgYIKwYBBQUHMAGGImh0dHA6Ly9vY3NwLmludC14My5sZXRzZW5jcnlwdC5vcmcwLwYIKwYBBQUHMAKGI2h0dHA6Ly9jZXJ0LmludC14My5sZXRzZW5jcnlwdC5vcmcvMIIDvQYDVR0RBIIDtDCCA7CCEmJyb2tlbmludmFzaW9uLmNvbYIUYnJva2VucmV2b2x1dGlvbi5jb22CCmRseXB4bC5jb22CEGR5a2cudmdmYWN0cy5jb22CGWVuZmllbGRjaGFtYmVyb3JjaC5vcmcudWuCCmVyaWVuYS5jb22CC2V5ZW9oc2EuY29tghRqb2J3ZWxsZG9uZXJvY2tzLmNvbYIYa2luZ3NvYWtlcXVlc3RyaWFuLmNvLnVrghNtb2RlbHMtcmVzb3VyY2UuY29tgg9vdGFrdWJvYXJkcy5jb22CFXBlcHBlcm1pbnRjcnVzaC5jby51a4INcG9saWNlc2NpLmNvbYILcHVnZ3NveS5jb22CE3JldHJvZ2FtZXpvbmUuY28udWuCE3NvdW5kcy1yZXNvdXJjZS5jb22CFXNwcml0ZXJzLXJlc291cmNlLmNvbYIac3Rvcm0uYnJva2VucmV2b2x1dGlvbi5jb22CFXRleHR1cmVzLXJlc291cmNlLmNvbYIMdmctY3JhZnQuY29tgg92Zy1yZXNvdXJjZS5jb22CC3ZnZmFjdHMuY29tghR3aWtpLnZnLXJlc291cmNlLmNvbYIWd3d3LmJyb2tlbmludmFzaW9uLmNvbYIYd3d3LmJyb2tlbnJldm9sdXRpb24uY29tgg53d3cuZGx5cHhsLmNvbYIdd3d3LmVuZmllbGRjaGFtYmVyb3JjaC5vcmcudWuCDnd3dy5lcmllbmEuY29tgg93d3cuZXllb2hzYS5jb22CGHd3dy5qb2J3ZWxsZG9uZXJvY2tzLmNvbYIcd3d3Lmtpbmdzb2FrZXF1ZXN0cmlhbi5jby51a4IXd3d3Lm1vZGVscy1yZXNvdXJjZS5jb22CE3d3dy5vdGFrdWJvYXJkcy5jb22CGXd3dy5wZXBwZXJtaW50Y3J1c2guY28udWuCEXd3dy5wb2xpY2VzY2kuY29tgg93d3cucHVnZ3NveS5jb22CF3d3dy5yZXRyb2dhbWV6b25lLmNvLnVrghd3d3cuc291bmRzLXJlc291cmNlLmNvbYIZd3d3LnNwcml0ZXJzLXJlc291cmNlLmNvbYIZd3d3LnRleHR1cmVzLXJlc291cmNlLmNvbYIQd3d3LnZnLWNyYWZ0LmNvbYITd3d3LnZnLXJlc291cmNlLmNvbYIPd3d3LnZnZmFjdHMuY29tghd3d3cueW91bmdzcXVpcmViYW5kLmNvbYITeW91bmdzcXVpcmViYW5kLmNvbTCB/gYDVR0gBIH2MIHzMAgGBmeBDAECATCB5gYLKwYBBAGC3xMBAQEwgdYwJgYIKwYBBQUHAgEWGmh0dHA6Ly9jcHMubGV0c2VuY3J5cHQub3JnMIGrBggrBgEFBQcCAjCBngyBm1RoaXMgQ2VydGlmaWNhdGUgbWF5IG9ubHkgYmUgcmVsaWVkIHVwb24gYnkgUmVseWluZyBQYXJ0aWVzIGFuZCBvbmx5IGluIGFjY29yZGFuY2Ugd2l0aCB0aGUgQ2VydGlmaWNhdGUgUG9saWN5IGZvdW5kIGF0IGh0dHBzOi8vbGV0c2VuY3J5cHQub3JnL3JlcG9zaXRvcnkvMA0GCSqGSIb3DQEBCwUAA4IBAQA20aL73Oe5fO4Tj9ak7Exv2KSIzNb0EEFT15klN7lsyBSAcUY5VEMRG8kJoDVy4RirZn7/aiivtXTZ4SHCwAdbOzE6i4snjZgjT9GRBIWE73Zvg5TGo7I6aTrxrTjYNtXltDqYokgXEbgPYxS0/jd+xMlCzKufPdBmYPj/wPoCQ7BSRyKzXnc8RSYMMCMqI98Ip2/FqpCo05zuFH8zxGaLUBtvrvyBgDqgYBldAzl9KjTC5l/w7H4HJILL6m7gMdhnwB4GMyjW6pUpSUNOLiJabdUgE3SdMTpTiqcBmh5h9cGi0W/ZTAcN3sUlkNdb0RQMoZ2/04Q5dAdso5qfGfsxwDABAwAAAAABAQAAAAA= request-method GET response-head HTTP/1.1 200 OK
+Date: Fri, 27 Oct 2017 22:09:22 GMT
+Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/5.6.31
+Last-Modified: Sun, 10 Sep 2017 22:51:50 GMT
+ETag: "4232-558dda7db9092"
+Accept-Ranges: bytes
+Content-Length: 16946
+Content-Type: application/javascript
+ original-response-headers Date: Fri, 27 Oct 2017 22:09:22 GMT
+Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/5.6.31
+Last-Modified: Sun, 10 Sep 2017 22:51:50 GMT
+ETag: "4232-558dda7db9092"
+Accept-Ranges: bytes
+Content-Length: 16946
+Keep-Alive: timeout=5, max=98
+Connection: Keep-Alive
+Content-Type: application/javascript
+ uncompressed-len 0 net-response-time-onstart 242 net-response-time-onstop 243   B2
